@@ -1,10 +1,11 @@
 <template>
   <v-app id="inspire">
     <v-navigation-drawer
-      fixed
       clipped
       app
       v-model="drawer"
+      absolute
+      temporary
     >
       <v-list dense>
         <template v-for="(item, i) in items">
@@ -191,7 +192,7 @@
   export default {
     data: () => ({
       dialog: false,
-      drawer: null,
+      drawer: false,
       items: [
         { icon: 'contacts', text: 'Contacts' },
         { icon: 'history', text: 'Frequently contacted' },
