@@ -25,7 +25,7 @@
             </v-flex>
           </v-layout>
           <v-list-group v-else-if="item.children" v-model="item.model" no-action>
-            <v-list-tile slot="item" @click="">
+            <v-list-tile  slot="item" @click="">
               <v-list-tile-action>
                 <v-icon>{{ item.model ? item.icon : item['icon-alt'] }}</v-icon>
               </v-list-tile-action>
@@ -38,7 +38,7 @@
             <v-list-tile
               v-for="(child, i) in item.children"
               :key="i"
-              @click=""
+              @click="$router.push(child.link)"
             >
               <v-list-tile-action v-if="child.icon">
                 <v-icon>{{ child.icon }}</v-icon>
@@ -50,7 +50,7 @@
               </v-list-tile-content>
             </v-list-tile>
           </v-list-group>
-          <v-list-tile v-else @click="">
+          <v-list-tile v-else @click="$router.push(item.link)">
             <v-list-tile-action>
               <v-icon>{{ item.icon }}</v-icon>
             </v-list-tile-action>
@@ -92,13 +92,24 @@
           {{ item.title }}
 
         </v-btn>
+        <v-btn
+          v-if="userIsAuthenticated"
+          flat
+          @click="onLogout">
+          <v-icon left dark>exit_to_app</v-icon>
+          Logout
+
+        </v-btn>
         <v-btn icon>
           <v-icon>apps</v-icon>
         </v-btn>
         <v-btn icon>
           <v-icon>notifications</v-icon>
         </v-btn>
-        <v-btn icon large>
+        <v-btn
+          v-if="userIsAuthenticated"
+          to="/profile"
+           icon large>
           <v-avatar size="32px" tile>
             <img
               src="https://vuetifyjs.com/static/doc-images/logo.svg"
@@ -194,16 +205,15 @@
       dialog: false,
       drawer: false,
       items: [
-        { icon: 'contacts', text: 'Contacts' },
-        { icon: 'history', text: 'Frequently contacted' },
-        { icon: 'content_copy', text: 'Duplicates' },
+        { icon: 'home', text: 'Home', link: "/" },
+        { icon: 'content_copy', text: 'Leggi gli articoli', link: "/articoli" },
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
-          text: 'Labels',
+          text: 'Operazioni',
           model: true,
           children: [
-            { icon: 'add', text: 'Create label' }
+            { icon: 'add', text: 'Aggiungi un articolo', link: "/articolo/new" }
           ]
         },
         {
@@ -222,8 +232,8 @@
         { icon: 'settings', text: 'Settings' },
         { icon: 'chat_bubble', text: 'Send feedback' },
         { icon: 'help', text: 'Help' },
-        { icon: 'phonelink', text: 'App downloads' },
-        { icon: 'keyboard', text: 'Go to the old version' }
+        { icon: 'person', text: 'Registrati', link: '/signup' },
+        { icon: 'lock_open', text: 'Entra', link: '/signin' }
       ]
     }),
     props: {
@@ -238,8 +248,7 @@
         if (this.userIsAuthenticated) {
           menuItems = [
             {icon: 'supervisor_account', title: 'Guarda gli Articoli', link: '/articoli'},
-            {icon: 'room', title: 'Inserisci un Articolo', link: '/articolo/new'},
-            {icon: 'person', title: 'Profilo', link: '/profile'}
+            {icon: 'room', title: 'Inserisci un Articolo', link: '/articolo/new'}
           ]
         }
         return menuItems
