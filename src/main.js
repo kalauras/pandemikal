@@ -43,11 +43,11 @@ new Vue({
   render: h => h(App),
   created () {
     firebase.initializeApp({
-      apiKey: 'xxx ',
-      authDomain: 'xxx.firebaseapp.com',
-      databaseURL: 'https://xxx.firebaseio.com/',
-      projectId: 'xxx-xxx',
-      storageBucket: 'gs://xxx'
+      apiKey: 'AIzaSyAletm2xRzxU9CPyTOYNaOLLom9dSdVBu0',
+      authDomain: ' ebasilicata-1238.firebaseapp.com',
+      databaseURL: 'https://ebasilicata.firebaseio.com/',
+      projectId: ' ebasilicata-1238',
+      storageBucket: 'gs://ebasilicata'
     })
     firebase.auth().onAuthStateChanged((user) => {
       if (user) {

@@ -97,7 +97,7 @@
           flat
           @click="onLogout">
           <v-icon left dark>exit_to_app</v-icon>
-          Logout
+          Esci
 
         </v-btn>
         <v-btn icon>
@@ -189,9 +189,9 @@
           </v-layout>
         </v-container>
         <v-card-actions>
-          <v-btn flat color="primary">More</v-btn>
+          <v-btn flat color="primary">Altro</v-btn>
           <v-spacer></v-spacer>
-          <v-btn flat color="primary" @click="dialog = false">Cancel</v-btn>
+          <v-btn flat color="primary" @click="dialog = false">Annulla</v-btn>
           <v-btn flat @click="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
@@ -219,19 +219,17 @@
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
-          text: 'More',
+          text: 'Altre Operazioni',
           model: false,
           children: [
-            { text: 'Import' },
-            { text: 'Export' },
-            { text: 'Print' },
-            { text: 'Undo changes' },
-            { text: 'Other contacts' }
+            { text: 'Importa' },
+            { text: 'Esporta' },
+            { text: 'Stampa' }
           ]
         },
-        { icon: 'settings', text: 'Settings' },
-        { icon: 'chat_bubble', text: 'Send feedback' },
-        { icon: 'help', text: 'Help' },
+        { icon: 'settings', text: 'Impostazioni' },
+        { icon: 'chat_bubble', text: 'Inviaci un messaggio', link: '' },
+        { icon: 'help', text: 'Aiuto' },
         { icon: 'person', text: 'Registrati', link: '/signup' },
         { icon: 'lock_open', text: 'Entra', link: '/signin' }
       ]

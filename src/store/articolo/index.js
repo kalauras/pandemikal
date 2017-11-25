@@ -97,7 +97,7 @@ export default {
         })
         .then(() => {
           commit('createArticolo', {
-            articolo,
+            articolo, //...
             imageUrl: imageUrl,
             id: key
           })

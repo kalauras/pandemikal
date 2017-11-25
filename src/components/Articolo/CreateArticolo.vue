@@ -62,13 +62,59 @@
           </v-layout>
           <v-layout row class="mb-2">
             <v-flex xs12 sm6 offset-sm3>
-              <v-date-picker v-model="date"></v-date-picker>
+                    <v-menu
+        lazy
+        :close-on-content-click="false"
+        v-model="menu"
+        transition="scale-transition"
+        offset-y
+        full-width
+        :nudge-right="40"
+        max-width="290px"
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          label="Data"
+          v-model="date"
+          prepend-icon="event"
+          readonly
+        ></v-text-field>
+        <v-date-picker v-model="date" autosave no-title scrollable actions>
+          <template slot-scope="{ save, cancel }">
+            <v-card-actions>
+              <v-spacer></v-spacer>
+              <v-btn flat color="primary" @click="cancel">Cancel</v-btn>
+              <v-btn flat color="primary" @click="save">OK</v-btn>
+            </v-card-actions>
+          </template>
+        </v-date-picker>
+      </v-menu>
             </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
-              <v-time-picker v-model="time" format="24hr"></v-time-picker>
-            </v-flex>
+<v-menu
+        lazy
+        :close-on-content-click="false"
+        v-model="menu2"
+        transition="scale-transition"
+        offset-y
+        full-width
+        :nudge-right="40"
+        max-width="290px"
+        min-width="290px"
+      >
+        <v-text-field
+          slot="activator"
+          label="Orario"
+          v-model="time"
+          prepend-icon="access_time"
+          readonly
+        ></v-text-field>
+        <v-time-picker v-model="time" autosave format="24hr"></v-time-picker>
+      </v-menu>
+                  </v-flex>
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
@@ -92,9 +138,12 @@
         location: '',
         imageUrl: '',
         description: '',
-        date: new Date(),
-        time: new Date(),
-        image: null
+        date: '',
+        time: '',
+        image: null,
+        menu: false,
+        menu2: false,
+      modal: false
       }
     },
     computed: {

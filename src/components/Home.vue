@@ -85,14 +85,6 @@
 
         <section>
   <v-container>
-    <v-layout row wrap>
-      <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large router to="/articoli" color="primary">Leggi gli Articoli</v-btn>
-      </v-flex>
-      <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large router to="/articolo/new" class="primary">Inserisci un Articolo</v-btn>
-      </v-flex>
-    </v-layout>
     <v-layout>
       <v-flex xs12 class="text-xs-center">
         <v-progress-circular
@@ -121,6 +113,14 @@
     <v-layout row wrap  class="mt-2">
       <v-flex xs12 class="text-xs-center">
        <p>Questi sono i nostri ultimi articoli!</p>
+      </v-flex>
+    </v-layout>
+    <v-layout row wrap>
+      <v-flex xs12 sm6 class="text-xs-center text-sm-right">
+        <v-btn large router to="/articoli" color="primary">Leggi gli Articoli</v-btn>
+      </v-flex>
+      <v-flex xs12 sm6 class="text-xs-center text-sm-left">
+        <v-btn large router to="/articolo/new" class="primary">Inserisci un Articolo</v-btn>
       </v-flex>
     </v-layout>
   </v-container>
