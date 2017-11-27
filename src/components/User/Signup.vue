@@ -52,6 +52,8 @@
                         <v-icon light>cached</v-icon>
                        </span>
                     </v-btn>
+                    <v-btn @click="onFbSignup">Facebook</v-btn>
+                    <v-btn @click="onGoogleSignup">Google</v-btn>
                   </v-flex>
                 </v-layout>
               </form>
@@ -99,6 +101,12 @@
       },
       onDismissed () {
         this.$store.dispatch('clearError')
+      },
+      onFbSignup() {
+        this.$store.dispatch('signUserUpFb')
+      },
+      onGoogleSignup() {
+        this.$store.dispatch('signUserUpGoogle')
       }
     }
   }

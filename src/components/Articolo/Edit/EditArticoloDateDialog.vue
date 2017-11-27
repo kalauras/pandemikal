@@ -57,7 +57,7 @@
       }
     },
     created () {
-      this.editableDate = new Date(this.articolo.date)
+      this.editableDate = this.articolo.date
     }
   }
 </script>

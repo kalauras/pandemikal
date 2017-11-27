@@ -14,6 +14,9 @@ import RegisterDialog from './components/Articolo/Registration/RegisterDialog.vu
 import MappaPosizione from './components/Slide/MappaPosizione'
 import StreetViewPosizione from './components/Slide/StreetViewPosizione'
 import miniVetrinaShopify from './components/Slide/miniVetrinaShopify'
+import introDati from './components/Slide/introDati'
+import titoloSezione from './components/Slide/TitoloSezione'
+import treColonneTesto from './components/Slide/TreColonneTesto'
 
 Vue.use(Vuetify, {
   theme: {
@@ -34,6 +37,9 @@ Vue.component('app-articolo-register-dialog', RegisterDialog)
 Vue.component('google-map', MappaPosizione)
 Vue.component('google-streetView', StreetViewPosizione)
 Vue.component('minivetrina-shopify', miniVetrinaShopify)
+Vue.component('introDati', introDati)
+Vue.component('titoloSezione', titoloSezione)
+Vue.component('treColonneTesto', treColonneTesto)
 
 /* eslint-disable no-new */
 new Vue({
@@ -44,7 +50,7 @@ new Vue({
   created () {
     firebase.initializeApp({
       apiKey: 'AIzaSyAletm2xRzxU9CPyTOYNaOLLom9dSdVBu0',
-      authDomain: ' ebasilicata-1238.firebaseapp.com',
+      authDomain: 'ebasilicata-1238.firebaseapp.com',
       databaseURL: 'https://ebasilicata.firebaseio.com/',
       projectId: ' ebasilicata-1238',
       storageBucket: 'gs://ebasilicata'

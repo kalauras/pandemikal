@@ -78,6 +78,52 @@ export default {
           }
         )
     },
+    signUserUpFb ({commit}, payload) {
+      commit('setLoading', true)
+      commit('clearError')
+      firebase.auth().signInWithPopup(new firebase.auth.FacebookAuthProvider())
+        .then(
+          user => {
+            commit('setLoading', false)
+            const newUser = {
+              id: user.uid,
+              registeredArticoli: [],
+              fbKeys: {}
+            }
+            commit('setUser', newUser)
+          }
+        )
+        .catch(
+          error => {
+            commit('setLoading', false)
+            commit('setError', error)
+            console.log(error)
+          }
+        )
+    },
+    signUserUpGoogle ({commit}, payload) {
+      commit('setLoading', true)
+      commit('clearError')
+      firebase.auth().signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .then(
+          user => {
+            commit('setLoading', false)
+            const newUser = {
+              id: user.uid,
+              registeredArticoli: [],
+              fbKeys: {}
+            }
+            commit('setUser', newUser)
+          }
+        )
+        .catch(
+          error => {
+            commit('setLoading', false)
+            commit('setError', error)
+            console.log(error)
+          }
+        )
+    },
     signUserIn ({commit}, payload) {
       commit('setLoading', true)
       commit('clearError')

@@ -97,7 +97,12 @@ export default {
         })
         .then(() => {
           commit('createArticolo', {
-            articolo, //...
+            //...articolo, //...
+            title: articolo.title,
+            location: articolo.location,
+            description: articolo.description,
+            date: articolo.date,
+            creatorId: articolo.creatorId,
             imageUrl: imageUrl,
             id: key
           })
@@ -117,6 +122,7 @@ export default {
         updateObj.description = payload.description
       }
       if (payload.date) {
+        payload.date = payload.date.toISOString()
         updateObj.date = payload.date
       }
       firebase.database().ref('articoli').child(payload.id).update(updateObj)
