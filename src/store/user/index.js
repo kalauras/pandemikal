@@ -65,7 +65,8 @@ export default {
             const newUser = {
               id: user.uid,
               registeredArticoli: [],
-              fbKeys: {}
+              fbKeys: {},
+              dataPan: {}
             }
             commit('setUser', newUser)
           }
@@ -88,7 +89,8 @@ export default {
             const newUser = {
               id: user.uid,
               registeredArticoli: [],
-              fbKeys: {}
+              fbKeys: {},
+              dataPan: {}
             }
             commit('setUser', newUser)
           }
@@ -111,7 +113,8 @@ export default {
             const newUser = {
               id: user.uid,
               registeredArticoli: [],
-              fbKeys: {}
+              fbKeys: {},
+              dataPan: {}
             }
             commit('setUser', newUser)
           }
@@ -134,7 +137,8 @@ export default {
             const newUser = {
               id: user.uid,
               registeredArticoli: [],
-              fbKeys: {}
+              fbKeys: {},
+              dataPan: {}
             }
             commit('setUser', newUser)
           }
@@ -151,7 +155,8 @@ export default {
       commit('setUser', {
         id: payload.uid,
         registeredArticoli: [],
-        fbKeys: {}
+        fbKeys: {},
+        dataPan: {}
       })
     },
     fetchUserData ({commit, getters}) {
@@ -178,6 +183,27 @@ export default {
           commit('setLoading', false)
         })
     },
+    fetchUserDataPan ({commit, getters}) {
+      commit('setLoading', true)
+      firebase.database().ref('/users/' + getters.user.id + '/data/').once('value')
+        .then(data => {
+          const dataPairs = data.val()
+          const utenti = {}
+          for (let key in dataPairs) {  
+            utenti[key] = dataPairs[key]
+          }
+          const updatedUser = {
+            id: getters.user.id+"ppppp",
+            dataPan: utenti
+          }
+          commit('setLoading', false)
+          commit('setUser', updatedUser)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
     logout ({commit}) {
       firebase.auth().signOut()
       commit('setUser', null)
@@ -186,6 +212,9 @@ export default {
   getters: {
     user (state) {
       return state.user
-    }
+    },
+    utenteDatiFB (state) {
+      return state.user
+    },
   }
 }

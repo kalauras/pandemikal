@@ -15,3 +15,13 @@
             </v-flex>
           </v-layout>
 </template>
+
+<script>
+  export default {
+    computed: {
+      luoghi () {
+        return this.$store.getters.featuredDataLuoghi
+      }
+    }
+  }
+</script>

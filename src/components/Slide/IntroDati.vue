@@ -6,55 +6,69 @@
     justify-center
     class="white--text"
     >
-    <v-card  class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.75) !important">
+    <v-card
+      v-for="luogo in luoghi"  
+      class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.75) !important">
       <v-card-title primary-title>
-       <h1 class="white--text mb-2 display-1 text-xs-center">Pangaro dott. Vincenzo</h1>
+       <h1 class="white--text mb-2 display-1 text-xs-center">{{luogo.titolo}}</h1>
      </v-card-title>
-     <div class="subheading mb-3 text-xs-center">Powered by eBasilicata</div>
+     <div class="subheading mb-3 text-xs-center">{{luogo.sottotitolo}}</div>
      <v-card-actions>
-      <v-btn flat dark>Indicazioni Stradali</v-btn>
+      <v-container 
+        v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan.coordinate !== undefined"
+        fluid="fluid" class="text-xs-center">
+
+      <v-layout row justify-center>
+    <v-dialog v-model="dialog" fullscreen transition="dialog-bottom-transition" :overlay=false>
+      <v-btn color="primary" dark slot="activator">Indicazioni Stradali</v-btn>
+      <v-card>
+        <v-toolbar dark color="primary">
+          <v-btn icon @click.native="dialog = false" dark>
+            <v-icon>close</v-icon>
+          </v-btn>
+          <v-toolbar-title>Indicazioni Stradali</v-toolbar-title>
+          <v-spacer></v-spacer>
+          <v-toolbar-items>
+            <v-btn dark flat @click.native="dialog = false">Chiudi</v-btn>
+          </v-toolbar-items>
+        </v-toolbar>
+        <iframe :src="'https://www.google.com/maps/embed/v1/directions?key=AIzaSyATTyxRJn5Howi-QHna-9iaaXxrErEyLGM&origin='+ user.dataPan.coordinate +'&destination='+luogo.coordinate+'&avoid=tolls|highways'"width="100%" height="800" frameborder="0" style="border:0" allowfullscreen></iframe>
+      </v-card>
+    </v-dialog>
+  </v-layout>
+    </v-container>
     </v-card-actions>
     <v-list two-line>
-      <v-list-tile @click="">
+      <v-list-tile :href="'tel:'+luogo.telefono">
         <v-list-tile-action>
           <v-icon color="indigo">phone</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>(0039) 333-1234567</v-list-tile-title>
+          <v-list-tile-title>{{luogo.telefono}}</v-list-tile-title>
           <v-list-tile-sub-title>Mobile</v-list-tile-sub-title>
         </v-list-tile-content>
         <v-list-tile-action>
           <v-icon>chat</v-icon>
         </v-list-tile-action>
       </v-list-tile>
-      <v-list-tile @click="">
-        <v-list-tile-action></v-list-tile-action>
-        <v-list-tile-content>
-          <v-list-tile-title>(0039) 0973-577287</v-list-tile-title>
-          <v-list-tile-sub-title>Lavoro</v-list-tile-sub-title>
-        </v-list-tile-content>
-        <v-list-tile-action>
-          <v-icon>chat</v-icon>
-        </v-list-tile-action>
-      </v-list-tile>
       <v-divider inset></v-divider>
-      <v-list-tile @click="">
+      <v-list-tile :href="'mailto:'+luogo.email">
         <v-list-tile-action>
           <v-icon color="indigo">mail</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>info@pangaroconsulting.it</v-list-tile-title>
+          <v-list-tile-title>{{luogo.email}}</v-list-tile-title>
           <v-list-tile-sub-title>Lavoro</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-divider inset></v-divider>
-      <v-list-tile @click="">
+      <v-list-tile href="https://www.google.com/maps/@40.0810537504629,16.204291546961144,13z?hl=it-IT&gl=US">
         <v-list-tile-action>
           <v-icon color="indigo">location_on</v-icon>
         </v-list-tile-action>
         <v-list-tile-content>
-          <v-list-tile-title>via Roma 91</v-list-tile-title>
-          <v-list-tile-sub-title>85034 Francavilla in Sinni (PZ)</v-list-tile-sub-title>
+          <v-list-tile-title>{{luogo.indirizzo}}</v-list-tile-title>
+          <v-list-tile-sub-title>{{luogo.cap}} {{luogo.comune}} ({{luogo.provincia}})</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
     </v-list>
@@ -62,3 +76,36 @@
 </v-layout>
 </v-parallax>
 </template>
+
+<script>
+  export default {
+    data () {
+      return {
+        dialog: false,
+        notifications: false,
+        sound: true,
+        widgets: false
+      }
+    },
+    computed: {
+      luoghi () {
+        return this.$store.getters.featuredDataLuoghi
+      },
+      user () {
+        console.log(this.$store.getters.utenteDatiFB)
+        return this.$store.getters.utenteDatiFB
+      },
+      loading () {
+        return this.$store.getters.loading
+      },
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      }
+    },
+    methods: {
+      onLoadLuogo (id) {
+        this.$router.push('/luoghi/' + id)
+      }
+    }
+  }
+</script>

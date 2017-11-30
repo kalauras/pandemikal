@@ -17,6 +17,7 @@ import miniVetrinaShopify from './components/Slide/miniVetrinaShopify'
 import introDati from './components/Slide/introDati'
 import titoloSezione from './components/Slide/TitoloSezione'
 import treColonneTesto from './components/Slide/TreColonneTesto'
+import caroselloArticoli from './components/Slide/CaroselloArticoli'
 
 Vue.use(Vuetify, {
   theme: {
@@ -40,6 +41,7 @@ Vue.component('minivetrina-shopify', miniVetrinaShopify)
 Vue.component('introDati', introDati)
 Vue.component('titoloSezione', titoloSezione)
 Vue.component('treColonneTesto', treColonneTesto)
+Vue.component('caroselloArticoli', caroselloArticoli)
 
 /* eslint-disable no-new */
 new Vue({
@@ -59,8 +61,10 @@ new Vue({
       if (user) {
         this.$store.dispatch('autoSignIn', user)
         this.$store.dispatch('fetchUserData')
+        this.$store.dispatch('fetchUserDataPan')
       }
     })
     this.$store.dispatch('loadArticoli')
+    this.$store.dispatch('loadDataLuoghi')
   }
 })
