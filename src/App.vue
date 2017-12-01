@@ -196,6 +196,9 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
+    <v-footer color="indigo" app>
+      <span class="white--text">Pangaro Consulting &copy; 2017</span>
+    </v-footer>
   </v-app>
 </template>
 

@@ -65,6 +65,7 @@ new Vue({
       }
     })
     this.$store.dispatch('loadArticoli')
+    //this.$store.dispatch('loadArticoliPubblici')
     this.$store.dispatch('loadDataLuoghi')
   }
 })

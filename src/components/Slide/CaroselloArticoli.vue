@@ -1,5 +1,5 @@
   <template>
-    <v-container>
+    <v-container fluid>
     <v-layout>
       <v-flex xs12 class="text-xs-center">
         <v-progress-circular

@@ -1,6 +1,6 @@
 <template>
   <v-dialog persistent v-model="registerDialog">
-    <v-btn primary accent slot="activator">
+    <v-btn color="primary" accent slot="activator">
       {{ userIsRegistered ? 'Unregister' : 'Register' }}
     </v-btn>
     <v-card>
@@ -46,7 +46,7 @@
     },
     computed: {
       userIsRegistered () {
-        return this.$store.getters.user.registeredArticolos.findIndex(articoloId => {
+        return this.$store.getters.user.registeredArticoli.findIndex(articoloId => {
           return articoloId === this.articoloId
         }) >= 0
       }

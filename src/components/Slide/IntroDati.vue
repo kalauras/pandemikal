@@ -10,12 +10,12 @@
       v-for="luogo in luoghi"  
       class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.75) !important">
       <v-card-title primary-title>
-       <h1 class="white--text mb-2 display-1 text-xs-center">{{luogo.titolo}}</h1>
+       <h1 class="white--text mb-2 display-3 text-xs-center" style="font-weight:300">{{luogo.titolo}}</h1>
      </v-card-title>
      <div class="subheading mb-3 text-xs-center">{{luogo.sottotitolo}}</div>
      <v-card-actions>
       <v-container 
-        v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan.coordinate !== undefined"
+        v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan !== undefined && user.dataPan.coordinate !== undefined"
         fluid="fluid" class="text-xs-center">
 
       <v-layout row justify-center>
@@ -92,7 +92,6 @@
         return this.$store.getters.featuredDataLuoghi
       },
       user () {
-        console.log(this.$store.getters.utenteDatiFB)
         return this.$store.getters.utenteDatiFB
       },
       loading () {

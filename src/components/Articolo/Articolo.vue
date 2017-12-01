@@ -13,7 +13,7 @@
       <v-flex xs12>
         <v-card>
           <v-card-title>
-            <h6 class="primary--text">{{ articolo.title }}</h6>
+            <h6 class="title primary--text">{{ articolo.title }}</h6>
             <template v-if="userIsCreator">
               <v-spacer></v-spacer>
               <app-edit-articolo-details-dialog :articolo="articolo"></app-edit-articolo-details-dialog>

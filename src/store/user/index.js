@@ -173,7 +173,8 @@ export default {
           const updatedUser = {
             id: getters.user.id,
             registeredArticoli: registeredArticoli,
-            fbKeys: swappedPairs
+            fbKeys: swappedPairs,
+            dataPan: getters.user.dataPan
           }
           commit('setLoading', false)
           commit('setUser', updatedUser)
@@ -193,7 +194,9 @@ export default {
             utenti[key] = dataPairs[key]
           }
           const updatedUser = {
-            id: getters.user.id+"ppppp",
+            id: getters.user.id,
+            registeredArticoli: getters.user.registeredArticoli,
+            fbKeys: getters.user.fbKeys,
             dataPan: utenti
           }
           commit('setLoading', false)

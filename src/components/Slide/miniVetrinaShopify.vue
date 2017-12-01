@@ -1,6 +1,23 @@
 <template>
+  <v-container fluid >
+    <v-layout
+      column
+      wrap
+      class="my-3"
+      align-center
+    >
+      <v-flex xs12 sm4 class="my-3">
+        <div class="text-xs-center">
+          <h2 class="display-1" style="font-weight:300">I nostri servizi</h2>
+          <span class="subheading">
+            Prenota una consulenza o richiedi altri servizi
+          </span>
+        </div>
+      </v-flex>
+    </v-layout>
 	<div id='collection-component-60cf2f3014a'>
 	</div>
+</v-container>
 </template>
 <script>
 export default {

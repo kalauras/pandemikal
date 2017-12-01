@@ -1,5 +1,22 @@
 <template>
+  <v-container fluid class="grey lighten-4">
+    <v-layout
+      column
+      wrap
+      class="my-3"
+      align-center
+    >
+      <v-flex xs12 sm4 class="my-3">
+        <div class="text-xs-center">
+          <h2 class="display-1" style="font-weight:300">Guarda dove siamo</h2>
+          <span class="subheading">
+            Scorri la mappa e scopri come raggiungerci
+          </span>
+        </div>
+      </v-flex>
+    </v-layout>
   <div class="google-map" :id="mapName"></div>
+</v-container>
 </template>
 <script>
 
@@ -43,7 +60,7 @@ export default {
         map: this.map
       })
       this.markers.push(marker)
-      // this.map.fitBounds(this.bounds.extend(position))
+      //this.map.fitBounds(this.bounds.extend(position))
     })
   }
 }

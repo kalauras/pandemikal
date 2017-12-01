@@ -44,13 +44,40 @@ export default {
     }
   },
   actions: {
-    loadArticoli ({commit}) {
+    loadArticoli ({commit, getters}) {
       commit('setLoading', true)
-      firebase.database().ref('articoli').once('value')
+      const articoli = []
+      //carico gli articoli legati alla pagina
+      firebase.database().ref(getters.pageID).orderByChild('creatorId').equalTo('RjraNQf2MHhbIXIHb6OYp2QT7YH3').once('value')
         .then((data) => {
-          const articoli = []
+          
           const obj = data.val()
           for (let key in obj) {
+            articoli.push({
+              id: key,
+              title: obj[key].title,
+              description: obj[key].description,
+              imageUrl: obj[key].imageUrl,
+              date: obj[key].date,
+              location: obj[key].location,
+              creatorId: obj[key].creatorId
+            })
+          }
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+            commit('setLoading', false)
+          }
+        )
+
+        // carico gli articoli del gruppo evitando i doppioni 
+       firebase.database().ref(getters.pageID).orderByChild('gruppo').equalTo('commercialisti').once('value')
+        .then((data) => {
+          const obj = data.val()
+          for (let key in obj) {
+            if(obj[key].creatorId == 'RjraNQf2MHhbIXIHb6OYp2QT7YH3')
+              continue
             articoli.push({
               id: key,
               title: obj[key].title,
@@ -69,8 +96,9 @@ export default {
             console.log(error)
             commit('setLoading', false)
           }
-        )
+        ) 
     },
+    
     createArticolo ({commit, getters}, payload) {
       const articolo = {
         title: payload.title,

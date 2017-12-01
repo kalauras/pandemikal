@@ -1,7 +1,8 @@
 export default {
   state: {
     loading: false,
-    error: null
+    error: null,
+    pageID: 'articoli'
   },
   mutations: {
     setLoading (state, payload) {
@@ -12,6 +13,9 @@ export default {
     },
     clearError (state) {
       state.error = null
+    },
+    setPageID (state, payload) {
+      state.pageID = payload
     }
   },
   actions: {
@@ -25,6 +29,9 @@ export default {
     },
     error (state) {
       return state.error
+    },
+    pageID (state) {
+      return state.pageID
     }
   }
 }
