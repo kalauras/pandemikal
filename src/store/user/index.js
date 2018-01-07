@@ -5,6 +5,14 @@ export default {
     user: null
   },
   mutations: {
+    registraDatiUtente (state, payload) {
+      const id = payload.id
+      //if (state.user.dataPan.findIndex(articolo => articolo.id === id) >= 0) {
+      //  return
+      //}
+      state.user.dataPan.push(id)
+      //state.user.fbKeys[id] = payload.fbKey
+    },
     registerUserForArticolo (state, payload) {
       const id = payload.id
       if (state.user.registeredArticoli.findIndex(articolo => articolo.id === id) >= 0) {
@@ -23,6 +31,38 @@ export default {
     }
   },
   actions: {
+    registraDatiUtente ({commit, getters}, payload) {
+      commit('setLoading', true)
+      const user = getters.user
+
+      const datiUtente = {
+        nome_user: payload.nome_user,
+        comune_user: payload.comune_user,
+        email_user: payload.email_user
+      }
+
+
+      firebase.database().ref('/users/' + user.id).child('/data/')
+        .update(datiUtente)
+        .then(user => {
+            commit('setLoading', false)
+            
+            const updatedUser = {
+              id: getters.user.id,
+              displayName: getters.user.displayName,
+              email: getters.user.email,
+              registeredArticoli: getters.user.registeredArticoli,
+              fbKeys: getters.user.fbKeys,
+              dataPan: datiUtente
+            }
+            commit('setUser', updatedUser)
+            //commit('registraDatiUtente', {id: payload, fbKey: data.key})
+          })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
     registerUserForArticolo ({commit, getters}, payload) {
       commit('setLoading', true)
       const user = getters.user
@@ -64,6 +104,8 @@ export default {
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
+              displayName: user.displayName,
+              email: user.email,
               registeredArticoli: [],
               fbKeys: {},
               dataPan: {}
@@ -88,6 +130,8 @@ export default {
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
+              displayName: user.displayName,
+              email: user.email,
               registeredArticoli: [],
               fbKeys: {},
               dataPan: {}
@@ -112,6 +156,8 @@ export default {
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
+              displayName: user.displayName,
+              email: user.email,
               registeredArticoli: [],
               fbKeys: {},
               dataPan: {}
@@ -136,6 +182,8 @@ export default {
             commit('setLoading', false)
             const newUser = {
               id: user.uid,
+              displayName: "",
+              email: user.email,
               registeredArticoli: [],
               fbKeys: {},
               dataPan: {}
@@ -154,6 +202,8 @@ export default {
     autoSignIn ({commit}, payload) {
       commit('setUser', {
         id: payload.uid,
+        displayName: payload.displayName,
+        email: payload.email,
         registeredArticoli: [],
         fbKeys: {},
         dataPan: {}
@@ -172,6 +222,8 @@ export default {
           }
           const updatedUser = {
             id: getters.user.id,
+            displayName: getters.user.displayName,
+            email: getters.user.email,
             registeredArticoli: registeredArticoli,
             fbKeys: swappedPairs,
             dataPan: getters.user.dataPan
@@ -195,6 +247,8 @@ export default {
           }
           const updatedUser = {
             id: getters.user.id,
+            displayName: getters.user.displayName,
+            email: getters.user.email,
             registeredArticoli: getters.user.registeredArticoli,
             fbKeys: getters.user.fbKeys,
             dataPan: utenti

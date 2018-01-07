@@ -6,16 +6,16 @@ export default {
       {
         imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg',
         id: 'afajfjadfaadfa323',
-        coordinate: 'Articolo in New York',
-        indirizzo: 'indirizzo',
-        openWeek: 'New York',
-        shopCollectionId: 'New York, New York!',
-        telefono: '33333333',
+        coordinate: '',
+        indirizzo: 'caricamento indirizzo',
+        openWeek: '',
+        shopCollectionId: '',
+        telefono: 'caricamento telefono',
         titolo: 'eBasilicata',
-        email: 'eamill',
-        cap: '85034',
-        comune: 'Franc',
-        provincia: 'PZ'
+        email: 'caricamento email',
+        cap: 'caricamento cap',
+        comune: 'caricameto comune',
+        provincia: 'caricamento provincia'
       }
     ]
   },
