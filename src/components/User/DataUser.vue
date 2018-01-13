@@ -59,10 +59,8 @@
   export default {
     data () {
       return {
-        nome_user: this.$store.getters.user.displayName,
-        email_user: this.$store.getters.user.email,
+      dataUser: {},
       modal: false,
-      comune_user: null,
         comune_elenco: [
           'Abriola','Accettura ','Acerenza','Albano di Lucania','Aliano','Anzi','Armento','Atella','Avigliano','Balvano','Banzi','Baragiano','Barile',
           'Bella','Bernalda','Brienza','Brindisi Montagna','Calciano','Calvello','Calvera','Campomaggiore','Cancellara','Carbone','Castelgrande',
@@ -83,6 +81,41 @@
       formIsValid () {
         return this.nome_user !== '' && this.comune_user != null &&
           this.email_user !== ''     
+      },
+      
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      nome_user: {
+        get: function () {
+          if(this.userIsAuthenticated){
+            if(this.$store.getters.user.dataPan.nome_user !== null)
+              return this.$store.getters.user.dataPan.nome_user
+            else
+              return this.$store.getters.user.displayName
+          }
+          else return ""
+        },
+        set: function(newValue){
+          this.dataUser.nome_user= newValue
+        }
+      },
+      comune_user: {
+        get: function () {
+          if(this.userIsAuthenticated){
+            return this.$store.getters.user.dataPan.comune_user
+          }
+        },
+        set: function(newValue){
+           this.dataUser.comune_user= newValue
+        }
+      },
+      email_user () {
+        if(this.userIsAuthenticated){
+          
+          return this.$store.getters.user.email
+        }
+        else return ""
       }
     },
     methods: {
@@ -90,12 +123,9 @@
         if (!this.formIsValid) {
           return
         }
-        const dataUser = {
-          nome_user: this.nome_user,
-          comune_user: this.comune_user,
-          email_user: this.email_user
-        }
-        this.$store.dispatch('registraDatiUtente', dataUser)
+        this.dataUser.email_user = this.email_user
+        
+        this.$store.dispatch('registraDatiUtente', this.dataUser)
         this.$router.push('/profile')
       }
     }

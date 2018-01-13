@@ -6,11 +6,17 @@ export default {
   },
   mutations: {
     registraDatiUtente (state, payload) {
-      const id = payload.id
+      //const id = payload.id
       //if (state.user.dataPan.findIndex(articolo => articolo.id === id) >= 0) {
       //  return
       //}
-      state.user.dataPan.push(id)
+      for (let key in payload) {  
+        console.log(key)
+            state.user.dataPan[key] = payload[key]
+          }
+      //if()
+      
+      //state.user.dataPan.push(id)
       //state.user.fbKeys[id] = payload.fbKey
     },
     registerUserForArticolo (state, payload) {
@@ -35,27 +41,13 @@ export default {
       commit('setLoading', true)
       const user = getters.user
 
-      const datiUtente = {
-        nome_user: payload.nome_user,
-        comune_user: payload.comune_user,
-        email_user: payload.email_user
-      }
-
+      const datiUtente = payload
 
       firebase.database().ref('/users/' + user.id).child('/data/')
         .update(datiUtente)
         .then(user => {
             commit('setLoading', false)
-            
-            const updatedUser = {
-              id: getters.user.id,
-              displayName: getters.user.displayName,
-              email: getters.user.email,
-              registeredArticoli: getters.user.registeredArticoli,
-              fbKeys: getters.user.fbKeys,
-              dataPan: datiUtente
-            }
-            commit('setUser', updatedUser)
+            commit('registraDatiUtente', datiUtente)
             //commit('registraDatiUtente', {id: payload, fbKey: data.key})
           })
         .catch(error => {
