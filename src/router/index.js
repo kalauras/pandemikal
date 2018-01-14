@@ -55,7 +55,8 @@ export default new Router({
     {
       path: '/dataUser',
       name: 'DataUser',
-      component: DataUser
+      component: DataUser,
+      beforeEnter: AuthGuard      
     }
   ],
   mode: 'history'

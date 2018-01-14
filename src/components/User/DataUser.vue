@@ -59,6 +59,7 @@
   export default {
     data () {
       return {
+
       dataUser: {},
       modal: false,
         comune_elenco: [
@@ -79,22 +80,20 @@
     },
     computed: {
       formIsValid () {
-        return this.nome_user !== '' && this.comune_user != null &&
-          this.email_user !== ''     
+        return this.dataUser.nome_user !== "" && this.dataUser.comune_user !== "" && this.dataUser.email_user !== " "
       },
-      
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
       nome_user: {
         get: function () {
           if(this.userIsAuthenticated){
-            if(this.$store.getters.user.dataPan.nome_user !== null)
+            if(this.$store.getters.user.dataPan.nome_user !== undefined)
               return this.$store.getters.user.dataPan.nome_user
-            else
+            if(this.$store.getters.user.displayName != null)
               return this.$store.getters.user.displayName
           }
-          else return ""
+          return ""        
         },
         set: function(newValue){
           this.dataUser.nome_user= newValue
@@ -103,8 +102,12 @@
       comune_user: {
         get: function () {
           if(this.userIsAuthenticated){
-            return this.$store.getters.user.dataPan.comune_user
+            if(this.$store.getters.user.dataPan.comune_user !== undefined)
+              return this.$store.getters.user.dataPan.comune_user
+            else
+              return ""
           }
+
         },
         set: function(newValue){
            this.dataUser.comune_user= newValue
@@ -124,7 +127,7 @@
           return
         }
         this.dataUser.email_user = this.email_user
-        
+
         this.$store.dispatch('registraDatiUtente', this.dataUser)
         this.$router.push('/profile')
       }

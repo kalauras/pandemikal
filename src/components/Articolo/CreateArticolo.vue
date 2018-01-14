@@ -118,12 +118,23 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
+              <v-checkbox 
+                v-bind:label="`Pubblica anche sulle pagine del gruppo ${gruppo.toString()}`" 
+                v-model="gruppo_form" 
+                :true-value="this.gruppo"
+                false-value="personale"
+                light></v-checkbox>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
               <v-btn
                 class="primary"
                 :disabled="!formIsValid"
                 type="submit">Crea Articolo</v-btn>
             </v-flex>
           </v-layout>
+          
         </form>
       </v-flex>
     </v-layout>
@@ -140,6 +151,7 @@
         description: '',
         date: '',
         time: '',
+        gruppo_form: '',
         image: null,
         menu: false,
         menu2: false,
@@ -165,6 +177,12 @@
           date.setMinutes(this.time.getMinutes())
         }
         return date
+      },
+      dominio () {
+        return this.$store.getters.dominio
+      },
+      gruppo () {
+        return this.$store.getters.gruppo
       }
     },
     methods: {
@@ -180,6 +198,8 @@
           location: this.location,
           image: this.image,
           description: this.description,
+          dominio: this.dominio,
+          gruppo: this.gruppo_form,
           date: this.submittableDateTime
         }
         this.$store.dispatch('createArticolo', articoloData)

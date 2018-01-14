@@ -48,7 +48,7 @@ export default {
       commit('setLoading', true)
       const articoli = []
       //carico gli articoli legati alla pagina
-      firebase.database().ref(getters.pageID).orderByChild('creatorId').equalTo('RjraNQf2MHhbIXIHb6OYp2QT7YH3').once('value')
+      firebase.database().ref(getters.pageID).orderByChild('dominio').equalTo(getters.dominio).once('value')
         .then((data) => {
           
           const obj = data.val()
@@ -72,11 +72,11 @@ export default {
         )
 
         // carico gli articoli del gruppo evitando i doppioni 
-       firebase.database().ref(getters.pageID).orderByChild('gruppo').equalTo('commercialisti').once('value')
+       firebase.database().ref(getters.pageID).orderByChild('gruppo').equalTo(getters.gruppo).once('value')
         .then((data) => {
           const obj = data.val()
           for (let key in obj) {
-            if(obj[key].creatorId == 'RjraNQf2MHhbIXIHb6OYp2QT7YH3')
+            if(obj[key].dominio == getters.dominio)
               continue
             articoli.push({
               id: key,
@@ -105,7 +105,9 @@ export default {
         location: payload.location,
         description: payload.description,
         date: payload.date.toISOString(),
-        creatorId: getters.user.id
+        creatorId: getters.user.id,
+        dominio: payload.dominio,
+        gruppo: payload.gruppo
       }
       let imageUrl
       let key
@@ -131,6 +133,8 @@ export default {
             description: articolo.description,
             date: articolo.date,
             creatorId: articolo.creatorId,
+            dominio: getters.dominio,
+            gruppo: articolo.gruppo,
             imageUrl: imageUrl,
             id: key
           })
@@ -167,7 +171,7 @@ export default {
   getters: {
     loadedArticoli (state) {
       return state.loadedArticoli.sort((articoloA, articoloB) => {
-        return articoloA.date > articoloB.date
+        return articoloA.date < articoloB.date
       })
     },
     featuredArticoli (state, getters) {

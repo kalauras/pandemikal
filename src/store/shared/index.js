@@ -2,7 +2,9 @@ export default {
   state: {
     loading: false,
     error: null,
-    pageID: 'articoli'
+    pageID: 'articoli',
+    dominio: 'pangaroconsulting.it',
+    gruppo: 'commercialisti'
   },
   mutations: {
     setLoading (state, payload) {
@@ -32,6 +34,12 @@ export default {
     },
     pageID (state) {
       return state.pageID
+    },
+    dominio (state) {
+      return state.dominio
+    },
+    gruppo (state) {
+      return state.gruppo
     }
   }
 }
