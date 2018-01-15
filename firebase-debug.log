@@ -1,0 +1,70 @@
+[debug] [2018-01-14T20:18:09.889Z] ----------------------------------------------------------------------
+[debug] [2018-01-14T20:18:09.891Z] Command:       /usr/local/bin/node /usr/local/bin/firebase deploy
+[debug] [2018-01-14T20:18:09.891Z] CLI Version:   3.16.0
+[debug] [2018-01-14T20:18:09.891Z] Platform:      darwin
+[debug] [2018-01-14T20:18:09.891Z] Node Version:  v8.9.1
+[debug] [2018-01-14T20:18:09.892Z] Time:          Sun Jan 14 2018 21:18:09 GMT+0100 (CET)
+[debug] [2018-01-14T20:18:09.892Z] ----------------------------------------------------------------------
+[debug] 
+[debug] [2018-01-14T20:18:09.903Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","https://www.googleapis.com/auth/cloud-platform"]
+[debug] [2018-01-14T20:18:09.903Z] > authorizing via signed-in user
+[debug] [2018-01-14T20:18:09.905Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloud-platform","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-14T20:18:09.905Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/NO1-vkVtIkp5j9Ix05QYPDC6YLpiN5S68SYF9IUCN90',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloud-platform https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Jan 14 2018 21:18:09 GMT+0100 (CET)
+[debug] [2018-01-14T20:18:10.466Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T20:18:10.476Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ebasilicata-1238  
+  
+ Sun Jan 14 2018 21:18:10 GMT+0100 (CET)
+[debug] [2018-01-14T20:18:11.308Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T20:18:11.309Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ebasilicata-1238/tokens  
+  
+ Sun Jan 14 2018 21:18:11 GMT+0100 (CET)
+[debug] [2018-01-14T20:19:11.882Z] <<< HTTP RESPONSE 200
+[info] 
+[warn] ⚠  Your CLI authentication needs to be updated to take advantage of new features.
+[warn] ⚠  Please run firebase login --reauth
+[info] 
+[debug] [2018-01-14T20:19:11.892Z] > command requires scopes: ["email","openid","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase"]
+[debug] [2018-01-14T20:19:11.892Z] > authorizing via signed-in user
+[debug] [2018-01-14T20:19:11.893Z] > refreshing access token with scopes: ["email","https://www.googleapis.com/auth/cloudplatformprojects.readonly","https://www.googleapis.com/auth/firebase","openid"]
+[debug] [2018-01-14T20:19:11.893Z] >>> HTTP REQUEST POST https://www.googleapis.com/oauth2/v3/token  
+ { refresh_token: '1/NO1-vkVtIkp5j9Ix05QYPDC6YLpiN5S68SYF9IUCN90',
+  client_id: '563584335869-fgrhgmd47bqnekij5i8b5pr03ho849e6.apps.googleusercontent.com',
+  client_secret: 'j9iVZfS8kkCEFUPaAeJV0sAi',
+  grant_type: 'refresh_token',
+  scope: 'email https://www.googleapis.com/auth/cloudplatformprojects.readonly https://www.googleapis.com/auth/firebase openid' } 
+ Sun Jan 14 2018 21:19:11 GMT+0100 (CET)
+[debug] [2018-01-14T20:19:12.097Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T20:19:12.107Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/projects/ebasilicata-1238  
+  
+ Sun Jan 14 2018 21:19:12 GMT+0100 (CET)
+[debug] [2018-01-14T20:19:12.907Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T20:19:12.910Z] >>> HTTP REQUEST GET https://admin.firebase.com/v1/database/ebasilicata-1238/tokens  
+  
+ Sun Jan 14 2018 21:19:12 GMT+0100 (CET)
+[debug] [2018-01-14T20:19:44.857Z] <<< HTTP RESPONSE 200
+[info] 
+[info] === Deploying to 'ebasilicata-1238'...
+[info] 
+[info] i  deploying hosting
+[info] i  hosting: preparing ./dist directory for upload...
+[debug] [2018-01-14T20:19:45.119Z] >>> HTTP REQUEST PUT https://deploy.firebase.com/v1/hosting/ebasilicata-1238/uploads/-L2qJz9NHsPDRNV6C7dN?fileCount=6&message=  
+  
+ Sun Jan 14 2018 21:19:45 GMT+0100 (CET)
+[debug] [2018-01-14T20:20:22.194Z] <<< HTTP RESPONSE 200
+[debug] [2018-01-14T20:20:22.194Z] [hosting] .tgz uploaded successfully, waiting for extraction
+[info] ✔  hosting: 6 files uploaded successfully
+[debug] [2018-01-14T20:20:42.005Z] >>> HTTP REQUEST POST https://deploy.firebase.com/v1/projects/ebasilicata-1238/releases  
+ { hosting: 
+   { public: './dist',
+     ignore: [ 'firebase.json', '**/.*', '**/node_modules/**' ],
+     rewrites: [ [Object] ],
+     version: '-L2qJz9NHsPDRNV6C7dN',
+     prefix: '-L2qJz9NHsPDRNV6C7dN/',
+     manifest: [] } } 
+ Sun Jan 14 2018 21:20:42 GMT+0100 (CET)

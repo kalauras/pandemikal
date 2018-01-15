@@ -3,6 +3,7 @@
     <v-navigation-drawer
       clipped
       app
+      fixed
       v-model="drawer"
       absolute
       temporary
@@ -233,7 +234,8 @@
         { icon: 'settings', text: 'Impostazioni' },
         { icon: 'chat_bubble', text: 'Inviaci un messaggio', link: '' },
         { icon: 'help', text: 'Aiuto' },
-        { icon: 'person', text: 'Registrati', link: '/signup' },
+        { icon: 'person', text: 'Profilo', link: '/profile' },
+        { icon: 'person_add', text: 'Registrati', link: '/signup' },
         { icon: 'lock_open', text: 'Entra', link: '/signin' }
       ]
     }),

@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
-        <h4>Inserisci i tuoi dati</h4>
+        <h4>Aggiorna i tuoi dati</h4>
       </v-flex>
     </v-layout>
     <v-layout row>

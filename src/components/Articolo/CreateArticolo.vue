@@ -118,8 +118,13 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
+              <h4>Pubblica anche sulle pagine del gruppo</h4>
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
               <v-checkbox 
-                v-bind:label="`Pubblica anche sulle pagine del gruppo ${gruppo.toString()}`" 
+                v-bind:label="`Condividi nel gruppo ${gruppo.toString()}`" 
                 v-model="gruppo_form" 
                 :true-value="this.gruppo"
                 false-value="personale"
