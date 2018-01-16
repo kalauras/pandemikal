@@ -250,8 +250,8 @@
         ]
         if (this.userIsAuthenticated) {
           menuItems = [
-            {icon: 'supervisor_account', title: 'Guarda gli Articoli', link: '/articoli'},
-            {icon: 'room', title: 'Inserisci un Articolo', link: '/articolo/new'}
+            // {icon: 'supervisor_account', title: 'Guarda gli Articoli', link: '/articoli'},
+            // {icon: 'room', title: 'Inserisci un Articolo', link: '/articolo/new'}
           ]
         }
         return menuItems
