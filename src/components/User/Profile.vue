@@ -2,7 +2,20 @@
   <v-container>
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
-        <h4>Ecco i tuoi dati</h4>
+        <v-card>
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline mb-0">Il tuo profilo</h3>
+                <div>
+                  Qui trovi elencati i dati associati al tuo profilo
+                </div>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="primary" to="/dataUser">MODIFICA</v-btn> 
+              
+            </v-card-actions>
+          </v-card>
       </v-flex>
     </v-layout>
 
@@ -14,7 +27,9 @@
           <template v-for="(child, i) in user.dataPan">
             <v-divider></v-divider>
             <v-list-tile avatar @click="">
-              
+              <v-list-tile-avatar>
+              <v-icon class="'grey lighten-1 white--text'">info</v-icon>
+            </v-list-tile-avatar>
               <v-list-tile-content>
                 <v-list-tile-title v-html="i"></v-list-tile-title>
                 <v-list-tile-sub-title v-html="child"></v-list-tile-sub-title>

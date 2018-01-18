@@ -8,6 +8,21 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline mb-0">Registrati</h3>
+                <div>
+                  Compila i campi seguenti per registrarti con email e password oppure
+                </div>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="primary" @click="onFbSignup">Registrati con Facebook</v-btn>
+              <v-btn flat color="primary" @click="onGoogleSignup">Registrati con Google</v-btn>
+            </v-card-actions>
+          </v-card>
+          <p></p>
+        <v-card>
           <v-card-text>
             <v-container>
               <form @submit.prevent="onSignup">
@@ -52,8 +67,6 @@
                         <v-icon light>cached</v-icon>
                        </span>
                     </v-btn>
-                    <v-btn @click="onFbSignup">Facebook</v-btn>
-                    <v-btn @click="onGoogleSignup">Google</v-btn>
                   </v-flex>
                 </v-layout>
               </form>

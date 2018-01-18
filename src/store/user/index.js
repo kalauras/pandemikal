@@ -11,7 +11,6 @@ export default {
       //  return
       //}
       for (let key in payload) {  
-        console.log(key)
             state.user.dataPan[key] = payload[key]
           }
       //if()
@@ -42,7 +41,6 @@ export default {
       const user = getters.user
 
       const datiUtente = payload
-
       firebase.database().ref('/users/' + user.id).child('/data/')
         .update(datiUtente)
         .then(user => {

@@ -8,6 +8,7 @@ import Signup from '@/components/User/Signup'
 import Signin from '@/components/User/Signin'
 import Articolo from '@/components/Articolo/Articolo'
 import DataUser from '@/components/User/DataUser'
+import PositionUser from '@/components/User/PositionUser'
 import AuthGuard from './auth-guard'
 
 Vue.use(Router)
@@ -57,6 +58,12 @@ export default new Router({
       name: 'DataUser',
       component: DataUser,
       beforeEnter: AuthGuard      
+    },
+    {
+      path: '/positionUser',
+      name: 'PositionUser',
+      component: PositionUser,
+      //beforeEnter: AuthGuard      
     }
   ],
   mode: 'history'

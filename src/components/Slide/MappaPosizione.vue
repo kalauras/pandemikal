@@ -15,7 +15,20 @@
         </div>
       </v-flex>
     </v-layout>
-  <div class="google-map" :id="mapName"></div>
+  <gmap-map
+    :center="center"
+    :zoom="7"
+    class="google-map"
+  >
+    <gmap-marker
+      :key="index"
+      v-for="(m, index) in markers"
+      :position="m.position"
+      :clickable="true"
+      :draggable="true"
+      @click="center=m.position"
+    ></gmap-marker>
+  </gmap-map>
 </v-container>
 </template>
 <script>
@@ -26,16 +39,23 @@ export default {
   props: ['name'],
   data: function () {
     return {
-      mapName: this.name + '-map',
+      center: {lat: 40.08111187, lng: 16.2045113},
+        markers: [{
+          position: {lat: 40.08111187, lng: 16.2045113}
+        }, {
+          position: {lat: 11.0, lng: 11.0}
+        }]
+
+   /*     mapName: this.name + '-map',
       markerCoordinates: [{
         latitude: 40.08111187,
         longitude: 16.2045113
       }],
       map: null,
       bounds: null,
-      markers: []
+      markers: []*/
     }
-  },
+  }/*,
   mounted: function () {
     this.bounds = new google.maps.LatLngBounds()
     const element = document.getElementById(this.mapName)
@@ -62,7 +82,7 @@ export default {
       this.markers.push(marker)
       //this.map.fitBounds(this.bounds.extend(position))
     })
-  }
+  }*/
 }
 </script>
 <style scoped>

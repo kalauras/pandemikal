@@ -2,6 +2,7 @@ import Vue from 'vue'
 import Vuetify from 'vuetify'
 import App from './App'
 import * as firebase from 'firebase'
+import * as VueGoogleMaps from 'vue2-google-maps'
 import router from './router'
 import { store } from './store'
 import DateFilter from './filters/date'
@@ -28,6 +29,17 @@ Vue.use(Vuetify, {
   }
 })
 Vue.config.productionTip = false
+
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyD4eErzsOnxPwoXgLwBTYZ6KcVlBtLvVc8',
+    libraries: 'places', // This is required if you use the Autocomplete plugin
+    // OR: libraries: 'places,drawing'
+    // OR: libraries: 'places,drawing,visualization'
+    // (as you require)
+  }
+})
 
 Vue.filter('date', DateFilter)
 Vue.component('app-alert', AlertCmp)

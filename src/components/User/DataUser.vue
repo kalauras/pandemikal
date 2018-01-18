@@ -36,7 +36,6 @@
                 name="email_user"
                 label="Email"
                 id="email_user"
-                readonly
                 v-model="email_user"
                 required></v-text-field>
             </v-flex>
@@ -113,12 +112,21 @@
            this.dataUser.comune_user= newValue
         }
       },
-      email_user () {
-        if(this.userIsAuthenticated){
-          
-          return this.$store.getters.user.email
+      email_user: {
+        get: function () {
+          if(this.userIsAuthenticated){
+            if(this.$store.getters.user.dataPan.email_user !== undefined)
+              return this.$store.getters.user.dataPan.email_user
+            if(this.$store.getters.user.email != null)
+              return this.$store.getters.user.email
+            else
+              return ""
+          }
+
+        },
+        set: function(newValue){
+           this.dataUser.email_user= newValue
         }
-        else return ""
       }
     },
     methods: {
@@ -129,7 +137,7 @@
         this.dataUser.email_user = this.email_user
 
         this.$store.dispatch('registraDatiUtente', this.dataUser)
-        this.$router.push('/profile')
+        this.$router.push('/positionUser')
       }
     }
   }

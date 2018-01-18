@@ -8,6 +8,22 @@
     <v-layout row>
       <v-flex xs12 sm6 offset-sm3>
         <v-card>
+            <v-card-title primary-title>
+              <div>
+                <h3 class="headline mb-0">Accedi</h3>
+                <div>
+                  Compila i campi seguenti per accedere con email e password oppure
+                </div>
+              </div>
+            </v-card-title>
+            <v-card-actions>
+              <v-btn flat color="primary" @click="onFbSignup">Accedi con Facebook</v-btn>
+              <v-btn flat color="primary" @click="onGoogleSignup">Accedi con Google</v-btn>
+            </v-card-actions>
+          </v-card>
+          <p></p>
+        
+        <v-card>
           <v-card-text>
             <v-container>
               <form @submit.prevent="onSignin">
@@ -84,6 +100,12 @@
       },
       onDismissed () {
         this.$store.dispatch('clearError')
+      },
+      onFbSignup() {
+        this.$store.dispatch('signUserUpFb')
+      },
+      onGoogleSignup() {
+        this.$store.dispatch('signUserUpGoogle')
       }
     }
   }

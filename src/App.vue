@@ -123,7 +123,56 @@
     <v-content>
       <router-view></router-view>
     </v-content>
-    <v-btn
+
+
+
+    <v-speed-dial
+      v-model="fab"
+      bottom
+      right
+      direction="top"
+      hover
+      fixed
+      transition="slide-y-reverse-transition"
+    >
+      <v-btn
+        slot="activator"
+        color="blue darken-2"
+        dark
+        fab
+        hover
+        v-model="fab"
+      >
+        <v-icon>place</v-icon>
+        <v-icon>close</v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        dark
+        small
+        color="green"
+      >
+        <v-icon>edit</v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        dark
+        small
+        color="indigo"
+      >
+        <v-icon>add</v-icon>
+      </v-btn>
+      <v-btn
+        fab
+        dark
+        small
+        color="red"
+      >
+        <v-icon>delete</v-icon>
+      </v-btn>
+    </v-speed-dial>
+
+    <!-- <v-btn
       fab
       bottom
       right
@@ -133,7 +182,11 @@
       @click.stop="dialog = !dialog"
     >
       <v-icon>add</v-icon>
-    </v-btn>
+    </v-btn> 
+
+
+
+
     <v-dialog v-model="dialog" width="800px">
       <v-card>
         <v-card-title
@@ -196,7 +249,7 @@
           <v-btn flat @click="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>
+    </v-dialog>-->
     <v-footer color="indigo" app>
       <span class="white--text">Pangaro Consulting &copy; 2017</span>
     </v-footer>
@@ -208,6 +261,7 @@
     data: () => ({
       dialog: false,
       drawer: false,
+      fab: false,
       items: [
         { icon: 'home', text: 'Home', link: "/" },
         { icon: 'content_copy', text: 'Leggi gli articoli', link: "/articoli" },
@@ -271,4 +325,14 @@
 </script>
 <style lang="stylus">
   @import './stylus/main'
+</style>
+<style>
+  /* This is for documentation purposes and will not be needed in your application */
+  #create .speed-dial {
+    position: absolute;
+  }
+
+  #create .btn--floating {
+    position: relative;
+  }
 </style>
