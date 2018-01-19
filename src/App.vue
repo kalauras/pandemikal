@@ -73,7 +73,7 @@
     >
       <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? 'width: 300px; min-width: 250px' : 'min-width: 72px'" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <router-link to="/" tag="span" style="cursor: pointer">Pangaro Consulting <sup style="font-size: small;">BETA</sup></router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">{{this.$store.getters.nomeSito}} <sup style="font-size: small;">BETA</sup></router-link>
       </v-toolbar-title>
       <!--v-text-field
         light
@@ -182,7 +182,7 @@
       @click.stop="dialog = !dialog"
     >
       <v-icon>add</v-icon>
-    </v-btn> 
+    </v-btn> -->
 
 
 
@@ -249,9 +249,9 @@
           <v-btn flat @click="dialog = false">Save</v-btn>
         </v-card-actions>
       </v-card>
-    </v-dialog>-->
+    </v-dialog>
     <v-footer color="indigo" app>
-      <span class="white--text">Pangaro Consulting &copy; 2017</span>
+      <span class="white--text">{{this.$store.getters.nomeSito}} &copy; 2017</span>
     </v-footer>
   </v-app>
 </template>
@@ -285,9 +285,9 @@
             { text: 'Stampa' }
           ]
         },
-        { icon: 'settings', text: 'Impostazioni' },
-        { icon: 'chat_bubble', text: 'Inviaci un messaggio', link: '' },
-        { icon: 'help', text: 'Aiuto' },
+        // { icon: 'settings', text: 'Impostazioni' },
+        // { icon: 'chat_bubble', text: 'Inviaci un messaggio', link: '' },
+        // { icon: 'help', text: 'Aiuto' },
         { icon: 'person', text: 'Profilo', link: '/profile' },
         { icon: 'person_add', text: 'Registrati', link: '/signup' },
         { icon: 'lock_open', text: 'Entra', link: '/signin' }

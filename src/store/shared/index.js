@@ -2,6 +2,7 @@ export default {
   state: {
     loading: false,
     error: null,
+    nomeSito: 'Pangaro Consulting',
     pageID: 'articoli',
     dominio: 'pangaroconsulting.it',
     gruppo: 'commercialisti'
@@ -40,6 +41,9 @@ export default {
     },
     gruppo (state) {
       return state.gruppo
+    },
+    nomeSito (state) {
+      return state.nomeSito
     }
   }
 }

@@ -15,7 +15,10 @@
         </div>
       </v-flex>
     </v-layout>
-  <div class="google-map" :id="mapName"></div>
+  <gmap-street-view-panorama class="google-map" :position="{lat: 40.08111187, lng: 16.2045113}"
+      :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
+</gmap-street-view-panorama>
+
 </v-container>
 </template>
 <script>
@@ -33,29 +36,22 @@ export default {
       }],
       map: null,
       bounds: null,
-      markers: []
+      markers: [],
+      pov: {
+        pitch: -12,
+        heading: 170
+      },
+          pano: null,
     }
   },
-  mounted: function () {
-    this.bounds = new google.maps.LatLngBounds()
-    const element = document.getElementById(this.mapName)
-    const mapCentre = this.markerCoordinates[0]
-    const options = {
-      position: {lat: mapCentre.latitude, lng: mapCentre.longitude},
-      pov: {heading: 0, pitch: 0},
-      zoom: 0
-    }
-    this.map = new google.maps.StreetViewPanorama(element, options)
-    this.markerCoordinates.forEach((coord) => {
-      const position = new google.maps.LatLng(coord.latitude, coord.longitude)
-      const marker = new google.maps.Marker({
-        position,
-        map: this.map
-      })
-      this.markers.push(marker)
-      // this.map.fitBounds(this.bounds.extend(position))
-    })
-  }
+  methods: {
+          updatePov(pov) {
+            this.pov = pov;
+          },
+          updatePano(pano) {
+            this.pano = pano;
+          }
+        }
 }
 </script>
 <style scoped>

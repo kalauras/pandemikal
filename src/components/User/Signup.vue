@@ -12,13 +12,13 @@
               <div>
                 <h3 class="headline mb-0">Registrati</h3>
                 <div>
-                  Compila i campi seguenti per registrarti con email e password oppure
+                  Compila i campi seguenti per registrarti con email e password oppure usa i pulsanti per farlo con Facebook o con Google
                 </div>
               </div>
             </v-card-title>
             <v-card-actions>
-              <v-btn flat color="primary" @click="onFbSignup">Registrati con Facebook</v-btn>
-              <v-btn flat color="primary" @click="onGoogleSignup">Registrati con Google</v-btn>
+              <v-btn flat color="primary" @click="onFbSignup">con Facebook</v-btn>
+              <v-btn flat color="primary" @click="onGoogleSignup">con Google</v-btn>
             </v-card-actions>
           </v-card>
           <p></p>
