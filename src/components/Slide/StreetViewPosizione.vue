@@ -15,7 +15,7 @@
         </div>
       </v-flex>
     </v-layout>
-  <gmap-street-view-panorama class="google-map" :position="{lat: 40.08111187, lng: 16.2045113}"
+  <gmap-street-view-panorama class="google-map" :position="marker.position"
       :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
 </gmap-street-view-panorama>
 
@@ -30,10 +30,6 @@ export default {
   data: function () {
     return {
       mapName: this.name + '-map',
-      markerCoordinates: [{
-        latitude: 40.08111187,
-        longitude: 16.2045113
-      }],
       map: null,
       bounds: null,
       markers: [],
@@ -44,6 +40,29 @@ export default {
           pano: null,
     }
   },
+  computed: {
+    marker: {
+        get: function () {
+            if(this.$store.getters.featuredDataLuoghi[0].coordinate !== undefined && this.$store.getters.featuredDataLuoghi[0].coordinate !== ''){
+
+              let coor = this.$store.getters.featuredDataLuoghi[0].coordinate.split(',')
+              let marker = {
+                position: {
+                  lat: parseFloat(coor[0]),
+                  lng: parseFloat(coor[1])
+                }
+
+              }
+              return marker
+            }
+
+            return {
+              position: this.$store.getters.coordinate_default
+            }   
+          
+          }   
+        },
+      },
   methods: {
           updatePov(pov) {
             this.pov = pov;

@@ -66,10 +66,7 @@
     data () {
       return {
         dataUser: {},
-        center: {
-          lat: 40.08111187, 
-          lng: 16.2045113
-        },
+        center: this.$store.getters.coordinate_default,
         zoom: 8,
         coordinate_user: ""
       }
@@ -96,10 +93,7 @@
             }
           }
           return {
-            position: {
-              lat: 40.08,
-              lng: 16.20
-            }     
+            position: this.$store.getters.coordinate_default
           }   
         }
       }

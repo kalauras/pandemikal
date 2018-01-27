@@ -1,5 +1,5 @@
   <template>
-    <v-parallax src="https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/it%2Fbasilicata%2Fattivita%2Fpangaro-consulting%2Fintro%2Fpangaro-consulting.jpg?alt=media&token=5a617377-b937-43d0-8af2-de4266364ca4" height="600">
+      <v-parallax :src="luogo.imgIntro" height="600">
     <v-layout
     column
     align-center
@@ -7,20 +7,19 @@
     class="white--text"
     >
     <v-card
-      v-for="luogo in luoghi"  
-      class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.75) !important">
+      class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.55) !important">
       <v-card-title primary-title>
-       <h1 class="white--text mb-2 display-3 text-xs-center" style="font-weight:300">{{luogo.titolo}}</h1>
+       <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{luogo.titolo}}</h1>
      </v-card-title>
-     <div class="subheading mb-3 text-xs-center">{{luogo.sottotitolo}}</div>
+     <div class="subheading ma-3 text-xs-center">{{luogo.sottotitolo}}</div>
      <v-card-actions>
       <v-container 
-        v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan !== undefined && user.dataPan.coordinate !== undefined"
+        v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan !== undefined && user.dataPan.coordinate_user !== undefined"
         fluid="fluid" class="text-xs-center">
 
       <v-layout row justify-center>
     <v-dialog v-model="dialog" fullscreen transition="dialog-bottom-transition" :overlay=false>
-      <v-btn color="primary" dark slot="activator">Indicazioni Stradali</v-btn>
+      <v-btn color="primary" round dark slot="activator"><v-icon>navigation</v-icon> Indicazioni Stradali</v-btn>
       <v-card>
         <v-toolbar dark color="primary">
           <v-btn icon @click.native="dialog = false" dark>
@@ -32,13 +31,13 @@
             <v-btn dark flat @click.native="dialog = false">Chiudi</v-btn>
           </v-toolbar-items>
         </v-toolbar>
-        <iframe :src="'https://www.google.com/maps/embed/v1/directions?key=AIzaSyATTyxRJn5Howi-QHna-9iaaXxrErEyLGM&origin='+ user.dataPan.coordinate +'&destination='+luogo.coordinate+'&avoid=tolls|highways'"width="100%" height="800" frameborder="0" style="border:0" allowfullscreen></iframe>
+        <iframe :src="'https://www.google.com/maps/embed/v1/directions?key=AIzaSyATTyxRJn5Howi-QHna-9iaaXxrErEyLGM&origin='+ user.dataPan.coordinate_user +'&destination='+luogo.coordinate+'&avoid=tolls|highways'"width="100%" height="800" frameborder="0" style="border:0" allowfullscreen></iframe>
       </v-card>
     </v-dialog>
   </v-layout>
     </v-container>
     </v-card-actions>
-    <v-list two-line>
+    <v-list two-line style="background: rgba(255,  255,  255,  0.75) !important">
       <v-list-tile :href="'tel:'+luogo.telefono">
         <v-list-tile-action>
           <v-icon color="indigo">phone</v-icon>
@@ -88,6 +87,9 @@
       }
     },
     computed: {
+      luogo() {
+        return this.luoghi[0]
+      },
       luoghi () {
         return this.$store.getters.featuredDataLuoghi
       },

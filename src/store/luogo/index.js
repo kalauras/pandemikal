@@ -4,7 +4,7 @@ export default {
   state: {
     loadedDataLuoghi: [
       {
-        imageUrl: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg',
+        imgIntro: 'https://upload.wikimedia.org/wikipedia/commons/4/47/New_york_times_square-terabass.jpg',
         id: 'afajfjadfaadfa323',
         coordinate: '',
         indirizzo: 'caricamento indirizzo',
@@ -44,7 +44,7 @@ export default {
   actions: {
     loadDataLuoghi ({commit}) {
       commit('setLoading', true)
-      firebase.database().ref('pangaro').once('value')
+      firebase.database().ref(this.getters.dominio).once('value')
         .then((data) => {
           const luoghi = []
           const obj = data.val()
@@ -53,7 +53,7 @@ export default {
               id: key,
               coordinate: obj[key].coordinate,
               indirizzo: obj[key].indirizzo,
-              imageUrl: obj[key].imageUrl,
+              imgIntro: obj[key].imgIntro,
               openWeek: obj[key].openWeek,
               shopCollectionId: obj[key].shopCollectionId,
               titolo: obj[key].titolo,
@@ -83,7 +83,7 @@ export default {
         date: payload.date.toISOString(),
         creatorId: getters.user.id
       }
-      let imageUrl
+      let imgIntro
       let key
       firebase.database().ref('luoghi').push(luogo)
         .then((data) => {
@@ -96,8 +96,8 @@ export default {
           return firebase.storage().ref('luoghi/' + key + '.' + ext).put(payload.image)
         })
         .then(fileData => {
-          imageUrl = fileData.metadata.downloadURLs[0]
-          return firebase.database().ref('luoghi').child(key).update({imageUrl: imageUrl})
+          imgIntro = fileData.metadata.downloadURLs[0]
+          return firebase.database().ref('luoghi').child(key).update({imgIntro: imgIntro})
         })
         .then(() => {
           commit('createLuogo', {
@@ -107,7 +107,7 @@ export default {
             description: luogo.description,
             date: luogo.date,
             creatorId: luogo.creatorId,
-            imageUrl: imageUrl,
+            img: imgIntro,
             id: key
           })
         })

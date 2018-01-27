@@ -21,12 +21,10 @@
     class="google-map"
   >
     <gmap-marker
-      :key="index"
-      v-for="(m, index) in markers"
-      :position="m.position"
+      :position="marker.position"
       :clickable="true"
       :draggable="true"
-      @click="center=m.position"
+      @click="center=marker.position"
     ></gmap-marker>
   </gmap-map>
 </v-container>
@@ -36,25 +34,34 @@
 /* global google */
 export default {
   name: 'google-map',
-  props: ['name'],
   data: function () {
     return {
-      center: {lat: 40.08111187, lng: 16.2045113},
-        markers: [{
-          position: {lat: 40.08111187, lng: 16.2045113}
-        }, {
-          position: {lat: 11.0, lng: 11.0}
-        }]
-
-   /*     mapName: this.name + '-map',
-      markerCoordinates: [{
-        latitude: 40.08111187,
-        longitude: 16.2045113
-      }],
-      map: null,
-      bounds: null,
-      markers: []*/
+      center: this.$store.getters.coordinate_default,
     }
+  },
+  computed: {
+      marker: {
+        get: function () {
+            if(this.$store.getters.featuredDataLuoghi[0].coordinate !== undefined && this.$store.getters.featuredDataLuoghi[0].coordinate !== ''){
+
+              let coor = this.$store.getters.featuredDataLuoghi[0].coordinate.split(',')
+              let marker = {
+                position: {
+                  lat: parseFloat(coor[0]),
+                  lng: parseFloat(coor[1])
+                }
+
+              }
+              this.center = marker.position
+              return marker
+            }
+
+            return {
+              position: this.$store.getters.coordinate_default
+            }   
+          
+          }   
+        }
   }/*,
   mounted: function () {
     this.bounds = new google.maps.LatLngBounds()
@@ -84,7 +91,9 @@ export default {
     })
   }*/
 }
+
 </script>
+
 <style scoped>
 .google-map {
   width: 100%;
