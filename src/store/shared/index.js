@@ -2,10 +2,10 @@ export default {
   state: {
     loading: false,
     error: null,
-    nomeSito: 'Virtual Matera 2019',
+    nomeSito: 'Pangaro Consulting',
     pageID: 'articoli',
-    dominio: 'mt19_eu',
-    gruppo: 'turismo',
+    dominio: 'pangaro',
+    gruppo: 'commercialisti',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
   },
   mutations: {

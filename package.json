@@ -1,7 +1,7 @@
 {
-  "name": "MT19",
+  "name": "PangaroConsulting",
   "version": "1.0.0",
-  "description": "Da realtà al virtuale e viceversa",
+  "description": "Consulente Vincenzo Pangaro",
   "author": "kalauras <kalauras@gmail.com>",
   "private": true,
   "scripts": {
@@ -18,7 +18,8 @@
     "vue-router": "^3.0.1",
     "vue2-google-maps": "^0.8.4",
     "vuetify": "^0.17.2",
-    "vuex": "^3.0.1"
+    "vuex": "^3.0.1",
+    "vuex-i18n": "^1.10.5"
   },
   "devDependencies": {
     "autoprefixer": "^7.1.2",

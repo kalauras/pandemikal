@@ -1,5 +1,5 @@
   <template>
-      <v-parallax :src="luogo.imgIntro" height="600">
+      <v-parallax :key="luogo.imgIntro" :src="luogo.imgIntro" height="600">
     <v-layout
     column
     align-center
@@ -19,16 +19,16 @@
 
       <v-layout row justify-center>
     <v-dialog v-model="dialog" fullscreen transition="dialog-bottom-transition" :overlay=false>
-      <v-btn color="primary" round dark slot="activator"><v-icon>navigation</v-icon> Indicazioni Stradali</v-btn>
+      <v-btn color="primary" round dark slot="activator"><v-icon>navigation</v-icon> {{$t("indicazioni_stradali")}}</v-btn>
       <v-card>
         <v-toolbar dark color="primary">
           <v-btn icon @click.native="dialog = false" dark>
             <v-icon>close</v-icon>
           </v-btn>
-          <v-toolbar-title>Indicazioni Stradali</v-toolbar-title>
+          <v-toolbar-title>{{$t("indicazioni_stradali")}}</v-toolbar-title>
           <v-spacer></v-spacer>
           <v-toolbar-items>
-            <v-btn dark flat @click.native="dialog = false">Chiudi</v-btn>
+            <v-btn dark flat @click.native="dialog = false">{{$t("chiudi")}}</v-btn>
           </v-toolbar-items>
         </v-toolbar>
         <iframe :src="'https://www.google.com/maps/embed/v1/directions?key=AIzaSyATTyxRJn5Howi-QHna-9iaaXxrErEyLGM&origin='+ user.dataPan.coordinate_user +'&destination='+luogo.coordinate+'&avoid=tolls|highways'"width="100%" height="800" frameborder="0" style="border:0" allowfullscreen></iframe>
@@ -44,7 +44,7 @@
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>{{luogo.telefono}}</v-list-tile-title>
-          <v-list-tile-sub-title>Mobile</v-list-tile-sub-title>
+          <v-list-tile-sub-title>{{$t("telefono")}}</v-list-tile-sub-title>
         </v-list-tile-content>
         <v-list-tile-action>
           <v-icon>chat</v-icon>
@@ -57,11 +57,11 @@
         </v-list-tile-action>
         <v-list-tile-content>
           <v-list-tile-title>{{luogo.email}}</v-list-tile-title>
-          <v-list-tile-sub-title>Lavoro</v-list-tile-sub-title>
+          <v-list-tile-sub-title>{{$t("email")}}</v-list-tile-sub-title>
         </v-list-tile-content>
       </v-list-tile>
       <v-divider inset></v-divider>
-      <v-list-tile href="https://www.google.com/maps/@40.0810537504629,16.204291546961144,13z?hl=it-IT&gl=US">
+      <v-list-tile :href="'https://www.google.com/maps/@'+luogo.coordinate+',13z??hl=it-IT&gl=US'">
         <v-list-tile-action>
           <v-icon color="indigo">location_on</v-icon>
         </v-list-tile-action>

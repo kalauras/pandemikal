@@ -15,7 +15,7 @@
         </div>
       </v-flex>
     </v-layout>
-  <gmap-street-view-panorama class="google-map" :position="marker.position"
+  <gmap-street-view-panorama class="google-map" :key="caricato" :position="marker.position"
       :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
 </gmap-street-view-panorama>
 
@@ -25,19 +25,17 @@
 
 /* global google */
 export default {
-  name: 'google-map',
+  name: 'google-map2',
   props: ['name'],
   data: function () {
     return {
       mapName: this.name + '-map',
-      map: null,
-      bounds: null,
-      markers: [],
       pov: {
         pitch: -12,
         heading: 170
       },
-          pano: null,
+      pano: null,
+      caricato : "no"
     }
   },
   computed: {
@@ -53,10 +51,11 @@ export default {
                 }
 
               }
+              this.caricato = "si"
               return marker
             }
-
             return {
+
               position: this.$store.getters.coordinate_default
             }   
           

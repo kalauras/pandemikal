@@ -98,7 +98,7 @@
           flat
           @click="onLogout">
           <v-icon left dark>exit_to_app</v-icon>
-          Esci
+          {{$t("esci")}}
 
         </v-btn>
         <v-btn icon>
@@ -251,7 +251,7 @@
       </v-card>
     </v-dialog>
     <v-footer color="indigo" app>
-      <span class="white--text">{{this.$store.getters.nomeSito}} &copy; 2017</span>
+      <span class="white--text">{{this.$store.getters.nomeSito}} &copy; 2018</span>
     </v-footer>
   </v-app>
 </template>

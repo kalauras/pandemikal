@@ -1,5 +1,10 @@
 import Vue from 'vue'
 import Vuetify from 'vuetify'
+import Vuex from 'vuex';
+
+// load vuex i18n module
+import vuexI18n from 'vuex-i18n';
+
 import App from './App'
 import * as firebase from 'firebase'
 import * as VueGoogleMaps from 'vue2-google-maps'
@@ -19,6 +24,10 @@ import introDati from './components/Slide/introDati'
 import titoloSezione from './components/Slide/TitoloSezione'
 import treColonneTesto from './components/Slide/TreColonneTesto'
 import caroselloArticoli from './components/Slide/CaroselloArticoli'
+
+
+import translationsIt from './lang/it_IT.js';
+import translationsEn from './lang/en_US.js';
 
 Vue.use(Vuetify, {
   theme: {
@@ -54,6 +63,24 @@ Vue.component('introDati', introDati)
 Vue.component('titoloSezione', titoloSezione)
 Vue.component('treColonneTesto', treColonneTesto)
 Vue.component('caroselloArticoli', caroselloArticoli)
+
+Vue.use(vuexI18n.plugin, store);
+
+// translations can be kept in separate files for each language
+// i.e. resources/i18n/de.json.
+const translationsDe = {
+  "My nice title": "Ein schöner Titel",
+  "content": "Dies ist ein toller Inhalt"
+};
+
+
+// add translations directly to the application
+Vue.i18n.add('en', translationsEn);
+Vue.i18n.add('de', translationsDe);
+Vue.i18n.add('it', translationsIt);
+
+// set the start locale to use
+Vue.i18n.set('it');
 
 /* eslint-disable no-new */
 new Vue({
