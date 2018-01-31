@@ -1,5 +1,5 @@
 <template>
-  <v-dialog width="350px" persistent v-model="editDialog">
+  <v-dialog persistent v-model="editDialog">
     <v-btn fab accent slot="activator">
       <v-icon>edit</v-icon>
     </v-btn>
@@ -20,13 +20,16 @@
                 id="title"
                 v-model="editedTitle"
                 required></v-text-field>
-              <v-text-field
+              
+              <vue-editor id="editor1" v-model="editedDescription"></vue-editor>
+
+              <!--v-text-field
                 name="description"
                 label="Descrizione"
                 id="description"
                 multi-line
                 v-model="editedDescription"
-                required></v-text-field>
+                required></v-text-field-->
             </v-card-text>
           </v-flex>
         </v-layout>
@@ -48,9 +51,13 @@
 </template>
 
 <script>
+import { VueEditor } from 'vue2-editor'
+
   export default {
     props: ['articolo'],
-    data () {
+    components: {
+      VueEditor
+   },data () {
       return {
         editDialog: false,
         editedTitle: this.articolo.title,

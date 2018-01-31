@@ -3,7 +3,8 @@ import Vuetify from 'vuetify'
 import Vuex from 'vuex';
 
 // load vuex i18n module
-import vuexI18n from 'vuex-i18n';
+import vuexI18n from 'vuex-i18n'
+//import VueEditor from 'vue2-editor'
 
 import App from './App'
 import * as firebase from 'firebase'
@@ -63,6 +64,7 @@ Vue.component('introDati', introDati)
 Vue.component('titoloSezione', titoloSezione)
 Vue.component('treColonneTesto', treColonneTesto)
 Vue.component('caroselloArticoli', caroselloArticoli)
+//Vue.component('vue-editor', VueEditor)
 
 Vue.use(vuexI18n.plugin, store);
 

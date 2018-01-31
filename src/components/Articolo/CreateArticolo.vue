@@ -30,6 +30,31 @@
           </v-layout>
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
+
+              <v-card  flat>
+                <v-card-text>
+                  <v-subheader>Descrizione</v-subheader>
+                  <v-container fluid>
+                    <v-layout row>
+                      <v-flex xs12>
+                        <vue-editor id="editor1" v-model="description"></vue-editor>
+                      </v-flex>
+                    </v-layout>
+                  </v-container>
+                </v-card-text>
+              </v-card>
+              
+                  <!--v-text-field
+                name="description"
+                label="Descrizione"
+                id="description"
+                multi-line
+                v-model="description"
+                required></v-text-field-->
+            </v-flex>
+          </v-layout>
+          <v-layout row>
+            <v-flex xs12 sm6 offset-sm3>
               <v-btn raised class="primary" @click="onPickFile">Carica un Immagine</v-btn>
               <input
                 type="file"
@@ -42,17 +67,6 @@
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <img :src="imageUrl" height="150">
-            </v-flex>
-          </v-layout>
-          <v-layout row>
-            <v-flex xs12 sm6 offset-sm3>
-              <v-text-field
-                name="description"
-                label="Descrizione"
-                id="description"
-                multi-line
-                v-model="description"
-                required></v-text-field>
             </v-flex>
           </v-layout>
           <v-layout row>
@@ -79,8 +93,9 @@
           v-model="date"
           prepend-icon="event"
           readonly
+          @blur="date2 = parseDate(date)"
         ></v-text-field>
-        <v-date-picker v-model="date" autosave no-title scrollable actions>
+        <v-date-picker v-model="date2" autosave no-title scrollable actions @input="date = formatDate($event)">
           <template slot-scope="{ save, cancel }">
             <v-card-actions>
               <v-spacer></v-spacer>
@@ -147,14 +162,21 @@
 </template>
 
 <script>
+
+import { VueEditor } from 'vue2-editor'
+
   export default {
+    components: {
+      VueEditor
+   },
     data () {
       return {
         title: '',
         location: '',
         imageUrl: '',
         description: '',
-        date: '',
+        date: new Date().toLocaleDateString('en-GB'),
+        date2: '',
         time: '',
         gruppo_form: '',
         image: null,
@@ -171,7 +193,8 @@
           this.description !== ''
       },
       submittableDateTime () {
-        const date = new Date(this.date)
+        console.log(this.parseDate(this.date))
+        const date = new Date(this.parseDate(this.date))
         if (typeof this.time === 'string') {
           let hours = this.time.match(/^(\d+)/)[1]
           const minutes = this.time.match(/:(\d+)/)[1]
@@ -191,6 +214,22 @@
       }
     },
     methods: {
+      formatDate (date) {
+        if (!date) {
+          return null
+        }
+
+        const [year, month, day] = date.split('-')
+        return `${day}/${month}/${year}`
+      },
+      parseDate (date) {
+        if (!date) {
+          return null
+        }
+
+        const [day,month, year] = date.split('/')
+        return `${year}-${month.padStart(2, '0')}-${day.padStart(2, '0')}`
+      },
       onCreateArticolo () {
         if (!this.formIsValid) {
           return

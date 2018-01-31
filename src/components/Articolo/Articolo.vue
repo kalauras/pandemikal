@@ -33,7 +33,8 @@
                 :articolo="articolo" v-if="userIsCreator">
               </app-edit-articolo-time-dialog>
             </div>
-            <div>{{ articolo.description }}</div>
+            <!--div>{{ articolo.description }}</div-->
+                <div v-html="articolo.description"></div>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
