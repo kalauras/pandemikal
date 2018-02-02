@@ -10,7 +10,10 @@ const HtmlWebpackPlugin = require('html-webpack-plugin')
 const ExtractTextPlugin = require('extract-text-webpack-plugin')
 const OptimizeCSSPlugin = require('optimize-css-assets-webpack-plugin')
 //const UglifyJsPlugin = require('uglifyjs-webpack-plugin')
+const dist = 'dist'
+
 const MinifyPlugin = require("babel-minify-webpack-plugin")
+const workboxPlugin = require('workbox-webpack-plugin')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -38,8 +41,17 @@ const webpackConfig = merge(baseWebpackConfig, {
     // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
     // UglifyJs do not support ES6+, you can also use babel-minify for better treeshaking: https://github.com/babel/minify
     //new UglifyJsPlugin(),
-new MinifyPlugin(),
-    
+    new MinifyPlugin(),
+
+    new workboxPlugin({
+    globDirectory: dist,
+    globPatterns: ['**/*.{html,js}'],
+    swDest: path.join(dist, 'sw.js'),
+    swSrc: './src/swk.js'
+    //clientsClaim: true,
+    //skipWaiting: true,
+  }),
+
     // extract css into its own file
     new ExtractTextPlugin({
       filename: utils.assetsPath('css/[name].[contenthash].css'),

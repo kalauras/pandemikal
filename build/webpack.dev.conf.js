@@ -7,6 +7,9 @@ const baseWebpackConfig = require('./webpack.base.conf')
 const HtmlWebpackPlugin = require('html-webpack-plugin')
 const FriendlyErrorsPlugin = require('friendly-errors-webpack-plugin')
 const portfinder = require('portfinder')
+const workboxPlugin = require('workbox-webpack-plugin')
+const path = require('path')
+const dist = ''
 
 const devWebpackConfig = merge(baseWebpackConfig, {
   module: {
@@ -48,6 +51,15 @@ const devWebpackConfig = merge(baseWebpackConfig, {
       template: 'index.html',
       inject: true
     }),
+    new workboxPlugin({
+    globDirectory: dist,
+    globPatterns: ['**/*.{html,js}'],
+    swDest: path.join(dist, 'sw.js'),
+    swSrc: './src/swk.js'
+    //clientsClaim: true,
+    //skipWaiting: true,
+  })
+
   ]
 })
 
