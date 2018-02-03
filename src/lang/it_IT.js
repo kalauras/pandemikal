@@ -7,7 +7,10 @@ const translationsIt = {
   "nome_user": "Nome",
   "indicazioni_stradali": "Indicazioni Stradali",
   "chiudi": "Chiudi",
-  "esci": "Esci"
+  "esci": "Esci",
+  "leggi_articoli": "Leggi gli Articoli",
+  "inserisci_articolo": "Inserisci un Articolo",
+  "txt_ultimi_articoli": "Questi sono i nostri ultimi articoli"
 };
 
 
