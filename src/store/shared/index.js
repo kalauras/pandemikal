@@ -2,10 +2,10 @@ export default {
   state: {
     loading: false,
     error: null,
-    nomeSito: 'Virtual Matera 2019',
+    nomeSito: 'Oleificio Sagroli',
     pageID: 'articoli',
-    dominio: 'mt19_eu',
-    gruppo: 'turismo',
+    dominio: 'sagroli',
+    gruppo: 'attivita',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
   },
   mutations: {

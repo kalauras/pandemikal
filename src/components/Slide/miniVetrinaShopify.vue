@@ -23,19 +23,29 @@
 export default {
   name: 'google-map',
   props: ['name'],
-  data: function () {
-    return {
-      mapName: this.name + '-map',
-      markerCoordinates: [{
-        latitude: 40.08111187,
-        longitude: 16.2045113
-      }],
-      map: null,
-      bounds: null,
-      markers: []
-    }
+  // data: function () {
+  //   return {
+  //     mapName: this.name + '-map',
+  //     markerCoordinates: [{
+  //       latitude: 40.08111187,
+  //       longitude: 16.2045113
+  //     }],
+  //     map: null,
+  //     bounds: null,
+  //     markers: []
+  //   }
+  // },
+  computed: {
+      luogo() {
+        return this.luoghi[0]
+      },
+      luoghi () {
+        return this.$store.getters.featuredDataLuoghi
+      }
   },
   mounted: function () {
+    let idCollection = this.luogo.shopCollectionId
+
     let scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js'
     if (window.ShopifyBuy) {
       if (window.ShopifyBuy.UI) {
@@ -64,7 +74,7 @@ export default {
 
       window.ShopifyBuy.UI.onReady(client).then(function (ui) {
         ui.createComponent('collection', {
-          id: '431424707',
+          id: idCollection,
           node: document.getElementById('collection-component-60cf2f3014a'),
           moneyFormat: '%E2%82%AC%7B%7Bamount%7D%7D',
           options: {
