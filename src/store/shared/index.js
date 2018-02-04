@@ -2,17 +2,10 @@ export default {
   state: {
     loading: false,
     error: null,
-<<<<<<< HEAD
     nomeSito: 'Oleificio Sagroli',
     pageID: 'articoli',
     dominio: 'sagroli',
     gruppo: 'attivita',
-=======
-    nomeSito: 'eBasilicata',
-    pageID: 'articoli',
-    dominio: 'ebasilicata',
-    gruppo: 'area',
->>>>>>> 1b04ac9f521cdc60aeb8461ea85a1c86773513ee
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
   },
   mutations: {
