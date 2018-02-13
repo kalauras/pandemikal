@@ -7,12 +7,25 @@
     >
       <v-flex xs12 sm4 class="my-3">
         <div class="text-xs-center">
-          <h2 class="display-1" style="font-weight:300">Costantemente aggiornati in un mondo che cambia</h2>
+          <h2 class="display-1" style="font-weight:300">{{ $t(datimodulo.titolo) }}</h2>
           <span class="subheading">
-            Le ultime novit&agrave; sulla Capitale Europea della Cultura 2019
+            {{ $t(datimodulo.sottotitolo) }}
           </span>
         </div>
       </v-flex>
     </v-layout>
 </template>
 
+<script>
+
+export default {
+  
+  props: ['posizione'],
+  
+  computed: {
+    datimodulo () {
+        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
+    }
+  }
+}
+</script>

@@ -8,28 +8,30 @@
     >
       <v-flex xs12 sm4 class="my-3">
         <div class="text-xs-center">
-          <h2 class="display-1" style="font-weight:300">Guarda dove siamo</h2>
+          <h2 class="display-1" style="font-weight:300">{{datimodulo.titolo}}</h2>
           <span class="subheading">
-            La visita a 360 gradi della nostra sede
+            {{datimodulo.sottotitolo}}
           </span>
         </div>
       </v-flex>
     </v-layout>
-  <gmap-street-view-panorama class="google-map" :key="caricato" :position="marker.position"
+  <!--gmap-street-view-panorama class="google-map" :key="caricato" :position="marker.position"
+      :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
+</gmap-street-view-panorama-->
+<gmap-street-view-panorama class="google-map" :position="marker.position"
       :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
 </gmap-street-view-panorama>
-
 </v-container>
 </template>
 <script>
 
 /* global google */
 export default {
-  name: 'google-map2',
-  props: ['name'],
+  name: 'google-street',
+  props: ['posizione'],
   data: function () {
     return {
-      mapName: this.name + '-map',
+      mapName: 'pippo-map',
       pov: {
         pitch: -12,
         heading: 170
@@ -39,6 +41,9 @@ export default {
     }
   },
   computed: {
+    datimodulo () {
+        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
+    },
     marker: {
         get: function () {
             if(this.$store.getters.featuredDataLuoghi[0].coordinate !== undefined && this.$store.getters.featuredDataLuoghi[0].coordinate !== ''){

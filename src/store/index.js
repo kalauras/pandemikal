@@ -5,6 +5,7 @@ import articolo from './articolo'
 import luogo from './luogo'
 import user from './user'
 import shared from './shared'
+import langIT from './lang-it'
 
 Vue.use(Vuex)
 
@@ -13,6 +14,7 @@ export const store = new Vuex.Store({
     articolo: articolo,
     luogo: luogo,
     user: user,
-    shared: shared
+    shared: shared,
+    langIT: langIT
   }
 })

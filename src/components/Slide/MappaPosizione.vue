@@ -8,9 +8,9 @@
     >
       <v-flex xs12 sm4 class="my-3">
         <div class="text-xs-center">
-          <h2 class="display-1" style="font-weight:300">Guarda dove siamo</h2>
+          <h2 class="display-1" style="font-weight:300">{{datimodulo.titolo}}</h2>
           <span class="subheading">
-            Scorri la mappa e scopri come raggiungerci
+            {{datimodulo.sottotitolo}}
           </span>
         </div>
       </v-flex>
@@ -34,12 +34,16 @@
 /* global google */
 export default {
   name: 'google-map',
+  props: ['posizione'],
   data: function () {
     return {
       center: this.$store.getters.coordinate_default,
     }
   },
   computed: {
+    datimodulo () {
+        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
+    },
       marker: {
         get: function () {
             if(this.$store.getters.featuredDataLuoghi[0].coordinate !== undefined && this.$store.getters.featuredDataLuoghi[0].coordinate !== ''){

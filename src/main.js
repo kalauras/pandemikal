@@ -27,7 +27,7 @@ import treColonneTesto from './components/Slide/TreColonneTesto'
 import caroselloArticoli from './components/Slide/CaroselloArticoli'
 
 
-import translationsIt from './lang/it_IT.js';
+//import translationsIt from './store/lang-it/index.js';
 import translationsEn from './lang/en_US.js';
 
 Vue.use(Vuetify, {
@@ -68,18 +68,7 @@ Vue.component('caroselloArticoli', caroselloArticoli)
 
 Vue.use(vuexI18n.plugin, store);
 
-// translations can be kept in separate files for each language
-// i.e. resources/i18n/de.json.
-const translationsDe = {
-  "My nice title": "Ein schöner Titel",
-  "content": "Dies ist ein toller Inhalt"
-};
 
-
-// add translations directly to the application
-Vue.i18n.add('en', translationsEn);
-Vue.i18n.add('de', translationsDe);
-Vue.i18n.add('it', translationsIt);
 
 // set the start locale to use
 Vue.i18n.set('it');
@@ -103,12 +92,23 @@ new Vue({
         this.$store.dispatch('autoSignIn', user)
         this.$store.dispatch('fetchUserData')
         this.$store.dispatch('fetchUserDataPan')
+
       }
     })
+    // carico le stringhe nelle varie lingue
+    this.$store.dispatch('loadTranslation')
+
+    // add translations directly to the application
+    Vue.i18n.add('en', translationsEn);
+    Vue.i18n.add('it', this.$store.getters.translationsIt);
+
     this.$store.dispatch('loadArticoli')
+
     //this.$store.dispatch('loadArticoliPubblici')
     this.$store.dispatch('loadDataLuoghi')
 
+    this.$store.dispatch('fetchModuliLuogo')    
+    
 
     if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {

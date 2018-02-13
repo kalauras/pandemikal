@@ -8,9 +8,9 @@
     >
       <v-flex xs12 sm4 class="my-3">
         <div class="text-xs-center">
-          <h2 class="display-1" style="font-weight:300">I nostri servizi</h2>
+          <h2 class="display-1" style="font-weight:300">{{datimodulo.titolo}}</h2>
           <span class="subheading">
-            Prenota una consulenza o richiedi altri servizi
+            {{datimodulo.sottotitolo}}
           </span>
         </div>
       </v-flex>
@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'google-map',
-  props: ['name'],
+  props: ['posizione'],
   // data: function () {
   //   return {
   //     mapName: this.name + '-map',
@@ -41,6 +41,9 @@ export default {
       },
       luoghi () {
         return this.$store.getters.featuredDataLuoghi
+      },
+      datimodulo () {
+        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
       }
   },
   mounted: function () {

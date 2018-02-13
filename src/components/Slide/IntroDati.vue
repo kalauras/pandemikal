@@ -38,7 +38,7 @@
     </v-container>
     </v-card-actions>
     <v-list two-line style="background: rgba(255,  255,  255,  0.75) !important">
-      <v-list-tile :href="'tel:'+luogo.telefono">
+      <v-list-tile v-if="luogo.telefono" :href="'tel:'+luogo.telefono">
         <v-list-tile-action>
           <v-icon color="indigo">phone</v-icon>
         </v-list-tile-action>
@@ -51,7 +51,7 @@
         </v-list-tile-action>
       </v-list-tile>
       <v-divider inset></v-divider>
-      <v-list-tile :href="'mailto:'+luogo.email">
+      <v-list-tile v-if="luogo.email" :href="'mailto:'+luogo.email">
         <v-list-tile-action>
           <v-icon color="indigo">mail</v-icon>
         </v-list-tile-action>
@@ -61,7 +61,7 @@
         </v-list-tile-content>
       </v-list-tile>
       <v-divider inset></v-divider>
-      <v-list-tile :href="'https://www.google.com/maps/@'+luogo.coordinate+',13z??hl=it-IT&gl=US'">
+      <v-list-tile v-if="luogo.comune" :href="'https://www.google.com/maps/@'+luogo.coordinate+',13z??hl=it-IT&gl=US'">
         <v-list-tile-action>
           <v-icon color="indigo">location_on</v-icon>
         </v-list-tile-action>

@@ -15,7 +15,11 @@ export default {
         email: 'caricamento email',
         cap: 'caricamento cap',
         comune: 'caricameto comune',
-        provincia: 'caricamento provincia'
+        provincia: 'caricamento provincia',
+        moduliPagina: [{
+            "nome" : "introDati",
+            "titolo" : "TITOOOOOLO"
+          }]
       }
     ]
   },
@@ -49,22 +53,28 @@ export default {
           const luoghi = []
           const obj = data.val()
           for (let key in obj) {
-            luoghi.push({
-              id: key,
-              coordinate: obj[key].coordinate,
-              indirizzo: obj[key].indirizzo,
-              imgIntro: obj[key].imgIntro,
-              openWeek: obj[key].openWeek,
-              shopCollectionId: obj[key].shopCollectionId,
-              titolo: obj[key].titolo,
-              sottotitolo: obj[key].sottotitolo,
-              telefono: obj[key].telefono,
-              email: obj[key].email,
-              cap: obj[key].cap,
-              comune: obj[key].comune,
-              provincia: obj[key].provincia
-            })
+            
+            if(key == "data"){
+              luoghi.push({
+                id: key,
+                coordinate: obj[key].coordinate,
+                indirizzo: obj[key].indirizzo,
+                imgIntro: obj[key].imgIntro,
+                openWeek: obj[key].openWeek,
+                shopCollectionId: obj[key].shopCollectionId,
+                titolo: obj[key].titolo,
+                sottotitolo: obj[key].sottotitolo,
+                telefono: obj[key].telefono,
+                email: obj[key].email,
+                cap: obj[key].cap,
+                comune: obj[key].comune,
+                provincia: obj[key].provincia,
+                moduliPagina: this.getters.luogo[0].moduliPagina
+              })
+            }
           }
+
+          
           commit('setLoadedDataLuoghi', luoghi)
           commit('setLoading', false)
         })
@@ -138,9 +148,48 @@ export default {
           console.log(error)
           commit('setLoading', false)
         })
-    }
+    },
+    fetchModuliLuogo ({commit, getters}) {
+      commit('setLoading', true)
+      firebase.database().ref(this.getters.dominio + '/moduli/').once('value')
+        .then(data => {
+          const dataPairs = data.val()
+          let moduliPagina = []
+          let swappedPairs = {}
+          for (let key in dataPairs) {
+            moduliPagina.push(dataPairs[key])
+            swappedPairs[dataPairs[key]] = key
+          }
+          const updatedLuogo = [{
+
+            imgIntro: getters.luogo[0].imgIntro,
+            id: getters.luogo[0].id,
+            coordinate: getters.luogo[0].coordinate,
+            indirizzo: getters.luogo[0].indirizzo,
+            openWeek: getters.luogo[0].openWeek,
+            shopCollectionId: getters.luogo[0].shopCollectionId,
+            telefono: getters.luogo[0].telefono,
+            titolo: getters.luogo[0].titolo,
+            email: getters.luogo[0].email,
+            cap: getters.luogo[0].cap,
+            comune: getters.luogo[0].comune,
+            provincia: getters.luogo[0].provincia,
+            moduliPagina: moduliPagina
+
+          }]
+          commit('setLoading', false)
+          commit('setLoadedDataLuoghi', updatedLuogo)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+    },
   },
   getters: {
+    luogo (state) {
+      return state.loadedDataLuoghi
+    },
     loadedDataLuoghi (state) {
       return state.loadedDataLuoghi.sort((luogoA, luogoB) => {
         return luogoA.shopCollectionId > luogoB.shopCollectionId
