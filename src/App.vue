@@ -261,51 +261,53 @@
     data: () => ({
       dialog: false,
       drawer: false,
-      fab: false,
-      items: [
-        { icon: 'home', text: 'Home', link: "/" },
-        { icon: 'content_copy', text: 'Leggi gli articoli', link: "/articoli" },
-        {
-          icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          text: 'Operazioni',
-          model: true,
-          children: [
-            { icon: 'add', text: 'Aggiungi un articolo', link: "/articolo/new" }
-          ]
-        },
-        {
-          icon: 'keyboard_arrow_up',
-          'icon-alt': 'keyboard_arrow_down',
-          text: 'Altre Operazioni',
-          model: false,
-          children: [
-            { text: 'Importa' },
-            { text: 'Esporta' },
-            { text: 'Stampa' }
-          ]
-        },
-        // { icon: 'settings', text: 'Impostazioni' },
-        // { icon: 'chat_bubble', text: 'Inviaci un messaggio', link: '' },
-        // { icon: 'help', text: 'Aiuto' },
-        { icon: 'person', text: 'Profilo', link: '/profile' },
-        { icon: 'person_add', text: 'Registrati', link: '/signup' },
-        { icon: 'lock_open', text: 'Entra', link: '/signin' }
-      ]
+      fab: false
     }),
     props: {
       source: String
     },
     computed: {
+      items () {
+
+        let operazioni = [
+          { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" }
+        ]
+
+        let items = [
+        { icon: 'home', text: this.$t("home"), link: "/" },
+        {
+          icon: 'keyboard_arrow_up',
+          'icon-alt': 'keyboard_arrow_down',
+          text: this.$t("operazioni"),
+          model: true,
+          children: operazioni
+        }
+        
+      ]
+
+      if (!this.userIsAuthenticated) {
+          items.push(
+            { icon: 'person_add', text: this.$t("registrati"), link: '/signup' },
+            { icon: 'lock_open', text: this.$t("entra"), link: '/signin' })
+        }
+      else{
+        items.push(
+          { icon: 'person', text: this.$t("profilo"), link: '/profile' }
+        )
+        operazioni.push(
+          { icon: 'add', text: this.$t("inserisci_articolo"), link: "/articolo/new" }
+        )
+      }
+      return items
+    },
       menuItems () {
         let menuItems = [
-          {icon: 'person', title: 'Registrati', link: '/signup'},
-          {icon: 'lock_open', title: 'Entra', link: '/signin'}
+          {icon: 'person', title: this.$t("registrati"), link: '/signup'},
+          {icon: 'lock_open', title: this.$t("entra"), link: '/signin'}
         ]
         if (this.userIsAuthenticated) {
           menuItems = [
-            // {icon: 'supervisor_account', title: 'Guarda gli Articoli', link: '/articoli'},
-            // {icon: 'room', title: 'Inserisci un Articolo', link: '/articolo/new'}
+            
           ]
         }
         return menuItems

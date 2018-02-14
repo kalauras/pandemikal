@@ -3,7 +3,7 @@ import * as firebase from 'firebase'
 export default {
   state: {
     translationsIt : {
-        "My nice title": "Il mio bel titolo",
+        "home": "Home",
         "content": "contenutoooooo",
         "comune_user": "Comune",
         "coordinate_user": "Coordinate",
@@ -12,6 +12,10 @@ export default {
         "indicazioni_stradali": "Indicazioni Stradali",
         "chiudi": "Chiudi",
         esci: "Esci",
+        entra: "Entra",
+        registrati: "Registrati",
+        operazioni: "Operazioni",
+        profilo: "Profilo",
         "leggi_articoli": "Leggi gli Articoli",
         "inserisci_articolo": "Inserisci un Articolo",
         "txt_ultimi_articoli": "Questi sono i nostri ultimi articoli",
