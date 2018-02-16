@@ -78,22 +78,22 @@ self.addEventListener('fetch', function(event) {
 workbox.precache([
   {
     "url": "/index.html",
-    "revision": "eacac6a4e8c7a45b285c399b8e167731"
+    "revision": "d0606d272d3efc57b9dd9ae943e1544a"
   },
   {
-    "url": "/static/js/app.d30daaed38b40ffcbe04.js",
-    "revision": "e879e03e7527eb4bd95befc6c2a5ce56"
+    "url": "/static/js/app.07f08b83d83970f95204.js",
+    "revision": "c228c347324fe3c7b3d2ac69fdfdd21e"
   },
   {
-    "url": "/static/js/manifest.e75330931c526c329f52.js",
-    "revision": "3a5bccd0ffb8861f89e72993891ab737"
+    "url": "/static/js/manifest.2ae2e69a05c33dfc65f8.js",
+    "revision": "4b63edaf2b684db252e004a67c66dcef"
   },
   {
-    "url": "/static/js/vendor.3d4896a5a692a9bf8a4a.js",
-    "revision": "934cae66f8adbbc16529f28cd2ef3a8e"
+    "url": "/static/js/vendor.f80b6f958944c9c33d37.js",
+    "revision": "36be6e6fb785a8b3f05266e2b61100aa"
   },
   {
     "url": "sw.js",
-    "revision": "aa2c4defc895e0b4abcdb6b1cfea7296"
+    "revision": "36aed7c4a722bdae230b62c7ad6c0c84"
   }
 ]);

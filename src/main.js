@@ -19,13 +19,17 @@ import EditArticoloTimeDialog from './components/Articolo/Edit/EditArticoloTimeD
 import RegisterDialog from './components/Articolo/Registration/RegisterDialog.vue'
 
 import MappaPosizione from './components/Slide/MappaPosizione'
+import MappaFollowers from './components/Slide/MappaFollowers'
 import StreetViewPosizione from './components/Slide/StreetViewPosizione'
 import miniVetrinaShopify from './components/Slide/miniVetrinaShopify'
 import introDati from './components/Slide/introDati'
+import introParticles from './components/Slide/introParticles'
 import titoloSezione from './components/Slide/TitoloSezione'
 import treColonneTesto from './components/Slide/TreColonneTesto'
 import caroselloArticoli from './components/Slide/CaroselloArticoli'
+import VueParticles from 'vue-particles'
 
+import Vue2Leaflet from 'vue2-leaflet';
 
 //import translationsIt from './store/lang-it/index.js';
 import translationsEn from './lang/en_US.js';
@@ -58,16 +62,25 @@ Vue.component('app-edit-articolo-date-dialog', EditArticoloDateDialog)
 Vue.component('app-edit-articolo-time-dialog', EditArticoloTimeDialog)
 Vue.component('app-articolo-register-dialog', RegisterDialog)
 Vue.component('google-map', MappaPosizione)
+Vue.component('map-followers', MappaFollowers)
 Vue.component('google-streetView', StreetViewPosizione)
 Vue.component('minivetrina-shopify', miniVetrinaShopify)
 Vue.component('introDati', introDati)
+Vue.component('introParticles', introParticles)
+
 Vue.component('titoloSezione', titoloSezione)
 Vue.component('treColonneTesto', treColonneTesto)
 Vue.component('caroselloArticoli', caroselloArticoli)
 //Vue.component('vue-editor', VueEditor)
 
-Vue.use(vuexI18n.plugin, store);
 
+Vue.component('v-map', Vue2Leaflet.Map);
+Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
+Vue.component('v-marker', Vue2Leaflet.Marker);
+
+Vue.use(VueParticles)
+
+Vue.use(vuexI18n.plugin, store);
 
 
 // set the start locale to use
