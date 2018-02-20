@@ -4,6 +4,7 @@ export default {
     error: null,
     nomeSito: 'eBasilicata',
     pageID: 'articoli',
+    placeID: 'places',
     dominio: 'ebasilicata',
     gruppo: 'area',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
@@ -20,6 +21,9 @@ export default {
     },
     setPageID (state, payload) {
       state.pageID = payload
+    },
+    setPlaceID (state, payload) {
+      state.placeID = payload
     }
   },
   actions: {
@@ -36,6 +40,9 @@ export default {
     },
     pageID (state) {
       return state.pageID
+    },
+    placeID (state) {
+      return state.placeID
     },
     dominio (state) {
       return state.dominio

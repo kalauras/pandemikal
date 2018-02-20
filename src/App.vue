@@ -147,14 +147,7 @@
         <v-icon>close</v-icon>
       </v-btn>
       <v-btn
-        fab
-        dark
-        small
-        color="green"
-      >
-        <v-icon>edit</v-icon>
-      </v-btn>
-      <v-btn
+        to="/place/new"
         fab
         dark
         small
@@ -163,6 +156,16 @@
         <v-icon>add</v-icon>
       </v-btn>
       <v-btn
+        disabled
+        fab
+        dark
+        small
+        color="green"
+      >
+        <v-icon>edit</v-icon>
+      </v-btn>
+      <v-btn
+        disabled
         fab
         dark
         small
@@ -270,6 +273,7 @@
       items () {
 
         let operazioni = [
+          { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
           { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" }
         ]
 

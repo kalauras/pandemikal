@@ -1,12 +1,19 @@
 import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
+
 import Articoli from '@/components/Articolo/Articoli'
 import CreateArticolo from '@/components/Articolo/CreateArticolo'
+import Articolo from '@/components/Articolo/Articolo'
+
+import Places from '@/components/Place/Places'
+import CreatePlace from '@/components/Place/CreatePlace'
+import Place from '@/components/Place/Place'
+import PositionPlace from '@/components/Place/PositionPlace'
+
 import Profile from '@/components/User/Profile'
 import Signup from '@/components/User/Signup'
 import Signin from '@/components/User/Signin'
-import Articolo from '@/components/Articolo/Articolo'
 import DataUser from '@/components/User/DataUser'
 import PositionUser from '@/components/User/PositionUser'
 import AuthGuard from './auth-guard'
@@ -38,6 +45,23 @@ export default new Router({
       component: Articolo
     },
     {
+      path: '/places',
+      name: 'Places',
+      component: Places
+    },
+    {
+      path: '/place/new',
+      name: 'CreatePlace',
+      component: CreatePlace,
+      beforeEnter: AuthGuard
+    },
+    {
+      path: '/places/:id',
+      name: 'Place',
+      props: true,
+      component: Place
+    },
+    {
       path: '/profile',
       name: 'Profile',
       component: Profile,
@@ -63,6 +87,12 @@ export default new Router({
       path: '/positionUser',
       name: 'PositionUser',
       component: PositionUser,
+      beforeEnter: AuthGuard      
+    },
+    {
+      path: '/positionPlace',
+      name: 'PositionPlace',
+      component: PositionPlace,
       //beforeEnter: AuthGuard      
     }
   ],

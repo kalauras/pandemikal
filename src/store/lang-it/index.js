@@ -16,6 +16,7 @@ export default {
         registrati: "Registrati",
         operazioni: "Operazioni",
         profilo: "Profilo",
+        leggi_luoghi: "Guarda i Luoghi",
         "leggi_articoli": "Leggi gli Articoli",
         "inserisci_articolo": "Inserisci un Articolo",
         "txt_ultimi_articoli": "Questi sono i nostri ultimi articoli",

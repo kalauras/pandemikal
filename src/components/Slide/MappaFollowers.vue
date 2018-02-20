@@ -1,29 +1,49 @@
 <template>
-  <div class="k-map">
-    <v-map :zoom="zoom" :center="center">
-      <v-tilelayer :url="url" :attribution="attribution"></v-tilelayer>
-      <v-marker :lat-lng="marker"></v-marker>
-    </v-map>
-</div>
+  
+    <google-map :center="center" :zoom="7" class="k-map">
+      <google-cluster>
+        <google-marker v-for="m in markers" :position="m.position" :clickable="true" :draggable="true" @click="center=m.position"></google-marker>
+      </google-cluster>
+</google-map>
+
 </template>
 <script>
 export default {
   data: function () {
     return {
-      zoom: 13,
-      center: [47.413220, -1.219482],
-      url: 'http://{s}.tile.osm.org/{z}/{x}/{y}.png',
-      attribution: '&copy; <a href="http://osm.org/copyright">OpenStreetMap</a> contributors',
-      marker: L.latLng(47.413220, -1.219482),
+      center: this.$store.getters.coordinate_default,
+      markers: this.getMarcatori()
+    }
+  },
+  methods: {
+    getMarcatori() {
+        let luoghi = this.$store.getters.loadedPlaces
+        let posizioni = []
+
+
+        for (var i = luoghi.length - 1; i >= 0; i--) {
+          let luogo = luoghi[i]
+          if(luogo.coordinate_place !== undefined){
+            let coor2 = luogo.coordinate_place.split(',')
+            console.log(coor2)
+            let position2 = {position: {
+                lat: parseFloat(coor2[0]),
+                lng: parseFloat(coor2[1])
+              }
+              }
+              posizioni.push(position2)
+          }
+        }
+        console.log(posizioni)
+
+      return posizioni
     }
   }
-
 }
 
 </script>
 <style type="text/css">
-  @import "~leaflet/dist/leaflet.css";
-
+ 
   .k-map {
   width: 80%;
   height: 400px;

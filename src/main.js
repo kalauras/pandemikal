@@ -13,10 +13,16 @@ import router from './router'
 import { store } from './store'
 import DateFilter from './filters/date'
 import AlertCmp from './components/Shared/Alert.vue'
+
 import EditArticoloDetailsDialog from './components/Articolo/Edit/EditArticoloDetailsDialog.vue'
 import EditArticoloDateDialog from './components/Articolo/Edit/EditArticoloDateDialog.vue'
 import EditArticoloTimeDialog from './components/Articolo/Edit/EditArticoloTimeDialog.vue'
 import RegisterDialog from './components/Articolo/Registration/RegisterDialog.vue'
+
+import EditPlaceDetailsDialog from './components/Place/Edit/EditPlaceDetailsDialog.vue'
+import EditPlaceDateDialog from './components/Place/Edit/EditPlaceDateDialog.vue'
+import EditPlaceTimeDialog from './components/Place/Edit/EditPlaceTimeDialog.vue'
+import RegisterPlaceDialog from './components/Place/Registration/RegisterPlaceDialog.vue'
 
 import MappaPosizione from './components/Slide/MappaPosizione'
 import MappaFollowers from './components/Slide/MappaFollowers'
@@ -78,6 +84,11 @@ Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
 Vue.component('v-marker', Vue2Leaflet.Marker);
 
+
+      Vue.component('google-map', VueGoogleMaps.Map);
+      Vue.component('google-marker', VueGoogleMaps.Marker);
+      Vue.component('google-cluster', VueGoogleMaps.Cluster);
+
 Vue.use(VueParticles)
 
 Vue.use(vuexI18n.plugin, store);
@@ -116,6 +127,7 @@ new Vue({
     Vue.i18n.add('it', this.$store.getters.translationsIt);
 
     this.$store.dispatch('loadArticoli')
+    this.$store.dispatch('loadPlaces')
 
     //this.$store.dispatch('loadArticoliPubblici')
     this.$store.dispatch('loadDataLuoghi')

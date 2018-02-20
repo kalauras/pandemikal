@@ -1,14 +1,14 @@
 <template>
   <v-container>
-    <form @submit.prevent="onUpadateDataUser">
+    <form @submit.prevent="onUpadateDataPlace">
       <v-layout row>
         <v-flex xs12>
           <v-card>
             <v-card-title primary-title>
               <div>
-                <h3 class="headline mb-0">Aggiorna la tua posizione</h3>
+                <h3 class="headline mb-0">Inserisci la posizione del luogo</h3>
                 <div>
-                  Digita il comune o l'indirizzo della tua posizione nel campo qui in basso<br>oppure clicca e autorizza la tua posizione del dispositivo
+                  Digita il comune o l'indirizzo del luogo nel campo qui in basso<br>oppure clicca e autorizza la tua posizione del dispositivo
                 </div>
               </div>
             </v-card-title>
@@ -45,7 +45,7 @@
                   label="Coordinate"
                   id="coordinate_user"
                   readonly
-                  v-model="coordinate_user"
+                  v-model="coordinate_place"
                   required> 
           </v-text-field>
         </v-flex>
@@ -65,57 +65,28 @@
   export default {
     data () {
       return {
-        dataUser: {},
-        center: this.getPosition(),
+        dataPlace: {},
+        center: this.$store.getters.coordinate_default,
         zoom: 8,
-        coordinate_user: "",
-        marker: {position : this.getPosition()}
+        coordinate_place: "",
+        marker: {position: this.$store.getters.coordinate_default} 
       }
     },
     computed: {
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
-      },
-      /*marker()  {
-          if(this.userIsAuthenticated){
-            if(this.$store.getters.user.dataPan.coordinate_user !== undefined){
-              let coor = this.$store.getters.user.dataPan.coordinate_user.split(',')
-              this.coordinate_user = coor
-              let marker = {
-                position: {
-                  lat: parseFloat(coor[0]),
-                  lng: parseFloat(coor[1])
-                }
-              }
-              this.center = marker.position
-              return marker
-            }
-          }
-          return {
-            position: this.$store.getters.coordinate_default
-          }   
-        }*/
+      }
       
     },
     
     methods: {
       updateCenter(newCenter) {
         
-        this.marker.position = {
+        let pos = {
           lat: newCenter.lat(),
           lng: newCenter.lng()
         }
-
-        this.coordinate_user = this.marker.position.lat + ", " + this.marker.position.lng
-        
-      },
-      getPosition(){
-        let coor = this.$store.getters.user.dataPan.coordinate_user.split(',')
-        let position = {
-            lat: parseFloat(coor[0]),
-            lng: parseFloat(coor[1])
-          }
-        return position
+        this.centraMarcatore(pos)
       },
       setPlace(place) {
 
@@ -124,10 +95,11 @@
           lng: place.geometry.location.lng(),
         }
         this.centraMarcatore(pos)
+        this.center = pos
         this.zoom = 15
     },
       aggiornaPosMarker(nemMarkPos){
-        console.log('gg')
+       
         this.marker.position = {
           lat: nemMarkPos.lat(),
           lng: nemMarkPos.lng()
@@ -141,7 +113,9 @@
               lat: position.coords.latitude,
               lng: position.coords.longitude
             }
+
             questo.centraMarcatore(pos)
+            questo.center = pos
             questo.zoom = 15
 
           }, function() {
@@ -153,15 +127,14 @@
         }
       },
       centraMarcatore (pos){
-        this.center = pos
         this.marker.position = pos
       },
-      onUpadateDataUser () {
-        this.coordinate_user = this.marker.position.lat + ", " + this.marker.position.lng
-        this.dataUser.coordinate_user = this.coordinate_user
-
-        this.$store.dispatch('registraDatiUtente', this.dataUser)
-        this.$router.push('/profile')
+      onUpadateDataPlace () {
+        this.coordinate_place = this.marker.position.lat + ", " + this.marker.position.lng
+        this.dataPlace.coordinate_place = this.coordinate_place
+        this.dataPlace.id = this.$store.getters.loadedPlaces[this.$store.getters.loadedPlaces.length -1].id
+        this.$store.dispatch('registraDatiPlace', this.dataPlace)
+        this.$router.push('/places')
       }
     }
   }

@@ -79,7 +79,7 @@ export default {
 </script>
 <style scoped>
 .google-map {
-  /* width: 800px; */
+   width: 80%; 
   height: 600px;
   margin: 0 auto;
   background: gray;
