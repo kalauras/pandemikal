@@ -46,7 +46,7 @@ export default {
  
   .k-map {
   width: 80%;
-  height: 400px;
+  height: 500px;
   margin: 0 auto;
   background: gray;
 }

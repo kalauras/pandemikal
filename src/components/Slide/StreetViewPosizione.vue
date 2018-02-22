@@ -1,28 +1,12 @@
 <template>
   <v-container fluid class="grey lighten-4">
-    <v-layout
-      column
-      wrap
-      class="my-3"
-      align-center
-    >
-      <v-flex xs12 sm4 class="my-3">
-        <div class="text-xs-center">
-          <h2 class="display-1" style="font-weight:300">{{datimodulo.titolo}}</h2>
-          <span class="subheading">
-            {{datimodulo.sottotitolo}}
-          </span>
-        </div>
-      </v-flex>
-    </v-layout>
-  <!--gmap-street-view-panorama class="google-map" :key="caricato" :position="marker.position"
+    
+    <gmap-street-view-panorama class="google-map" :position="marker.position"
       :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
-</gmap-street-view-panorama-->
-<gmap-street-view-panorama class="google-map" :position="marker.position"
-      :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
-</gmap-street-view-panorama>
-</v-container>
+    </gmap-street-view-panorama>
+  </v-container>
 </template>
+
 <script>
 
 /* global google */

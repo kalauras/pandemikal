@@ -17,6 +17,7 @@ export default {
         operazioni: "Operazioni",
         profilo: "Profilo",
         leggi_luoghi: "Guarda i Luoghi",
+        inserisci_place: "Inserisci un Luogo",
         "leggi_articoli": "Leggi gli Articoli",
         "inserisci_articolo": "Inserisci un Articolo",
         "txt_ultimi_articoli": "Questi sono i nostri ultimi articoli",

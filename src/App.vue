@@ -273,12 +273,13 @@
       items () {
 
         let operazioni = [
-          { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
-          { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" }
+          
         ]
 
         let items = [
         { icon: 'home', text: this.$t("home"), link: "/" },
+        { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
+        { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
@@ -299,7 +300,8 @@
           { icon: 'person', text: this.$t("profilo"), link: '/profile' }
         )
         operazioni.push(
-          { icon: 'add', text: this.$t("inserisci_articolo"), link: "/articolo/new" }
+          { icon: 'add_location', text: this.$t("inserisci_place"), link: "/place/new" },
+          { icon: 'note_add', text: this.$t("inserisci_articolo"), link: "/articolo/new" }
         )
       }
       return items
