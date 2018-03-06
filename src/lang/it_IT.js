@@ -17,9 +17,6 @@ import * as firebase from 'firebase'
         "titolo_ebasilicata": "Costantemente aggiornati in un mondo che cambia",
         "sottotitolo_ebasilicata": "Le ultime novità su eBasilicata"
       }
-
-console.log('goooo')
-
     
 firebase.database().ref('ebasilicata/moduli').once('value')
         .then((data) => {

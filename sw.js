@@ -46,21 +46,21 @@ importScripts('/node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1
 //   workbox.strategies.staleWhileRevalidate()
 // );
 
-self.addEventListener('install', function(event) {
+/*self.addEventListener('install', function(event) {
   event.waitUntil(
       caches.open('kts-static-2').then(function(cache) {
         return cache.addAll(['/', '/app.js'])
       })
   )
-});
+});*/
 
 self.addEventListener('fetch', function(event) {
 
  // if(event.request.url.endsWith('.jpg')){
-   console.log(event.request)
+   //console.log(event.request)
   event.respondWith(
     caches.match(event.request).then(function(response){
-      console.log(event.request)
+     // console.log(event.request)
       if(response) return response
         return fetch(event.request)
     })
@@ -78,22 +78,22 @@ self.addEventListener('fetch', function(event) {
 workbox.precache([
   {
     "url": "/index.html",
-    "revision": "0c0bc66d782a38bb0b821b3c74de0ca2"
+    "revision": "ed2caceac79697d208de6a83cd9d7863"
   },
   {
-    "url": "static/js/app.017bba61bff02e60c277.js",
-    "revision": "25436259023dafb039c3bd5148cc5994"
+    "url": "static/js/app.3d78c392e9e7498ea509.js",
+    "revision": "0788a072bcb2940351d078f7d1b600b8"
   },
   {
     "url": "static/js/manifest.2ae2e69a05c33dfc65f8.js",
     "revision": "4b63edaf2b684db252e004a67c66dcef"
   },
   {
-    "url": "static/js/vendor.4af0eb838285566e0bad.js",
-    "revision": "eac056bdc95ef30292214050f9cf7da5"
+    "url": "static/js/vendor.69ac2711034f4ff0b328.js",
+    "revision": "90672c7358ee0077d3f1afedeee7b669"
   },
   {
     "url": "sw.js",
-    "revision": "5e6747c7f53d5b727cf25f30a9018cca"
+    "revision": "a52a9d4833c38776338ae7a5d7b2c869"
   }
 ]);

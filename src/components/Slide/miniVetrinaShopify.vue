@@ -23,18 +23,7 @@
 export default {
   name: 'google-map',
   props: ['posizione'],
-  // data: function () {
-  //   return {
-  //     mapName: this.name + '-map',
-  //     markerCoordinates: [{
-  //       latitude: 40.08111187,
-  //       longitude: 16.2045113
-  //     }],
-  //     map: null,
-  //     bounds: null,
-  //     markers: []
-  //   }
-  // },
+  
   computed: {
       luogo() {
         return this.luoghi[0]
@@ -48,6 +37,8 @@ export default {
   },
   mounted: function () {
     let idCollection = this.luogo.shopCollectionId
+    let primaryColorTheme = this.$vuetify.theme.primary
+    let secondColorTheme = this.$vuetify.theme.secondary
 
     let scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js'
     if (window.ShopifyBuy) {
@@ -104,16 +95,20 @@ export default {
                   }
                 },
                 'button': {
-                  'background-color': '#260881',
+                  'background-color': primaryColorTheme,
                   'font-family': 'Gill Sans, sans-serif',
                   ':hover': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   ':focus': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   'font-weight': 'normal'
-                }
+                },
+                "price": {
+                  "font-size": "1px",
+                  "color": "#da1414"
+              },
               }
             },
             'cart': {
@@ -128,13 +123,13 @@ export default {
               },
               'styles': {
                 'button': {
-                  'background-color': '#260881',
+                  'background-color': primaryColorTheme,
                   'font-family': 'Gill Sans, sans-serif',
                   ':hover': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   ':focus': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   'font-weight': 'normal'
                 },
@@ -148,12 +143,12 @@ export default {
                 'img': false,
                 'imgWithCarousel': true,
                 'variantTitle': false,
-                'buttonWithQuantity': true,
+                'buttonWithQuantity': false,
                 'button': false,
                 'quantity': false
               },
               'text': {
-                'button': 'AGGIUNGI AL CARRELLO'
+                'button': 'AGGIUNGI'
               },
               'styles': {
                 'product': {
@@ -163,14 +158,18 @@ export default {
                     'margin-bottom': '0px'
                   }
                 },
+                "price": {
+                  "font-size": "1px",
+                  "color": "#da1414"
+                },
                 'button': {
-                  'background-color': '#260881',
+                  'background-color': primaryColorTheme,
                   'font-family': 'Gill Sans, sans-serif',
                   ':hover': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   ':focus': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   'font-weight': 'normal'
                 }
@@ -180,12 +179,12 @@ export default {
               'styles': {
                 'toggle': {
                   'font-family': 'Gill Sans, sans-serif',
-                  'background-color': '#260881',
+                  'background-color': 'primaryColorTheme',
                   ':hover': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   ':focus': {
-                    'background-color': '#410edb'
+                    'background-color': secondColorTheme
                   },
                   'font-weight': 'normal'
                 }

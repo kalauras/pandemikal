@@ -1,8 +1,12 @@
+//import Vue from 'vue'
 import * as firebase from 'firebase'
+import ruoliAbility from '../ability/ruoliAbility.js';
 
 export default {
   state: {
-    user: null
+    user: null,
+    userRuolo: "guest",
+    UserAbilities: null
   },
   mutations: {
     registraDatiUtente (state, payload) {
@@ -33,6 +37,21 @@ export default {
     },
     setUser (state, payload) {
       state.user = payload
+    },
+    setRuolo(state, payload){
+
+      state.userRuolo = payload.ruolo
+      state.UserAbilities =  payload.abilities
+
+      let permessi = ruoliAbility.state.ruoliAbility[state.userRuolo]
+      let abil = []
+      for(let oggettoRuolo in permessi)
+      {
+        let perm = { subject: oggettoRuolo, actions: permessi[oggettoRuolo] }
+        abil.push(perm)
+
+      }
+      state.UserAbilities.update(abil)
     }
   },
   actions: {
@@ -243,17 +262,31 @@ export default {
             fbKeys: getters.user.fbKeys,
             dataPan: utenti
           }
+
+          const ruoliArr = {
+            ruolo: utenti.ruolo[getters.dominio],
+            abilities: getters.abilities
+          }
+
           commit('setLoading', false)
           commit('setUser', updatedUser)
+          commit('setRuolo', ruoliArr)
         })
         .catch(error => {
           console.log(error)
           commit('setLoading', false)
         })
     },
-    logout ({commit}) {
+    logout ({commit, getters}) {
       firebase.auth().signOut()
       commit('setUser', null)
+
+      const ruoliArr = {
+            ruolo: "guest",
+            abilities: getters.UserAbilities
+          }
+      commit('setRuolo', ruoliArr)
+
     }
   },
   getters: {
@@ -263,5 +296,11 @@ export default {
     utenteDatiFB (state) {
       return state.user
     },
+    userRuolo (state) {
+      return state.userRuolo
+    },
+    UserAbilities (state) {
+      return state.UserAbilities
+    }
   }
 }

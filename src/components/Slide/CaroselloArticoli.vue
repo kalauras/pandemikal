@@ -32,10 +32,10 @@
     </v-layout>
     <v-layout row wrap>
       <v-flex xs12 sm6 class="text-xs-center text-sm-right">
-        <v-btn large router to="/articoli" color="primary">{{$t("leggi_articoli")}}</v-btn>
+        <v-btn large router to="/articoli" color="primary" v-if="this.$can('read', 'Articolo')">{{$t("leggi_articoli")}}</v-btn>
       </v-flex>
       <v-flex xs12 sm6 class="text-xs-center text-sm-left">
-        <v-btn large router to="/articolo/new" class="primary">{{$t("inserisci_articolo")}}</v-btn>
+        <v-btn large router to="/articolo/new" class="primary" v-if="this.$can('insert', 'Articolo')">{{$t("inserisci_articolo")}}</v-btn>
       </v-flex>
     </v-layout>
   </v-container>

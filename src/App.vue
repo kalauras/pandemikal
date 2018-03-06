@@ -73,7 +73,7 @@
     >
       <v-toolbar-title :style="$vuetify.breakpoint.smAndUp ? 'width: 300px; min-width: 250px' : 'min-width: 72px'" class="ml-0 pl-3">
         <v-toolbar-side-icon @click.stop="drawer = !drawer"></v-toolbar-side-icon>
-        <router-link to="/" tag="span" style="cursor: pointer">{{this.$store.getters.nomeSito}} <sup style="font-size: small;">BETA</sup></router-link>
+        <router-link to="/" tag="span" style="cursor: pointer">{{this.$store.getters.nomeSito}} <sup style="font-size: small;"><img :src="this.$store.getters.featuredDataLuoghi[0].miniLogo" /></sup></router-link>
       </v-toolbar-title>
       <!--v-text-field
         light
@@ -101,10 +101,14 @@
           {{$t("esci")}}
 
         </v-btn>
-        <v-btn icon>
+        <v-btn 
+          icon
+          @click.stop="dialog = !dialog">
           <v-icon>apps</v-icon>
         </v-btn>
-        <v-btn icon>
+        <v-btn 
+          icon 
+          @click="onTest">
           <v-icon>notifications</v-icon>
         </v-btn>
         <v-btn
@@ -147,8 +151,19 @@
         <v-icon>close</v-icon>
       </v-btn>
       <v-btn
+        to="/places"
+        fab
+        v-if="this.$can('read', 'Place')"
+        dark
+        small
+        color="indigo"
+      >
+        <v-icon>visibility</v-icon>
+      </v-btn>
+      <v-btn
         to="/place/new"
         fab
+        v-if="this.$can('insert', 'Articolo')"
         dark
         small
         color="indigo"
@@ -156,7 +171,7 @@
         <v-icon>add</v-icon>
       </v-btn>
       <v-btn
-        disabled
+        v-if="this.$can('update', 'Place')"
         fab
         dark
         small
@@ -165,7 +180,7 @@
         <v-icon>edit</v-icon>
       </v-btn>
       <v-btn
-        disabled
+        v-if="this.$can('delete', 'Place')"
         fab
         dark
         small
@@ -253,8 +268,8 @@
         </v-card-actions>
       </v-card>
     </v-dialog>
-    <v-footer color="indigo" app>
-      <span class="white--text">{{this.$store.getters.nomeSito}} &copy; 2018</span>
+    <v-footer color="primary" app>
+      <div class="white--text" v-html="infoFooter"></div>
     </v-footer>
   </v-app>
 </template>
@@ -299,8 +314,14 @@
         items.push(
           { icon: 'person', text: this.$t("profilo"), link: '/profile' }
         )
+
+        if(this.$can('insert', "Place")){
+          operazioni.push(
+            { icon: 'add_location', text: this.$t("inserisci_place"), link: "/place/new" }
+          )
+        }
+
         operazioni.push(
-          { icon: 'add_location', text: this.$t("inserisci_place"), link: "/place/new" },
           { icon: 'note_add', text: this.$t("inserisci_articolo"), link: "/articolo/new" }
         )
       }
@@ -320,13 +341,27 @@
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      infoFooter (){
+        return this.$store.getters.nomeSito + " - " + 
+          this.$store.getters.featuredDataLuoghi[0].indirizzo + " " +
+          this.$store.getters.featuredDataLuoghi[0].cap + " " +
+          this.$store.getters.featuredDataLuoghi[0].comune + " (" +
+          this.$store.getters.featuredDataLuoghi[0].provincia + ") " +
+          " P.Iva " + this.$store.getters.featuredDataLuoghi[0].partitaIva
       }
+
     },
     methods: {
       onLogout () {
         this.$store.dispatch('logout')
         this.$router.push('/')
+      },
+      onTest () {
+        console.log(this.$can('delete', 'Post'))
       }
+      
+
     }
   }
 

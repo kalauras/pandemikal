@@ -2,11 +2,12 @@ export default {
   state: {
     loading: false,
     error: null,
-    nomeSito: 'eBasilicata',
+    abilities: null,
+    nomeSito: 'Biscottificio VdS',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'ebasilicata',
-    gruppo: 'area',
+    dominio: 'biscottificiovalledelsinni',
+    gruppo: 'attivita',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
   },
   mutations: {
@@ -15,6 +16,9 @@ export default {
     },
     setError (state, payload) {
       state.error = payload
+    },
+    setAbilities (state, payload) {
+      state.abilities = payload
     },
     clearError (state) {
       state.error = null
@@ -27,6 +31,9 @@ export default {
     }
   },
   actions: {
+    setAbilities ({commit}, payload) {
+      commit('setAbilities', payload)
+    },
     clearError ({commit}) {
       commit('clearError')
     }
@@ -37,6 +44,9 @@ export default {
     },
     error (state) {
       return state.error
+    },
+    abilities (state) {
+      return state.abilities
     },
     pageID (state) {
       return state.pageID

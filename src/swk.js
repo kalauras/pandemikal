@@ -46,21 +46,21 @@ importScripts('/node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1
 //   workbox.strategies.staleWhileRevalidate()
 // );
 
-self.addEventListener('install', function(event) {
+/*self.addEventListener('install', function(event) {
   event.waitUntil(
       caches.open('kts-static-2').then(function(cache) {
         return cache.addAll(['/', '/app.js'])
       })
   )
-});
+});*/
 
 self.addEventListener('fetch', function(event) {
 
  // if(event.request.url.endsWith('.jpg')){
-   console.log(event.request)
+   //console.log(event.request)
   event.respondWith(
     caches.match(event.request).then(function(response){
-      console.log(event.request)
+     // console.log(event.request)
       if(response) return response
         return fetch(event.request)
     })

@@ -37,13 +37,22 @@ import VueParticles from 'vue-particles'
 
 import Vue2Leaflet from 'vue2-leaflet';
 
+import bottone from './components/UI/Bottone'
+
 //import translationsIt from './store/lang-it/index.js';
 import translationsEn from './lang/en_US.js';
 
+
+
+import abilityPlugin from './store/ability/abilitiesPlugin.js';
+import defineAbilitiesFor from './store/ability/';
+
+
+
 Vue.use(Vuetify, {
   theme: {
-    primary: '#3f51b5',
-    secondary: '#b0bec5',
+    primary: '#0277BD',
+    secondary: '#FF8F00',
     accent: '#8c9eff',
     error: '#b71c1c'
   }
@@ -79,19 +88,20 @@ Vue.component('treColonneTesto', treColonneTesto)
 Vue.component('caroselloArticoli', caroselloArticoli)
 //Vue.component('vue-editor', VueEditor)
 
+Vue.component('bottone', bottone)
 
 Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
 Vue.component('v-marker', Vue2Leaflet.Marker);
 
 
-      Vue.component('google-map', VueGoogleMaps.Map);
-      Vue.component('google-marker', VueGoogleMaps.Marker);
-      Vue.component('google-cluster', VueGoogleMaps.Cluster);
+Vue.component('google-map', VueGoogleMaps.Map);
+Vue.component('google-marker', VueGoogleMaps.Marker);
+Vue.component('google-cluster', VueGoogleMaps.Cluster);
 
 Vue.use(VueParticles)
-
 Vue.use(vuexI18n.plugin, store);
+
 
 
 // set the start locale to use
@@ -116,15 +126,24 @@ new Vue({
         this.$store.dispatch('autoSignIn', user)
         this.$store.dispatch('fetchUserData')
         this.$store.dispatch('fetchUserDataPan')
-
       }
     })
+
+
+
+    let abilities = defineAbilitiesFor("guest");
+  
+    Vue.use(abilityPlugin, abilities);
+
+    this.$store.dispatch('setAbilities' , abilities)
+
     // carico le stringhe nelle varie lingue
     this.$store.dispatch('loadTranslation')
 
     // add translations directly to the application
     Vue.i18n.add('en', translationsEn);
     Vue.i18n.add('it', this.$store.getters.translationsIt);
+
 
     this.$store.dispatch('loadArticoli')
     this.$store.dispatch('loadPlaces')
@@ -134,6 +153,8 @@ new Vue({
 
     this.$store.dispatch('fetchModuliLuogo')    
     
+
+
 
     if ('serviceWorker' in navigator) {
     window.addEventListener('load', () => {
