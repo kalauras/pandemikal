@@ -78,22 +78,22 @@ self.addEventListener('fetch', function(event) {
 workbox.precache([
   {
     "url": "/index.html",
-    "revision": "ed2caceac79697d208de6a83cd9d7863"
+    "revision": "2ae53f6fd1caadfbffc150e371dda6db"
   },
   {
-    "url": "/static/js/app.3d78c392e9e7498ea509.js",
-    "revision": "0788a072bcb2940351d078f7d1b600b8"
+    "url": "/static/js/app.d799714db089eae22ee9.js",
+    "revision": "e1a56c2c2a7bafc7af8352474d8a242a"
   },
   {
     "url": "/static/js/manifest.2ae2e69a05c33dfc65f8.js",
     "revision": "4b63edaf2b684db252e004a67c66dcef"
   },
   {
-    "url": "/static/js/vendor.69ac2711034f4ff0b328.js",
-    "revision": "90672c7358ee0077d3f1afedeee7b669"
+    "url": "/static/js/vendor.40651c178e9e397fd640.js",
+    "revision": "0b4b2048825df45756cc4c424b5e7724"
   },
   {
     "url": "sw.js",
-    "revision": "5e6747c7f53d5b727cf25f30a9018cca"
+    "revision": "c4ea262fc7bb9215d852ecbdb890a04e"
   }
 ]);

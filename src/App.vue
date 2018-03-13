@@ -103,7 +103,7 @@
         </v-btn>
         <v-btn 
           icon
-          @click.stop="dialog = !dialog">
+          >
           <v-icon>apps</v-icon>
         </v-btn>
         <v-btn 

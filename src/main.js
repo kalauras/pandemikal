@@ -33,9 +33,11 @@ import introParticles from './components/Slide/introParticles'
 import titoloSezione from './components/Slide/TitoloSezione'
 import treColonneTesto from './components/Slide/TreColonneTesto'
 import caroselloArticoli from './components/Slide/CaroselloArticoli'
+import galleryImageVideo from './components/Slide/GalleryImageVideo'
 import VueParticles from 'vue-particles'
 
 import Vue2Leaflet from 'vue2-leaflet';
+import VueGallery from 'vue-gallery';
 
 import bottone from './components/UI/Bottone'
 
@@ -86,7 +88,8 @@ Vue.component('introParticles', introParticles)
 Vue.component('titoloSezione', titoloSezione)
 Vue.component('treColonneTesto', treColonneTesto)
 Vue.component('caroselloArticoli', caroselloArticoli)
-//Vue.component('vue-editor', VueEditor)
+Vue.component('galleryImageVideo', galleryImageVideo)
+Vue.component('gallery', VueGallery)
 
 Vue.component('bottone', bottone)
 

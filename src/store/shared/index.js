@@ -3,7 +3,7 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Biscottificio VdS',
+    nomeSito: 'Biscottificio V.d.S.',
     pageID: 'articoli',
     placeID: 'places',
     dominio: 'biscottificiovalledelsinni',

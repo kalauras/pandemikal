@@ -1,5 +1,5 @@
 <template>
-  <v-parallax :key="luogo.imgIntro" :src="luogo.imgIntro" height="600">
+  <v-parallax :key="imgSfondo" :src="imgSfondo" height="600">
     <v-layout
     column
     align-center
@@ -8,9 +8,9 @@
     >
       <v-card class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.55) !important">
         <v-card-title primary-title>
-          <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{luogo.titolo}}</h1>
+          <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{titoloIntro}}</h1>
         </v-card-title>
-        <div class="subheading ma-3 text-xs-center">{{luogo.sottotitolo}}</div>
+        <div class="subheading ma-3 text-xs-center">{{sottoTitoloIntro}}</div>
         <v-card-actions>
           <v-container 
             v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan !== undefined && user.dataPan.coordinate_user !== undefined"
@@ -37,7 +37,7 @@
           </v-container>
         </v-card-actions>
         
-        <v-list v-if="false" two-line style="background: rgba(255,  255,  255,  0.75) !important">
+        <v-list v-if="datimodulo.contatti" two-line style="background: rgba(255,  255,  255,  0.75) !important">
           <v-list-tile v-if="luogo.telefono" :href="'tel:'+luogo.telefono">
             <v-list-tile-action>
               <v-icon color="indigo">phone</v-icon>
@@ -78,6 +78,7 @@
 
 <script>
   export default {
+    props: ['posizione'],
     data () {
       return {
         dialog: false,
@@ -101,6 +102,27 @@
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      titoloIntro () {
+        if(this.datimodulo.titolo !== null  && this.datimodulo.titolo !== undefined)
+          return this.datimodulo.titolo
+        else
+          return this.luogo.titolo
+      },
+      sottoTitoloIntro () {
+        if(this.datimodulo.sottotitolo !== null  && this.datimodulo.sottotitolo !== undefined)
+          return this.datimodulo.sottotitolo
+        else
+          return this.luogo.sottotitolo
+      },
+      imgSfondo () {
+        if(this.datimodulo.sfondo !== null  && this.datimodulo.sfondo !== undefined)
+          return this.datimodulo.sfondo
+        else
+          return this.luogo.imgIntro
+      },
+      datimodulo () {
+        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
       }
     },
     methods: {

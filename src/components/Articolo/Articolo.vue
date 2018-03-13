@@ -14,7 +14,7 @@
         <v-card>
           <v-card-title>
             <h6 class="title primary--text">{{ articolo.title }}</h6>
-            <template v-if="userIsCreator">
+            <template v-if="userIsAuthorized">
               <v-spacer></v-spacer>
               <app-edit-articolo-details-dialog :articolo="articolo"></app-edit-articolo-details-dialog>
             </template>
@@ -27,10 +27,10 @@
             <div class="info--text">{{ articolo.date | date }} - {{ articolo.location }}</div>
             <div>
               <app-edit-articolo-date-dialog
-                :articolo="articolo" v-if="userIsCreator">
+                :articolo="articolo" v-if="userIsAuthorized">
               </app-edit-articolo-date-dialog>
               <app-edit-articolo-time-dialog
-                :articolo="articolo" v-if="userIsCreator">
+                :articolo="articolo" v-if="userIsAuthorized">
               </app-edit-articolo-time-dialog>
             </div>
             <!--div>{{ articolo.description }}</div-->
@@ -40,7 +40,7 @@
             <v-spacer></v-spacer>
             <app-articolo-register-dialog
               :articoloId="articolo.id"
-              v-if="userIsAuthenticated && !userIsCreator"></app-articolo-register-dialog>
+              v-if="userIsAuthenticated && !userIsAuthorized"></app-articolo-register-dialog>
           </v-card-actions>
         </v-card>
       </v-flex>
@@ -58,11 +58,12 @@
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
-      userIsCreator () {
+      userIsAuthorized () {
         if (!this.userIsAuthenticated) {
           return false
         }
-        return this.$store.getters.user.id === this.articolo.creatorId
+        if(this.$store.getters.user.id === this.articolo.creatorId || this.$can('update', "Articolo"))
+          return true 
       },
       loading () {
         return this.$store.getters.loading

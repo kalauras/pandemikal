@@ -14,7 +14,7 @@
       <v-flex xs12>
         <v-carousel style="cursor: pointer;">
           <v-carousel-item
-            v-for="articolo in articoli"
+            v-for="articolo in carouselArticoli"
             :src="articolo.imageUrl"
             :key="articolo.id"
             @click="onLoadArticolo(articolo.id)">
@@ -27,7 +27,7 @@
     </v-layout>
     <v-layout row wrap  class="mt-2">
       <v-flex xs12 class="text-xs-center">
-       <p>{{$t("txt_ultimi_articoli")}}</p>
+       <p>{{$t(datimodulo.testobottom)}}</p>
       </v-flex>
     </v-layout>
     <v-layout row wrap>
@@ -43,13 +43,20 @@
 
 <script>
   export default {
+    props: ['posizione'],
     computed: {
       articoli () {
         return this.$store.getters.featuredArticoli
       },
       loading () {
         return this.$store.getters.loading
-      }
+      },
+      datimodulo () {
+        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
+      },
+      carouselArticoli (state, getters) {
+        return this.$store.getters.loadedArticoli.slice(0, this.datimodulo.numeroSlide)
+      },
     },
     methods: {
       onLoadArticolo (id) {
