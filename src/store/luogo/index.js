@@ -20,7 +20,7 @@ export default {
         provincia: 'caricamento provincia',
         moduliPagina: [{
             "nome" : "introDati",
-            "titolo" : "TITOOOOOLO"
+            "titolo" : "eBasilicata"
           }]
       }
     ]
