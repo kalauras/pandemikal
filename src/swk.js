@@ -32,14 +32,14 @@ workboxSW.precache([{
 
 
 // TODO: Replace Xs.
-importScripts('/node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js');
+//importScripts('/node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1.2.js');
 
 
 // Note: Ignore the error that Glitch raises about WorkboxSW being undefined.
- const workbox = new WorkboxSW({
-   skipWaiting: true,
-   clientsClaim: true
- });
+ // const workbox = new WorkboxSW({
+ //   skipWaiting: true,
+ //   clientsClaim: true
+ // });
 
 // workbox.router.registerRoute(
 //   new RegExp('^https://hacker-news.firebaseio.com'),
@@ -54,18 +54,18 @@ importScripts('/node_modules/workbox-sw/build/importScripts/workbox-sw.prod.v2.1
   )
 });*/
 
-self.addEventListener('fetch', function(event) {
+// self.addEventListener('fetch', function(event) {
 
- // if(event.request.url.endsWith('.jpg')){
-   //console.log(event.request)
-  event.respondWith(
-    caches.match(event.request).then(function(response){
-     // console.log(event.request)
-      if(response) return response
-        return fetch(event.request)
-    })
-  )
-});
+//  // if(event.request.url.endsWith('.jpg')){
+//    //console.log(event.request)
+//   event.respondWith(
+//     caches.match(event.request).then(function(response){
+//      // console.log(event.request)
+//       if(response) return response
+//         return fetch(event.request)
+//     })
+//   )
+// });
 
 // self.addEventListener('push', (event) => {
 //   const title = 'Get Started With Workbox';
@@ -75,4 +75,4 @@ self.addEventListener('fetch', function(event) {
 //   event.waitUntil(self.registration.showNotification(title, options));
 // });
 
-workbox.precache([]);
+//workbox.precache([]);

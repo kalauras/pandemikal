@@ -267,7 +267,7 @@ export default {
             ruolo: utenti.ruolo[getters.dominio],
             abilities: getters.abilities
           }
-console.log(ruoliArr)
+
           commit('setLoading', false)
           commit('setUser', updatedUser)
           commit('setRuolo', ruoliArr)

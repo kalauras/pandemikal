@@ -247,6 +247,7 @@ import { VueEditor } from 'vue2-editor'
           date: this.submittableDateTime
         }
         this.$store.dispatch('createArticolo', articoloData)
+        this.$swal("Ottimo Lavoro!", "Articolo inserito con successo!", "success")
         this.$router.push('/articoli')
       },
       onPickFile () {

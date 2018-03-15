@@ -38,6 +38,7 @@ import VueParticles from 'vue-particles'
 
 import Vue2Leaflet from 'vue2-leaflet';
 import VueGallery from 'vue-gallery';
+import VueSwal from 'vue-swal'
 
 import bottone from './components/UI/Bottone'
 
@@ -104,6 +105,7 @@ Vue.component('google-cluster', VueGoogleMaps.Cluster);
 
 Vue.use(VueParticles)
 Vue.use(vuexI18n.plugin, store);
+Vue.use(VueSwal)
 
 
 
@@ -159,14 +161,14 @@ new Vue({
 
 
 
-    if ('serviceWorker' in navigator) {
-    window.addEventListener('load', () => {
-      navigator.serviceWorker.register('/sw.js').then(registration => {
-        console.log('SW registered: ', registration);
-      }).catch(registrationError => {
-        console.log('SW registration failed: ', registrationError);
-      });
-    });
-  }
+    // if ('serviceWorker' in navigator) {
+    //   window.addEventListener('load', () => {
+    //     navigator.serviceWorker.register('/sw.js').then(registration => {
+    //       console.log('SW registered: ', registration);
+    //     }).catch(registrationError => {
+    //       console.log('SW registration failed: ', registrationError);
+    //     });
+    //   });
+    // }
   }
 })
