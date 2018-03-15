@@ -53,7 +53,7 @@ import defineAbilitiesFor from './store/ability/';
 
 Vue.use(Vuetify, {
   theme: {
-    primary: '#0277BD',
+    primary: '#283593',
     secondary: '#FF8F00',
     accent: '#8c9eff',
     error: '#b71c1c'

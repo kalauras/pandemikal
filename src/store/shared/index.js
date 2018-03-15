@@ -3,11 +3,11 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Biscottificio V.d.S.',
+    nomeSito: 'Montemurro Srl',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'biscottificiovalledelsinni',
-    gruppo: 'attivita',
+    dominio: 'montemurro',
+    gruppo: 'finestre',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
   },
   mutations: {

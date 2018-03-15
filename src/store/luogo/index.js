@@ -164,6 +164,10 @@ export default {
             moduliPagina.push(dataPairs[key])
             swappedPairs[dataPairs[key]] = key
           }
+
+          moduliPagina.sort(function (a, b) {
+            return a.posiz - b.posiz;
+          });
           const updatedLuogo = [{
 
             imgIntro: getters.luogo[0].imgIntro,

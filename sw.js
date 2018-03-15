@@ -81,16 +81,12 @@ workbox.precache([
     "revision": "396f9da0669e2d253cc2f12039905466"
   },
   {
-    "url": "static/js/app.b83f1dc7f66dad49b28e.js",
-    "revision": "9ea12aa0b6fa51d09cb3fb736aa7ec10"
+    "url": "static/js/app.c65e16658e0169a133ee.js",
+    "revision": "3ae7160740192f832ff1e4b350484b1d"
   },
   {
-    "url": "static/js/manifest.2ae2e69a05c33dfc65f8.js",
-    "revision": "4b63edaf2b684db252e004a67c66dcef"
-  },
-  {
-    "url": "static/js/vendor.bdac4eb99dd503322fb4.js",
-    "revision": "0093bf6270edd2f9e34cfcf494a7a005"
+    "url": "static/js/manifest.7f9657d7c5bf36448dc1.js",
+    "revision": "ac46da477c2c5de19a253f42dabebfda"
   },
   {
     "url": "sw.js",
