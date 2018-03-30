@@ -358,7 +358,20 @@
         this.$router.push('/')
       },
       onTest () {
-        console.log(this.$can('delete', 'Post'))
+        Notification.requestPermission((permission) => {
+          switch (permission) {
+            case 'granted': {
+              console.log('Now we can send notifications!');
+              break;
+            }
+            case 'denied': {
+              console.log('User close the request pop-up!')
+            }
+            case 'default': {
+              console.log('We can\'t send any notifications in both denied and default cases');
+            }
+          }
+        });
       }
       
 

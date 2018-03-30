@@ -111,6 +111,10 @@ export default {
         .then(
           user => {
             commit('setLoading', false)
+
+            localStorage.setItem('commentToken', user.credential.idToken)
+            //localStorage.setItem('commentExpirationDate', new Date("03/30/2018"))
+
             const newUser = {
               id: user.uid,
               displayName: user.displayName,
@@ -137,6 +141,10 @@ export default {
         .then(
           user => {
             commit('setLoading', false)
+
+            localStorage.setItem('commentToken', user.credential.idToken)
+            //localStorage.setItem('commentExpirationDate', new Date("03/30/2018"))
+
             const newUser = {
               id: user.uid,
               displayName: user.displayName,
@@ -163,6 +171,10 @@ export default {
         .then(
           user => {
             commit('setLoading', false)
+
+            localStorage.setItem('commentToken', user.credential.idToken)
+            //localStorage.setItem('commentExpirationDate', new Date("03/30/2018"))
+            
             const newUser = {
               id: user.uid,
               displayName: user.displayName,
@@ -171,6 +183,7 @@ export default {
               fbKeys: {},
               dataPan: {}
             }
+
             commit('setUser', newUser)
           }
         )
@@ -189,6 +202,16 @@ export default {
         .then(
           user => {
             commit('setLoading', false)
+
+            user.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+        
+              localStorage.setItem('commentToken', idToken)
+              //localStorage.setItem('commentExpirationDate', new Date("03/30/2018"))
+
+            }).catch(function(error) {
+              console.log(error)
+            });
+            
             const newUser = {
               id: user.uid,
               displayName: "",
@@ -209,6 +232,16 @@ export default {
         )
     },
     autoSignIn ({commit}, payload) {
+
+      payload.getIdToken(/* forceRefresh */ true).then(function(idToken) {
+  
+        localStorage.setItem('commentToken', idToken)
+        //localStorage.setItem('commentExpirationDate', new Date("03/30/2018"))
+
+      }).catch(function(error) {
+        console.log(error)
+      });
+
       commit('setUser', {
         id: payload.uid,
         displayName: payload.displayName,
@@ -263,6 +296,8 @@ export default {
             dataPan: utenti
           }
 
+          localStorage.setItem('commentAdmin', true)
+
           const ruoliArr = {
             ruolo: utenti.ruolo[getters.dominio],
             abilities: getters.abilities
@@ -280,13 +315,14 @@ export default {
     logout ({commit, getters}) {
       firebase.auth().signOut()
       commit('setUser', null)
-
       const ruoliArr = {
             ruolo: "guest",
             abilities: getters.UserAbilities
           }
       commit('setRuolo', ruoliArr)
-
+        localStorage.removeItem("commentToken")
+        //localStorage.removeItem("commentExpirationDate")
+        localStorage.removeItem("commentAdmin")
     }
   },
   getters: {

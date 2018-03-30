@@ -4,6 +4,7 @@
     <gmap-street-view-panorama class="google-map" :position="marker.position"
       :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
     </gmap-street-view-panorama>
+
   </v-container>
 </template>
 

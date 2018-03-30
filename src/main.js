@@ -34,11 +34,17 @@ import titoloSezione from './components/Slide/TitoloSezione'
 import treColonneTesto from './components/Slide/TreColonneTesto'
 import caroselloArticoli from './components/Slide/CaroselloArticoli'
 import galleryImageVideo from './components/Slide/GalleryImageVideo'
-import VueParticles from 'vue-particles'
+import CommentGrid from './components/Comment/Comments'
 
+
+
+import VueParticles from 'vue-particles'
 import Vue2Leaflet from 'vue2-leaflet';
 import VueGallery from 'vue-gallery';
 import VueSwal from 'vue-swal'
+
+//import CommentGrid from 'vue-comment-grid'
+
 
 import bottone from './components/UI/Bottone'
 
@@ -91,6 +97,7 @@ Vue.component('treColonneTesto', treColonneTesto)
 Vue.component('caroselloArticoli', caroselloArticoli)
 Vue.component('galleryImageVideo', galleryImageVideo)
 Vue.component('gallery', VueGallery)
+Vue.component('comment-grid', CommentGrid)
 
 Vue.component('bottone', bottone)
 
@@ -106,7 +113,6 @@ Vue.component('google-cluster', VueGoogleMaps.Cluster);
 Vue.use(VueParticles)
 Vue.use(vuexI18n.plugin, store);
 Vue.use(VueSwal)
-
 
 
 // set the start locale to use
