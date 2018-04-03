@@ -57,12 +57,7 @@
 
 export default {
   
-  props: ['posizione'],
+  props: ['datimodulo']
   
-  computed: {
-    datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
-    }
-  }
 }
 </script>

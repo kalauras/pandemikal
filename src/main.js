@@ -164,7 +164,7 @@ new Vue({
 
     this.$store.dispatch('fetchModuliLuogo')    
     
-
+    this.$store.dispatch('fetchModuliPlace') 
 
 
     // if ('serviceWorker' in navigator) {

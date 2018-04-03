@@ -43,16 +43,13 @@
 
 <script>
   export default {
-    props: ['posizione'],
+    props: ['datimodulo'],
     computed: {
       articoli () {
         return this.$store.getters.featuredArticoli
       },
       loading () {
         return this.$store.getters.loading
-      },
-      datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
       },
       carouselArticoli (state, getters) {
         return this.$store.getters.loadedArticoli.slice(0, this.datimodulo.numeroSlide)

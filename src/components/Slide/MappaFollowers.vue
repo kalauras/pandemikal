@@ -9,16 +9,11 @@
 </template>
 <script>
 export default {
-  props: ['posizione'],
+  props: ['datimodulo'],
   data: function () {
     return {
       center: this.$store.getters.coordinate_default,
       markers: this.getMarcatori()
-    }
-  },
-  computed: {
-    datimodulo () {
-      return this.$store.getters.luogo[0].moduliPagina[this.posizione]
     }
   },
   methods: {

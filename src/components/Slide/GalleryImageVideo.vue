@@ -34,7 +34,7 @@
   import 'blueimp-gallery/js/blueimp-gallery-video.js';
   // Fine modifica 
   export default {
-    props: ['posizione'],
+    props: ['datimodulo'],
     data: function () {
       return {
         youTubeOptions : {
@@ -71,11 +71,6 @@
         ],
       
         index: null
-      }
-    },
-    computed: {
-      datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
       }
     }
   }

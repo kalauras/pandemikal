@@ -22,7 +22,7 @@
 <script>
 export default {
   name: 'google-map',
-  props: ['posizione'],
+  props: ['datimodulo'],
   
   computed: {
       luogo() {
@@ -30,9 +30,6 @@ export default {
       },
       luoghi () {
         return this.$store.getters.featuredDataLuoghi
-      },
-      datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
       }
   },
   mounted: function () {

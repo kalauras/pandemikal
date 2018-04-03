@@ -78,7 +78,7 @@
 
 <script>
   export default {
-    props: ['posizione'],
+    props: ['datimodulo'],
     data () {
       return {
         dialog: false,
@@ -120,9 +120,6 @@
           return this.datimodulo.sfondo
         else
           return this.luogo.imgIntro
-      },
-      datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
       }
     },
     methods: {

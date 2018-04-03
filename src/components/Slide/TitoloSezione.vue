@@ -17,15 +17,7 @@
 </template>
 
 <script>
-
-export default {
-  
-  props: ['posizione'],
-  
-  computed: {
-    datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
-    }
+  export default {
+    props: ['datimodulo']
   }
-}
 </script>

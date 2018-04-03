@@ -78,13 +78,24 @@ export default {
       firebase.database().ref('/users/' + user.id).child('/registrations/')
         .push(payload)
         .then(data => {
-          commit('setLoading', false)
           commit('registerUserForArticolo', {id: payload, fbKey: data.key})
         })
         .catch(error => {
           console.log(error)
           commit('setLoading', false)
         })
+//inserisco follower dell'articolo
+      firebase.database().ref('/articoli/' + payload ).child('/followers/'+user.id)
+        .push(user.id)
+        .then(data => {
+          //commit('registerUserForArticolo', {id: payload, fbKey: data.key})
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+
+        commit('setLoading', false)
     },
     unregisterUserFromArticolo ({commit, getters}, payload) {
       commit('setLoading', true)
@@ -95,14 +106,25 @@ export default {
       const fbKey = user.fbKeys[payload]
       firebase.database().ref('/users/' + user.id + '/registrations/').child(fbKey)
         .remove()
-        .then(() => {
-          commit('setLoading', false)
+        .then(() => {          
           commit('unregisterUserFromArticolo', payload)
         })
         .catch(error => {
           console.log(error)
           commit('setLoading', false)
         })
+// rimuovo follower
+      firebase.database().ref('/articoli/' + payload + '/followers/').child(user.id)
+        .remove()
+        .then(() => {
+          //commit('unregisterUserFromArticolo', payload)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+
+        commit('setLoading', false)
     },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)

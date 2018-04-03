@@ -1,7 +1,7 @@
 <template>
   <v-dialog persistent v-model="registerDialog">
     <v-btn color="primary" accent slot="activator">
-      {{ userIsRegistered ? 'Unregister' : 'Register' }}
+      {{ userIsRegistered ? 'Non Seguire più' : 'Segui' }}
     </v-btn>
     <v-card>
       <v-container>
@@ -55,9 +55,11 @@
       onAgree () {
         if (this.userIsRegistered) {
           this.$store.dispatch('unregisterUserFromArticolo', this.articoloId)
+          // this.$store.dispatch('unregisterArticoloFromUser', this.articoloId)
         } else {
           this.$store.dispatch('registerUserForArticolo', this.articoloId)
         }
+        this.registerDialog = false
       }
     }
   }

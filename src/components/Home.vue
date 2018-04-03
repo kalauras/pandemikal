@@ -1,7 +1,7 @@
 <template>
   <v-app>
     <section v-for="(modulo, index) in moduli">
-      <component :is="modulo.nome" :key="modulo.nome+index" :posizione="index"></component>
+      <component :is="modulo.nome" :key="modulo.nome+index" :posizione="index" :datimodulo="modulo"></component>
     </section>
   </v-app>
 </template>

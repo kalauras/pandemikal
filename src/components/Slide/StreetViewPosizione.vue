@@ -13,7 +13,7 @@
 /* global google */
 export default {
   name: 'google-street',
-  props: ['posizione'],
+  props: ['datimodulo'],
   data: function () {
     return {
       mapName: 'pippo-map',
@@ -26,9 +26,6 @@ export default {
     }
   },
   computed: {
-    datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
-    },
     marker: {
         get: function () {
             if(this.$store.getters.featuredDataLuoghi[0].coordinate !== undefined && this.$store.getters.featuredDataLuoghi[0].coordinate !== ''){
