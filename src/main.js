@@ -37,6 +37,8 @@ import galleryImageVideo from './components/Slide/GalleryImageVideo'
 import CommentGrid from './components/Comment/Comments'
 
 
+import introDatiPlace from './components/Slide/introDatiPlace'
+import MappaFollowersPlace from './components/Slide/MappaFollowersPlace'
 
 import VueParticles from 'vue-particles'
 import Vue2Leaflet from 'vue2-leaflet';
@@ -101,6 +103,9 @@ Vue.component('comment-grid', CommentGrid)
 
 Vue.component('bottone', bottone)
 
+Vue.component('introDatiPlace', introDatiPlace)
+Vue.component('map-followersPlace', MappaFollowersPlace)
+
 Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
 Vue.component('v-marker', Vue2Leaflet.Marker);
@@ -164,7 +169,7 @@ new Vue({
 
     this.$store.dispatch('fetchModuliLuogo')    
     
-    this.$store.dispatch('fetchModuliPlace') 
+    //this.$store.dispatch('fetchModuliPlace') 
 
 
     // if ('serviceWorker' in navigator) {

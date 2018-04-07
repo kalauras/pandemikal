@@ -28,7 +28,6 @@ export default {
       
     },
     setLoadedPlaces (state, payload) {
-      console.log(payload)
 
       state.loadedPlaces = payload
     },
@@ -71,7 +70,6 @@ export default {
       //carico gli places legati alla pagina
       firebase.database().ref(getters.placeID).orderByChild('dominio').equalTo(getters.dominio).once('value')
         .then((data) => {
-          
           const obj = data.val()
           for (let key in obj) {
             places.push({
@@ -82,8 +80,8 @@ export default {
               location: obj[key].location,
               coordinate_place: obj[key].coordinate_place,
               creatorId: obj[key].creatorId,
-              moduliPagina: obj[key].moduli
-
+              moduliPagina: obj[key].moduli,
+              followers: obj[key].followers
             })
           }
         })
@@ -109,7 +107,8 @@ export default {
               location: obj[key].location,
               coordinate_place: obj[key].coordinate_place,
               creatorId: obj[key].creatorId,
-              moduliPagina: obj[key].moduli
+              moduliPagina: obj[key].moduli,
+              followers: obj[key].followers
             })
           }
           commit('setLoadedPlaces', places)
@@ -188,43 +187,43 @@ export default {
         })
     },
 
-    fetchModuliPlace ({commit, getters}) {
-        commit('setLoading', true)
-        const idPlacePROVA = '-L7aJguiFDrWIcpU7iP6'
-        firebase.database().ref('places/'+ idPlacePROVA + '/moduli/').once('value')
-          .then(data => {
+    // fetchModuliPlace ({commit, getters}) {
+    //     commit('setLoading', true)
+    //     const idPlacePROVA = '-L7aJguiFDrWIcpU7iP6'
+    //     firebase.database().ref('places/'+ idPlacePROVA + '/moduli/').once('value')
+    //       .then(data => {
 
-            const dataPairs = data.val()
-            let moduliPagina = []
-            let swappedPairs = {}
-            for (let key in dataPairs) {
-              moduliPagina.push(dataPairs[key])
-              swappedPairs[dataPairs[key]] = key
-            }
-            moduliPagina.sort(function (a, b) {
-              return a.posiz - b.posiz;
-            });
-            const updatedPlace = [{
+    //         const dataPairs = data.val()
+    //         let moduliPagina = []
+    //         let swappedPairs = {}
+    //         for (let key in dataPairs) {
+    //           moduliPagina.push(dataPairs[key])
+    //           swappedPairs[dataPairs[key]] = key
+    //         }
+    //         moduliPagina.sort(function (a, b) {
+    //           return a.posiz - b.posiz;
+    //         });
+    //         const updatedPlace = [{
 
-              title: getters.loadedPlaces[0].title,
-              description: getters.loadedPlaces[0].description,
-              imageUrl: getters.loadedPlaces[0].imageUrl,
-              location: getters.loadedPlaces[0].location,
-              coordinate_place: getters.loadedPlaces[0].coordinate_place,
-              creatorId: getters.loadedPlaces[0].creatorId,
-              id: getters.loadedPlaces[0].id,
+    //           title: getters.loadedPlaces[0].title,
+    //           description: getters.loadedPlaces[0].description,
+    //           imageUrl: getters.loadedPlaces[0].imageUrl,
+    //           location: getters.loadedPlaces[0].location,
+    //           coordinate_place: getters.loadedPlaces[0].coordinate_place,
+    //           creatorId: getters.loadedPlaces[0].creatorId,
+    //           id: getters.loadedPlaces[0].id,
               
-              moduliPagina: moduliPagina
+    //           moduliPagina: moduliPagina
 
-            }]
-            commit('setLoading', false)
-            commit('setLoadedPlaces', updatedPlace)
-          })
-          .catch(error => {
-            console.log(error)
-            commit('setLoading', false)
-          })
-    },
+    //         }]
+    //         commit('setLoading', false)
+    //         commit('setLoadedPlaces', updatedPlace)
+    //       })
+    //       .catch(error => {
+    //         console.log(error)
+    //         commit('setLoading', false)
+    //       })
+    // },
   },
   getters: {
     loadedPlaces (state) {
