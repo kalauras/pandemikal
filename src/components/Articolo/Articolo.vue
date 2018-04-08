@@ -40,7 +40,7 @@
             <v-spacer></v-spacer>
             <app-articolo-register-dialog
               :articoloId="articolo.id"
-              v-if="userIsAuthenticated && !userIsAuthorized"></app-articolo-register-dialog>
+              v-if="userIsAuthenticated"></app-articolo-register-dialog>
           </v-card-actions>
         </v-card>
       </v-flex>

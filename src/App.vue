@@ -343,12 +343,19 @@
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
       },
       infoFooter (){
-        return this.$store.getters.nomeSito + " - " + 
-          this.$store.getters.featuredDataLuoghi[0].indirizzo + " " +
-          this.$store.getters.featuredDataLuoghi[0].cap + " " +
-          this.$store.getters.featuredDataLuoghi[0].comune + " (" +
-          this.$store.getters.featuredDataLuoghi[0].provincia + ") " +
-          " P.Iva " + this.$store.getters.featuredDataLuoghi[0].partitaIva
+        let footerString = this.$store.getters.nomeSito
+
+        if(this.$store.getters.featuredDataLuoghi[0].indirizzo !== undefined)
+          footerString +=  " - " + this.$store.getters.featuredDataLuoghi[0].indirizzo 
+            + " " + this.$store.getters.featuredDataLuoghi[0].cap + " " +
+            this.$store.getters.featuredDataLuoghi[0].comune + " (" +
+            this.$store.getters.featuredDataLuoghi[0].provincia + ") " 
+
+        if(this.$store.getters.featuredDataLuoghi[0].partitaIva !== undefined)
+          footerString += " P.Iva " + this.$store.getters.featuredDataLuoghi[0].partitaIva
+
+        return footerString 
+
       }
 
     },

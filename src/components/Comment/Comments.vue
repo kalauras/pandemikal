@@ -123,6 +123,12 @@
   export default {
     name: 'Comments',
     props: {
+      datimodulo:{
+        type: Object,
+      }, 
+      idPlace:{
+        type: String,
+      }, 
       posizione:{
         type: Number,
         default: 0
@@ -313,17 +319,27 @@
     },
     computed: {
       baseURL () {
-        return this.datimodulo.baseURL
+        if(this.datimodulo.baseURL !== null && this.datimodulo.baseURL !== undefined)
+          return this.datimodulo.baseURL
+        else
+          return "https://ebasilicata.firebaseio.com"
       },
       apiKey () {
-        return this.datimodulo.apiKey
+        if(this.datimodulo.apiKey !== null && this.datimodulo.apiKey !== undefined)
+          return this.datimodulo.apiKey
+        else
+          return "AIzaSyAletm2xRzxU9CPyTOYNaOLLom9dSdVBu0"
+        
       },
       nodeName () {
-        return this.datimodulo.nodeName
+        let nodeName = ""
+
+        if(this.datimodulo.nodeName !== null && this.datimodulo.nodeName !== undefined)
+          nodeName = this.datimodulo.nodeName
+        else
+          nodeName = this.$store.getters.dominio + this.idPlace
+        return nodeName
       },
-      datimodulo () {
-        return this.$store.getters.luogo[0].moduliPagina[this.posizione]
-    },
       userName () {
 
         if(this.$store.getters.user !== null && this.$store.getters.user !== undefined)

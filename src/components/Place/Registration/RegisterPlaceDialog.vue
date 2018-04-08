@@ -1,20 +1,20 @@
 <template>
   <v-dialog persistent v-model="registerDialog">
-    <v-btn color="primary" accent slot="activator">
-      {{ userIsRegistered ? 'Unregister' : 'Register' }}
+    <v-btn color="primary" accent slot="activator" v-if="userIsAuthenticated">
+      <v-icon>timelines</v-icon>{{ userIsRegistered ? 'Già Contagiato' : 'Contagio' }}
     </v-btn>
     <v-card>
       <v-container>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card-title v-if="userIsRegistered">Non vuoi pi&ugrave; seguire l' Articolo?</v-card-title>
-            <v-card-title v-else>Vuoi seguire l'Articolo?</v-card-title>
+            <v-card-title v-if="userIsRegistered">Non vuoi pi&ugrave; ricevere aggiornamenti sul Luogo?</v-card-title>
+            <v-card-title v-else>Vuoi ricevere aggiornamenti sul Luogo?</v-card-title>
           </v-flex>
         </v-layout>
         <v-divider></v-divider>
         <v-layout row wrap>
           <v-flex xs12>
-            <v-card-text>Puoi cambiare quasta scelta anche successivamente.</v-card-text>
+            <v-card-text>Puoi cambiare questa scelta anche successivamente.</v-card-text>
           </v-flex>
         </v-layout>
         <v-layout row wrap>
@@ -38,26 +38,33 @@
 
 <script>
   export default {
-    props: ['articoloId'],
+    props: ['idPlace'],
     data () {
       return {
         registerDialog: false
       }
     },
     computed: {
+      userIsAuthenticated () {
+        return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
       userIsRegistered () {
-        return this.$store.getters.user.registeredArticoli.findIndex(articoloId => {
-          return articoloId === this.articoloId
+        if(!this.userIsAuthenticated)
+          return false
+
+        return this.$store.getters.user.registeredPlaces.findIndex(idPlace => {
+          return idPlace === this.idPlace
         }) >= 0
       }
     },
     methods: {
       onAgree () {
         if (this.userIsRegistered) {
-          this.$store.dispatch('unregisterUserFromArticolo', this.articoloId)
+          this.$store.dispatch('unregisterUserFromPlace', this.idPlace)
         } else {
-          this.$store.dispatch('registerUserForArticolo', this.articoloId)
+          this.$store.dispatch('registerUserForPlace', this.idPlace)
         }
+        this.registerDialog = false
       }
     }
   }

@@ -8,6 +8,7 @@
     <v-layout row>
       <v-flex xs12>
         <form @submit.prevent="onCreatePlace">
+          
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field
@@ -18,6 +19,7 @@
                 required></v-text-field>
             </v-flex>
           </v-layout>
+          
           <v-layout row>
             <v-flex xs12 sm6 offset-sm3>
               <v-text-field
@@ -158,6 +160,7 @@ import { VueEditor } from 'vue2-editor'
           comune_user: this.comune_user,
         }
         this.$store.dispatch('createPlace', placeData)
+        this.$swal("Ottimo Lavoro!", "Luogo inserito con successo! Ora inserisci la posizione", "success")
         this.$router.push('/positionPlace')
       },
       onPickFile () {

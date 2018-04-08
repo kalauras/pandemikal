@@ -134,6 +134,7 @@
         this.dataPlace.coordinate_place = this.coordinate_place
         this.dataPlace.id = this.$store.getters.loadedPlaces[this.$store.getters.loadedPlaces.length -1].id
         this.$store.dispatch('registraDatiPlace', this.dataPlace)
+        this.$swal("Ottimo Lavoro!", "Posizione inserita con successo", "success")
         this.$router.push('/places')
       }
     }

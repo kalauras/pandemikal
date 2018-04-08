@@ -3,11 +3,11 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Montemurro Srl',
+    nomeSito: 'Virtual Matera 2019',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'montemurro',
-    gruppo: 'finestre',
+    dominio: 'mt19_eu',
+    gruppo: 'turismo',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927}
   },
   mutations: {

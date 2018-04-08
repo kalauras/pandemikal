@@ -35,6 +35,19 @@ export default {
       registeredArticoli.splice(registeredArticoli.findIndex(articolo => articolo.id === payload), 1)
       Reflect.deleteProperty(state.user.fbKeys, payload)
     },
+    registerUserForPlace (state, payload) {
+      const id = payload.id
+      if (state.user.registeredPlaces.findIndex(place => place.id === id) >= 0) {
+        return
+      }
+      state.user.registeredPlaces.push(id)
+      state.user.fbKeys[id] = payload.fbKey
+    },
+    unregisterUserFromPlace (state, payload) {
+      const registeredPlaces = state.user.registeredPlaces
+      registeredPlaces.splice(registeredPlaces.findIndex(place => place.id === payload), 1)
+      Reflect.deleteProperty(state.user.fbKeys, payload)
+    },
     setUser (state, payload) {
       state.user = payload
     },
@@ -126,6 +139,66 @@ export default {
 
         commit('setLoading', false)
     },
+    registerUserForPlace ({commit, getters}, payload) {
+      commit('setLoading', true)
+      const user = getters.user
+      firebase.database().ref('/users/' + user.id).child('/registrations/')
+        .push(payload)
+        .then(data => {
+          commit('registerUserForPlace', {id: payload, fbKey: data.key})
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+//inserisco follower dell'articolo
+
+      let dataInsert = 
+                        {
+                          idUtente: user.id,
+                          coordinate_followers: user.dataPan.coordinate_user
+                        }
+      firebase.database().ref('/places/' + payload ).child('/followers/'+user.id)
+        .push(dataInsert)
+        .then(data => {
+          //commit('registerUserForArticolo', {id: payload, fbKey: data.key})
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+
+        commit('setLoading', false)
+    },
+    unregisterUserFromPlace ({commit, getters}, payload) {
+      commit('setLoading', true)
+      const user = getters.user
+      if (!user.fbKeys) {
+        return
+      }
+      const fbKey = user.fbKeys[payload]
+      firebase.database().ref('/users/' + user.id + '/registrations/').child(fbKey)
+        .remove()
+        .then(() => {          
+          commit('unregisterUserFromPlace', payload)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+// rimuovo follower
+      firebase.database().ref('/places/' + payload + '/followers/').child(user.id)
+        .remove()
+        .then(() => {
+          //commit('unregisterUserFromArticolo', payload)
+        })
+        .catch(error => {
+          console.log(error)
+          commit('setLoading', false)
+        })
+
+        commit('setLoading', false)
+    },
     signUserUp ({commit}, payload) {
       commit('setLoading', true)
       commit('clearError')
@@ -142,6 +215,7 @@ export default {
               displayName: user.displayName,
               email: user.email,
               registeredArticoli: [],
+              registeredPlaces: [],
               fbKeys: {},
               dataPan: {}
             }
@@ -172,6 +246,7 @@ export default {
               displayName: user.displayName,
               email: user.email,
               registeredArticoli: [],
+              registeredPlaces: [],
               fbKeys: {},
               dataPan: {}
             }
@@ -202,6 +277,7 @@ export default {
               displayName: user.displayName,
               email: user.email,
               registeredArticoli: [],
+              registeredPlaces: [],
               fbKeys: {},
               dataPan: {}
             }
@@ -239,6 +315,7 @@ export default {
               displayName: "",
               email: user.email,
               registeredArticoli: [],
+              registeredPlaces: [],
               fbKeys: {},
               dataPan: {}
             }
@@ -269,6 +346,7 @@ export default {
         displayName: payload.displayName,
         email: payload.email,
         registeredArticoli: [],
+        registeredPlaces: [],
         fbKeys: {},
         dataPan: {}
       })
@@ -289,6 +367,7 @@ export default {
             displayName: getters.user.displayName,
             email: getters.user.email,
             registeredArticoli: registeredArticoli,
+            registeredPlaces: registeredArticoli,
             fbKeys: swappedPairs,
             dataPan: getters.user.dataPan
           }
@@ -314,6 +393,7 @@ export default {
             displayName: getters.user.displayName,
             email: getters.user.email,
             registeredArticoli: getters.user.registeredArticoli,
+            registeredPlaces: getters.user.registeredPlaces,
             fbKeys: getters.user.fbKeys,
             dataPan: utenti
           }

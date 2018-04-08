@@ -105,6 +105,8 @@ Vue.component('bottone', bottone)
 
 Vue.component('introDatiPlace', introDatiPlace)
 Vue.component('map-followersPlace', MappaFollowersPlace)
+Vue.component('register-place-dialog', RegisterPlaceDialog)
+
 
 Vue.component('v-map', Vue2Leaflet.Map);
 Vue.component('v-tilelayer', Vue2Leaflet.TileLayer);
