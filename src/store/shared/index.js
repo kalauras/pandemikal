@@ -3,7 +3,7 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Virtual Matera 2019',
+    nomeSito: 'Link Matera 2019',
     pageID: 'articoli',
     placeID: 'places',
     dominio: 'mt19_eu',

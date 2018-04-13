@@ -63,7 +63,7 @@
             </v-list-tile-content>
           </v-list-tile>
           <v-divider inset></v-divider>
-          <v-list-tile v-if="place.comune" :href="'https://www.google.com/maps/@'+place.coordinate_place+',13z??hl=it-IT&gl=US'">
+          <v-list-tile v-if="place.indirizzo && place.comune" :href="'https://www.google.com/maps/@'+place.coordinate_place+',13z??hl=it-IT&gl=US'">
             <v-list-tile-action>
               <v-icon color="indigo">location_on</v-icon>
             </v-list-tile-action>

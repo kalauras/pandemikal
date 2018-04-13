@@ -9,14 +9,20 @@ export default {
         title: 'place in New York',
         location: 'New York',
         description: 'New York, New York!',
-        moduliPagina: [{
+        moduli: [{
             "nome" : "introDati",
             "titolo" : "eBasilicata"
           }]
       }
-    ]
+    ],
+    createPlaceData: {}
   },
   mutations: {
+    loadComponentiModuloPlaces (state, payload) {
+
+      state.createPlaceData = payload
+      
+    },
     registraDatiPlace (state, payload) {
 
       let lastPlace = state.loadedPlaces.pop()
@@ -32,6 +38,9 @@ export default {
       state.loadedPlaces = payload
     },
     createPlace (state, payload) {
+      state.loadedPlaces.push(payload)
+    },
+    createAll (state, payload) {
       state.loadedPlaces.push(payload)
     },
     updatePlace (state, payload) {
@@ -80,7 +89,7 @@ export default {
               location: obj[key].location,
               coordinate_place: obj[key].coordinate_place,
               creatorId: obj[key].creatorId,
-              moduliPagina: obj[key].moduli,
+              moduli: obj[key].moduli,
               followers: obj[key].followers
             })
           }
@@ -107,7 +116,7 @@ export default {
               location: obj[key].location,
               coordinate_place: obj[key].coordinate_place,
               creatorId: obj[key].creatorId,
-              moduliPagina: obj[key].moduli,
+              moduli: obj[key].moduli,
               followers: obj[key].followers
             })
           }
@@ -121,7 +130,38 @@ export default {
           }
         ) 
     },
-    
+    loadComponentiModuloPlaces ({commit, getters}, payload) {
+      commit('setLoading', true)
+      //carico gli places legati alla pagina
+      firebase.database().ref("/categoria/"+payload+"/").once('value')
+        .then((data) => {
+          const componentiModulo = []
+          const obj = data.val()
+          
+          /*let campixxx = obj.campiModulo
+          console.log(campixxx)
+
+          for (let key in campixxx) {
+           
+            componentiModulo.push({
+              id: key,
+              campiModulo: campixxx[key].campiModulo,
+              titolo: campixxx[key].titolo
+            })
+          }
+
+          obj.campiModulo = componentiModulo*/
+          //console.log(componentiModulo[0].titolo)
+          commit('loadComponentiModuloPlaces', obj)
+          commit('setLoading', false)
+        })
+        .catch(
+          (error) => {
+            console.log(error)
+            commit('setLoading', false)
+          }
+        )
+    },
     createPlace ({commit, getters}, payload) {
       const place = {
         title: payload.title,
@@ -160,6 +200,23 @@ export default {
             imageUrl: imageUrl,
             id: key
           })
+        })
+        .catch((error) => {
+          console.log(error)
+        })
+      // Reach out to firebase and store it
+    },
+    createAll ({commit, getters}, payload) {
+      const place = payload
+      let key
+      firebase.database().ref('places').push(place)
+        .then((data) => {
+          key = data.key
+          return key
+        })
+        .then(() => {
+          place['id'] = key
+          commit('createAll', place)
         })
         .catch((error) => {
           console.log(error)
@@ -226,6 +283,10 @@ export default {
     // },
   },
   getters: {
+    createPlaceData (state){
+      return state.createPlaceData
+    },
+
     loadedPlaces (state) {
       return state.loadedPlaces
     },

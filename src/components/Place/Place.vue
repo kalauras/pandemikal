@@ -12,19 +12,19 @@
     computed: {
       moduli () {
         
-        let moduliPagina = []
+        let moduli = []
         let swappedPairs = {}
         if(this.$store.getters.loadedPlace(this.id) == undefined)
           return []
-        let dataPairs = this.$store.getters.loadedPlace(this.id).moduliPagina//this.$store.getters.loadedPlaces[0].moduliPagina
+        let dataPairs = this.$store.getters.loadedPlace(this.id).moduli//this.$store.getters.loadedPlaces[0].moduliPagina
         for (let key in dataPairs) {
-              moduliPagina.push(dataPairs[key])
+              moduli.push(dataPairs[key])
               swappedPairs[dataPairs[key]] = key
             }
-            moduliPagina.sort(function (a, b) {
+            moduli.sort(function (a, b) {
               return a.posiz - b.posiz;
             });
-        return moduliPagina
+        return moduli
       }
 
     }

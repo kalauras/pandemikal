@@ -2,6 +2,8 @@ import Vue from 'vue'
 import Router from 'vue-router'
 import Home from '@/components/Home'
 
+import Create from '@/components/Shared/Create'
+
 import Articoli from '@/components/Articolo/Articoli'
 import CreateArticolo from '@/components/Articolo/CreateArticolo'
 import Articolo from '@/components/Articolo/Articolo'
@@ -50,8 +52,16 @@ export default new Router({
       component: Places
     },
     {
-      path: '/place/new',
+      path: '/new/:id',
+      name: 'Create',
+      props: true,
+      component: Create,
+      //beforeEnter: AuthGuard
+    },
+    {
+      path: '/place/new/:id',
       name: 'CreatePlace',
+      props: true,
       component: CreatePlace,
       beforeEnter: AuthGuard
     },

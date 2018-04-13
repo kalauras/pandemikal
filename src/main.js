@@ -47,6 +47,10 @@ import VueSwal from 'vue-swal'
 
 //import CommentGrid from 'vue-comment-grid'
 
+import bottoneForm from './components/Form/Bottone'
+import campoTesto from './components/Form/CampoTesto'
+import selectComune from './components/Form/SelectComune'
+
 
 import bottone from './components/UI/Bottone'
 
@@ -100,6 +104,11 @@ Vue.component('caroselloArticoli', caroselloArticoli)
 Vue.component('galleryImageVideo', galleryImageVideo)
 Vue.component('gallery', VueGallery)
 Vue.component('comment-grid', CommentGrid)
+
+Vue.component('bottoneForm', bottoneForm)
+Vue.component('campoTesto', campoTesto)
+Vue.component('selectComune', selectComune)
+
 
 Vue.component('bottone', bottone)
 
