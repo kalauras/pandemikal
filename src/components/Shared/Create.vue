@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row align-center>
       <v-flex class="py-2">
-        <h1 class="display-1" style="font-weight:300" >{{campiModulo['titolo']}}</h1>
+        <h1 class="display-1" style="font-weight:300" >{{titolo}}</h1>
       </v-flex>
     </v-layout>
     <v-layout row>
@@ -19,7 +19,7 @@
               <v-card>
                 <v-card-media
                   :src="card.src"
-                  @click="caricaForm"
+                  @click="caricaForm(card.id)"
                   clickable
                   height="200px"
                 >
@@ -33,7 +33,7 @@
                 </v-card-media>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn icon @click="caricaForm">
+                  <v-btn icon @click="caricaForm(card.id)">
                     <v-icon>add_circle</v-icon>
                   </v-btn>
                   <v-btn icon>
@@ -58,37 +58,45 @@
 
   export default {
     props: ['id'],
-    
-    data: () => ({
-      
-    }),
     computed: {
       cards (){
-        let cards = []
-        let place = this.campiModulo
-          let obj = {}
-          obj['title'] = place['place']
-          obj['src'] = place['bannerUrl']
-          obj['flex'] = 12
-          cards.push(obj)
-        
+        let cards = []          
+
+          for (let placeData in this.campiModulo){
+            let place = this.campiModulo[placeData]
+            let obj = {}
+            if(place !== null){
+              obj['title'] = place['place']
+              obj['src'] = place['bannerUrl']
+              obj['flex'] = 12
+              obj['id'] = placeData
+              cards.push(obj)
+            }
+          }
+
         return cards
       },
       campiModulo () {
         if(this.$store.getters.createPlaceData !== undefined)
           return this.$store.getters.createPlaceData
+      },
+      titolo () {
+        if (this.campiModulo['payload'] != null && this.campiModulo['payload'] != undefined)
+          return this.campiModulo['payload'].titolo
+        else 
+          return "Scegli cosa Aggiungere"
       }
     },
     methods: {
-      caricaForm () {
+      caricaForm (idCat) {
         
         //this.$store.dispatch('loadComponentiModuloPlaces', this.id)
         //this.$swal("Ottimo Lavoro!", "Modulo caricato correttamente", "success")
-        this.$router.push('/place/new/'+ this.id)
+        this.$router.push('/place/new/'+ idCat)
       }
     },
     beforeMount(){
-      if(this.id !== null && this.id !== undefined)
+      //if(this.id !== null && this.id !== undefined)
         this.$store.dispatch('loadComponentiModuloPlaces', this.id)
     },
   }

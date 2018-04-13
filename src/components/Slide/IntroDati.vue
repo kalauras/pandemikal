@@ -10,7 +10,7 @@
         <v-card-title primary-title>
           <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{titoloIntro}}</h1>
         </v-card-title>
-        <div class="subheading ma-3 text-xs-center">{{sottoTitoloIntro}}</div>
+        <div class="subheading ma-3 text-xs-center" v-html="sottoTitoloIntro"></div>
         <v-card-actions>
           <v-container 
             v-if="userIsAuthenticated && user.dataPan !== null && user.dataPan !== undefined && user.dataPan.coordinate_user !== undefined"

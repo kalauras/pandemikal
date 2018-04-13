@@ -92,7 +92,7 @@ import { VueEditor } from 'vue2-editor'
 
       campiModulo () {
         if(this.$store.getters.createPlaceData !== undefined)
-          return this.$store.getters.createPlaceData
+          return this.$store.getters.createPlaceData[this.id]
       }
 
     },
@@ -123,10 +123,8 @@ import { VueEditor } from 'vue2-editor'
           }
         }
 
-        console.log(placeData)
-
         this.$store.dispatch('createAll', placeData)
-        this.$swal("Ottimo Lavoro!", "Luogo inserito con successo! Ora inserisci la posizione", "success")
+        this.$swal("Ottimo Lavoro!", "Luogo inserito con successo! Ora segui le istruzioni per segnalare la posizione", "success")
         this.$router.push('/positionPlace')
 
       },

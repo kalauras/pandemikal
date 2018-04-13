@@ -2,7 +2,7 @@
   <v-container fluid class="grey lighten-4">
     
     <gmap-street-view-panorama class="google-map" :position="marker.position"
-      :pov="pov" :zoom="1" @pano_changed="updatePano" @pov_changed="updatePov">
+      :pov="pov" :zoom="zoom" @pano_changed="updatePano" @pov_changed="updatePov">
     </gmap-street-view-panorama>
 
   </v-container>
@@ -18,11 +18,12 @@ export default {
     return {
       mapName: 'pippo-map',
       pov: {
-        pitch: -12,
-        heading: 170
+        pitch: this.datimodulo.pitch,
+        heading: this.datimodulo.heading
       },
       pano: null,
-      caricato : "no"
+      caricato : "no",
+      zoom: this.datimodulo.zoom
     }
   },
   computed: {

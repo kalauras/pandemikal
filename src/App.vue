@@ -161,9 +161,8 @@
         <v-icon>visibility</v-icon>
       </v-btn>
       <v-btn
-        to="/place/new"
+        to="/new/all"
         fab
-        v-if="this.$can('insert', 'Articolo')"
         dark
         small
         color="indigo"
@@ -317,7 +316,7 @@
 
         if(this.$can('insert', "Place")){
           operazioni.push(
-            { icon: 'add_location', text: this.$t("inserisci_place"), link: "/place/new" }
+            { icon: 'add_location', text: this.$t("inserisci_place"), link: "/new" }
           )
         }
 
