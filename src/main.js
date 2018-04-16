@@ -44,6 +44,7 @@ import VueParticles from 'vue-particles'
 import Vue2Leaflet from 'vue2-leaflet';
 import VueGallery from 'vue-gallery';
 import VueSwal from 'vue-swal'
+import VueAnalytics from 'vue-analytics'
 
 //import CommentGrid from 'vue-comment-grid'
 
@@ -162,6 +163,11 @@ new Vue({
   
     Vue.use(abilityPlugin, abilities);
 
+
+    Vue.use(VueAnalytics, {
+      id: 'UA-101993142-2',
+      router
+    })
     this.$store.dispatch('setAbilities' , abilities)
 
     // carico le stringhe nelle varie lingue

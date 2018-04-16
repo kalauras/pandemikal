@@ -27,21 +27,30 @@
                     <v-layout fill-height>
                       <v-flex xs12 align-end flexbox>
                         <span class="headline white--text" v-text="card.title"></span>
+                        <div class="white--text">{{card.descrizione}}</div>
                       </v-flex>
                     </v-layout>
                   </v-container>
                 </v-card-media>
                 <v-card-actions>
                   <v-spacer></v-spacer>
-                  <v-btn icon @click="caricaForm(card.id)">
-                    <v-icon>add_circle</v-icon>
+                  
+                <v-tooltip bottom>
+                  <v-btn slot="activator" icon @click="caricaForm(card.id)">
+                      <v-icon>add_circle</v-icon>
                   </v-btn>
-                  <v-btn icon>
+                  <span>Aggiungi un luogo</span>
+                </v-tooltip>
+                <v-tooltip bottom>
+                  <v-btn slot="activator" icon @click="caricaLink(card.link)">
                     <v-icon>bookmark</v-icon>
                   </v-btn>
+                  <span>Informazioni Utili</span>
+                </v-tooltip>
                   <v-btn icon>
                     <v-icon>share</v-icon>
                   </v-btn>
+                  
                 </v-card-actions>
               </v-card>
             </v-flex>
@@ -68,6 +77,8 @@
             if(place !== null){
               obj['title'] = place['place']
               obj['src'] = place['bannerUrl']
+              obj['link'] = place['link']
+              obj['descrizione'] = place['descrizione']
               obj['flex'] = 12
               obj['id'] = placeData
               cards.push(obj)
@@ -92,7 +103,12 @@
         
         //this.$store.dispatch('loadComponentiModuloPlaces', this.id)
         //this.$swal("Ottimo Lavoro!", "Modulo caricato correttamente", "success")
+        
         this.$router.push('/place/new/'+ idCat)
+      },
+      caricaLink (link){
+        //console.log(link)
+        window.location.href = link
       }
     },
     beforeMount(){

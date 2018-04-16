@@ -1,4 +1,5 @@
   <template>
+    <v-container fluid :style="datimodulo.style">
     <v-layout
       column
       wrap
@@ -14,6 +15,7 @@
         </div>
       </v-flex>
     </v-layout>
+  </v-container>
 </template>
 
 <script>

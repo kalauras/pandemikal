@@ -346,10 +346,12 @@
 
         if(this.$store.getters.featuredDataLuoghi[0].indirizzo !== undefined)
           footerString +=  " - " + this.$store.getters.featuredDataLuoghi[0].indirizzo 
-            + " " + this.$store.getters.featuredDataLuoghi[0].cap + " " +
-            this.$store.getters.featuredDataLuoghi[0].comune + " (" +
-            this.$store.getters.featuredDataLuoghi[0].provincia + ") " 
-
+        if(this.$store.getters.featuredDataLuoghi[0].cap !== undefined)
+          footerString += " " + this.$store.getters.featuredDataLuoghi[0].cap + " "
+        if(this.$store.getters.featuredDataLuoghi[0].comune !== undefined)
+          footerString +=  this.$store.getters.featuredDataLuoghi[0].comune + " (" 
+        if(this.$store.getters.featuredDataLuoghi[0].provincia !== undefined)
+           footerString += this.$store.getters.featuredDataLuoghi[0].provincia + ") " 
         if(this.$store.getters.featuredDataLuoghi[0].partitaIva !== undefined)
           footerString += " P.Iva " + this.$store.getters.featuredDataLuoghi[0].partitaIva
 
