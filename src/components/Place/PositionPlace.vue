@@ -6,16 +6,15 @@
           <v-card>
             <v-card-title primary-title>
               <div>
-                <h3 class="headline mb-0">Inserisci la posizione del luogo</h3>
-                <div>
-                  Digita il comune o l'indirizzo del luogo nel campo qui in basso<br>oppure clicca e autorizza la tua posizione del dispositivo
-                </div>
+                <h1 class="display-1" style="font-weight:300">Inserisci la posizione del luogo</h1>
+                  <div>Digita il comune o l'indirizzo del luogo nel campo qui in basso, se necessario, sposta il puntatore e clicca sul pulsante in fondo alla pagina per confermare</div>
               </div>
             </v-card-title>
             <v-card-actions>
+              <div class="blue-grey lighten-4">
               <v-btn icon><v-icon>search</v-icon></v-btn><GmapAutocomplete @place_changed="setPlace"></GmapAutocomplete>
-              o 
-              <v-btn flat color="primary" @click="posizioneGeoLocal">Geoloc</v-btn> 
+              </div>
+              <v-btn fab dark small color="primary" @click="posizioneGeoLocal"><v-icon>gps_fixed</v-icon></v-btn> 
             </v-card-actions>
           </v-card>
         </v-flex>
@@ -38,7 +37,7 @@
           </gmap-map>
         </v-flex>
       </v-layout>
-      <v-layout row>
+      <v-layout hidden-lg-and-down row>
         <v-flex xs12 sm6 offset-sm3>
           <v-text-field
                   name="coordinate_user"
@@ -51,10 +50,10 @@
         </v-flex>
       </v-layout>
       <v-layout row>
-        <v-flex xs12 sm6 offset-sm3>
+        <v-flex xs12 >
           <v-btn
             class="primary"
-            type="submit">Salva e prosegui</v-btn>
+            type="submit">Salva e concludi</v-btn>
         </v-flex>
       </v-layout>
     </form>

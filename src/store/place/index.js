@@ -132,19 +132,21 @@ export default {
     },
     loadComponentiModuloPlaces ({commit, getters}, payload) {
       commit('setLoading', true)
-      //carico gli places legati alla pagina
 
       let path = "/categoria/"+payload+"/"
 
       if(payload == 'all')
         path = 'categoria'
+
       firebase.database().ref(path).once('value')
         .then((data) => {
-          const componentiModulo = []
+          //const componentiModulo = []
           let obj = data.val()
 
           if(payload != 'all')
             obj = {payload: obj}
+
+          //console.log(obj)
           /*let campixxx = obj.campiModulo
           console.log(campixxx)
 

@@ -47,9 +47,12 @@
                   </v-btn>
                   <span>Informazioni Utili</span>
                 </v-tooltip>
-                  <v-btn icon>
+                 <v-tooltip bottom>
+                  <v-btn slot="activator" icon @click="$router.push('/')">
                     <v-icon>share</v-icon>
                   </v-btn>
+                  <span>Guarda la Mappa</span>
+                </v-tooltip>
                   
                 </v-card-actions>
               </v-card>
@@ -80,7 +83,10 @@
               obj['link'] = place['link']
               obj['descrizione'] = place['descrizione']
               obj['flex'] = 12
-              obj['id'] = placeData
+              if(this.id != "all")
+                obj['id'] = this.id
+              else
+                obj['id'] = placeData
               cards.push(obj)
             }
           }

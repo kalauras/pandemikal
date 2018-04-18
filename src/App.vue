@@ -1,5 +1,6 @@
 <template>
   <v-app id="inspire">
+
     <v-navigation-drawer
       clipped
       app
@@ -357,7 +358,10 @@
 
         return footerString 
 
-      }
+      },
+      imgSfondo () {
+        return this.$store.getters.featuredDataLuoghi[0].imgIntro
+      },
 
     },
     methods: {

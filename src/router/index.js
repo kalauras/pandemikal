@@ -63,7 +63,7 @@ export default new Router({
       name: 'CreatePlace',
       props: true,
       component: CreatePlace,
-      beforeEnter: AuthGuard
+      //beforeEnter: AuthGuard
     },
     {
       path: '/places/:id',

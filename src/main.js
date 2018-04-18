@@ -135,6 +135,19 @@ Vue.use(VueSwal)
 // set the start locale to use
 Vue.i18n.set('it');
 
+
+router.beforeEach((to, from, next) => {
+  //console.log(from)
+    if ( from.name == 'Signin' ) {
+        //next(false);
+        next();
+        router.go(-2)
+        
+    } else {
+        next();
+        window.scrollTo(0, 0)
+    }
+});
 /* eslint-disable no-new */
 new Vue({
   el: '#app',

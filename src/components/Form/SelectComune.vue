@@ -7,7 +7,6 @@
                 v-model="datimodulo.model"
                 :name="datimodulo.name"
                 :label="datimodulo.label"
-                :autocomplete="datimodulo.autocomplete"
                 :required="datimodulo.required"
               ></v-select>
         </div>

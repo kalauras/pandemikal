@@ -115,7 +115,7 @@ import { VueEditor } from 'vue2-editor'
         return this.$store.getters.gruppo
       },
       titolo () {
-        if(this.campiModulo.titolo !== undefined)
+        if(this.campiModulo !== undefined)
           return this.campiModulo.titolo
         else
           return "Aggiungi un Luogo"
@@ -141,8 +141,15 @@ import { VueEditor } from 'vue2-editor'
       },
 
       campiModulo () {
-        if(this.$store.getters.createPlaceData !== undefined)
-          return this.$store.getters.createPlaceData[this.id]
+        if(this.$store.getters.createPlaceData !== undefined){
+          if(this.$store.getters.createPlaceData[this.id] !== undefined)
+            return this.$store.getters.createPlaceData[this.id]
+          else if(this.$store.getters.createPlaceData["payload"] !== undefined)
+            return this.$store.getters.createPlaceData["payload"]
+          else{
+            this.$router.push('/new/'+this.id)
+          }
+        }
       }
 
     },
@@ -158,8 +165,8 @@ import { VueEditor } from 'vue2-editor'
             this.validRequired = false
           }
         }
-
-        placeData['creatorId'] = this.$store.getters.user.id
+        if(this.$store.getters.user !== null && this.$store.getters.user !== undefined)
+          placeData['creatorId'] = this.$store.getters.user.id
         placeData['dominio'] = this.$store.getters.dominio
         placeData['gruppo'] = this.$store.getters.gruppo
         placeData['categoria'] = this.id
@@ -173,10 +180,25 @@ import { VueEditor } from 'vue2-editor'
           "introDati": {
             "nome": "introDatiPlace", 
             "posiz": 0 
+          },
+          "titoloMappa": {
+            "nome": "titoloSezione", 
+            "posiz": 1 ,
+            "sottotitolo": "",
+            "titolo": "Mappa dei comuni Aderenti"
+          },
+          "mappa":{
+            "nome": "map-followers",
+            "posiz": 2,
+            "zoom": 8,
+            "centro": {
+              "lat": 40.6637693,
+              "lng": 16.6121927
+            }
+
           }
         }
 
-        console.log(this.validRequired)
         if(this.validRequired){
           this.$store.dispatch('createAll', placeData)
           this.$swal("Ottimo Lavoro!", "Luogo inserito con successo! Ora segui le istruzioni per segnalare la posizione", "success")

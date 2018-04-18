@@ -89,6 +89,8 @@
     },
     watch: {
       user (value) {
+
+        //console.log(this.$router.currentRoute)
         if (value !== null && value !== undefined) {
           this.$router.push('/')
         }
