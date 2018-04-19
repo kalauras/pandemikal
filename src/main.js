@@ -65,15 +65,7 @@ import defineAbilitiesFor from './store/ability/';
 
 
 
-Vue.use(Vuetify, {
-  theme: {
-    primary: '#283593',
-    secondary: '#FF8F00',
-    accent: '#8c9eff',
-    error: '#b71c1c'
-  }
-})
-Vue.config.productionTip = false
+
 
 
 Vue.use(VueGoogleMaps, {
@@ -173,15 +165,20 @@ new Vue({
 
 
     let abilities = defineAbilitiesFor("guest");
-  
     Vue.use(abilityPlugin, abilities);
+    this.$store.dispatch('setAbilities' , abilities)
 
+
+    Vue.use(Vuetify, {
+      theme: this.$store.getters.theme
+    })
+    Vue.config.productionTip = false
 
     Vue.use(VueAnalytics, {
-      id: 'UA-101993142-2',
+      id: this.$store.getters.idAnalytics,
       router
     })
-    this.$store.dispatch('setAbilities' , abilities)
+    
 
     // carico le stringhe nelle varie lingue
     this.$store.dispatch('loadTranslation')

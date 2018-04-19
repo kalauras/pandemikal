@@ -133,43 +133,57 @@ export default {
     loadComponentiModuloPlaces ({commit, getters}, payload) {
       commit('setLoading', true)
 
-      let path = "/categoria/"+payload+"/"
+      if(payload == 'all'){
+        firebase.database().ref('categoria').orderByChild('dominio').equalTo(getters.dominio).once('value')
+          .then((data) => {
+            //const componentiModulo = []
+            let obj = data.val()
 
-      if(payload == 'all')
-        path = 'categoria'
+            //console.log(obj)
+            /*let campixxx = obj.campiModulo
+            console.log(campixxx)
 
-      firebase.database().ref(path).once('value')
-        .then((data) => {
-          //const componentiModulo = []
-          let obj = data.val()
+            for (let key in campixxx) {
+             
+              componentiModulo.push({
+                id: key,
+                campiModulo: campixxx[key].campiModulo,
+                titolo: campixxx[key].titolo
+              })
+            }
 
-          if(payload != 'all')
+            obj.campiModulo = componentiModulo*/
+            //console.log(componentiModulo[0].titolo)
+            commit('loadComponentiModuloPlaces', obj)
+            commit('setLoading', false)
+          })
+          .catch(
+            (error) => {
+              console.log(error)
+              commit('setLoading', false)
+            }
+          )
+      }
+      else{
+
+        firebase.database().ref("/categoria/"+payload+"/").once('value')
+          .then((data) => {
+            //const componentiModulo = []
+            let obj = data.val()
+
+          
             obj = {payload: obj}
 
-          //console.log(obj)
-          /*let campixxx = obj.campiModulo
-          console.log(campixxx)
-
-          for (let key in campixxx) {
-           
-            componentiModulo.push({
-              id: key,
-              campiModulo: campixxx[key].campiModulo,
-              titolo: campixxx[key].titolo
-            })
-          }
-
-          obj.campiModulo = componentiModulo*/
-          //console.log(componentiModulo[0].titolo)
-          commit('loadComponentiModuloPlaces', obj)
-          commit('setLoading', false)
-        })
-        .catch(
-          (error) => {
-            console.log(error)
+            commit('loadComponentiModuloPlaces', obj)
             commit('setLoading', false)
-          }
-        )
+          })
+          .catch(
+            (error) => {
+              console.log(error)
+              commit('setLoading', false)
+            }
+          )
+      }
     },
     createPlace ({commit, getters}, payload) {
       const place = {

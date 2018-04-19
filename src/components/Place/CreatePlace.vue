@@ -185,7 +185,7 @@ import { VueEditor } from 'vue2-editor'
             "nome": "titoloSezione", 
             "posiz": 1 ,
             "sottotitolo": "",
-            "titolo": "Mappa dei comuni Aderenti"
+            "titolo": "Mappa " + this.campiModulo['place']
           },
           "mappa":{
             "nome": "map-followers",

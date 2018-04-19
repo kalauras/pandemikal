@@ -3,12 +3,19 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Link Matera 2019',
+    nomeSito: 'Biscottificio V.d.S.',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'mt19_eu',
-    gruppo: 'turismo',
-    coordinate_default: {lat: 40.6637693, lng: 16.6121927}
+    dominio: 'biscottificiovalledelsinni',
+    gruppo: 'attivita',
+    coordinate_default: {lat: 40.6637693, lng: 16.6121927},
+    theme: {
+      primary: '#0277BD',
+      secondary: '#FF8F00',
+      accent: 'wheat',
+      error: '#b71c1c'
+    },
+    idAnalytics: 'UA-101993142-3'
   },
   mutations: {
     setLoading (state, payload) {
@@ -65,6 +72,12 @@ export default {
     },
     coordinate_default (state) {
       return state.coordinate_default
+    },
+    theme (state) {
+      return state.theme
+    },
+    idAnalytics (state) {
+      return state.idAnalytics
     }
     
   }

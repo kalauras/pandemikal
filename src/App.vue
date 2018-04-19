@@ -317,7 +317,7 @@
 
         if(this.$can('insert', "Place")){
           operazioni.push(
-            { icon: 'add_location', text: this.$t("inserisci_place"), link: "/new" }
+            { icon: 'add_location', text: this.$t("inserisci_place"), link: "/new/all" }
           )
         }
 

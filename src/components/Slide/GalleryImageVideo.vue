@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid >
+  <v-container fluid :style="datimodulo.style">
     <v-layout
       column
       wrap
