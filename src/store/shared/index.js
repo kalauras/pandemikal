@@ -3,19 +3,19 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Biscottificio V.d.S.',
+    nomeSito: 'Oleificio Sagroli',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'biscottificiovalledelsinni',
+    dominio: 'sagroli',
     gruppo: 'attivita',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927},
     theme: {
-      primary: '#0277BD',
-      secondary: '#FF8F00',
-      accent: 'wheat',
+      primary: '#558B2F',
+      secondary: '#827717',
+      accent: 'transparent',
       error: '#b71c1c'
     },
-    idAnalytics: 'UA-101993142-3'
+    idAnalytics: 'UA-101993142-4'
   },
   mutations: {
     setLoading (state, payload) {

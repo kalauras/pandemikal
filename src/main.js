@@ -45,6 +45,7 @@ import Vue2Leaflet from 'vue2-leaflet';
 import VueGallery from 'vue-gallery';
 import VueSwal from 'vue-swal'
 import VueAnalytics from 'vue-analytics'
+import Meta from 'vue-meta'
 
 //import CommentGrid from 'vue-comment-grid'
 
@@ -122,7 +123,7 @@ Vue.component('google-cluster', VueGoogleMaps.Cluster);
 Vue.use(VueParticles)
 Vue.use(vuexI18n.plugin, store);
 Vue.use(VueSwal)
-
+Vue.use(Meta)
 
 // set the start locale to use
 Vue.i18n.set('it');

@@ -144,7 +144,7 @@ export default {
                 'img': false,
                 'imgWithCarousel': true,
                 'variantTitle': false,
-                'buttonWithQuantity': false,
+                'buttonWithQuantity': true,
                 'button': false,
                 'quantity': false
               },

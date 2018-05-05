@@ -142,7 +142,7 @@
     >
       <v-btn
         slot="activator"
-        color="blue darken-2"
+        color="secondary"
         dark
         fab
         hover
@@ -281,10 +281,56 @@
       drawer: false,
       fab: false
     }),
+    metaInfo () {
+      return {
+        // if no subcomponents specify a metaInfo.title, this title will be used
+        title: "Web App",
+        // all titles will be injected into this template
+        titleTemplate: '%s | ' + this.$store.getters.nomeSito,
+
+        meta: [
+          { charset: 'utf-8' },
+          { name: 'viewport', content: 'width=device-width, initial-scale=1' },
+          {
+            'vmid': 'og:title',
+            'property': 'og:title',
+            'content': 'Home',
+            'template': chunk => `${chunk} - ` + this.$store.getters.nomeSito//or as string template: '%s - My page'
+          },
+          {
+            'vmid': 'og:description',
+            'property': 'og:description',
+            'content': 'Olio di oliva di Qualità'
+          },
+          {
+            'name': "msapplication-TileColor",
+            'content': '#da532c'
+          },
+          {
+            'name': 'theme-color',
+            'content': '#ffffff'
+          },
+          {
+            'vmid': 'og:image',
+            'property': 'og:image',
+            'content': 'https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/articoli%2F-L4SiTbSNPNU4ctwoyuo..jpg?alt=media&token=1cdd9bc4-a4a4-41f1-9177-46eaa917552e'
+          }
+        ],
+        link: [
+          { rel: 'stylesheet', type: "text/css", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+          { rel: 'apple-touch-icon', sizes: "180x180", href: '/static/favicons/apple-touch-icon.png' },
+          { rel: 'icon', type: "image/png", sizes: "32x32", href: '/static/favicons/favicon-32x32.png' },
+          { rel: 'icon', type: "image/png", sizes: "16x16", href: '/static/favicons/favicon-16x16.png' },
+          { rel: 'manifest', href: '/static/favicons/site.webmanifest' },
+          { rel: 'mask-icon', color: "#5bbad5", href: '/static/favicons/safari-pinned-tab.svg' }
+        ]
+      }
+    },
     props: {
       source: String
     },
     computed: {
+      
       items () {
 
         let operazioni = [

@@ -55,7 +55,11 @@
 
 <script>
   export default {
-    
+    metaInfo: {
+        // if no subcomponents specify a metaInfo.title, this title will be used
+        title: "Il mio Profilo",
+         
+      },
     computed: {
       user () {
         return this.$store.getters.utenteDatiFB
