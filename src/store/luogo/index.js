@@ -12,7 +12,7 @@ export default {
         shopCollectionId: '',
         telefono: 'caricamento telefono',
         partitaIva: '0000',
-        titolo: 'eBasilicata',
+        titolo: 'Caricamento...',
         miniLogo: '',
         email: 'caricamento email',
         cap: 'caricamento cap',
@@ -20,7 +20,7 @@ export default {
         provincia: 'caricamento provincia',
         moduliPagina: [{
             "nome" : "introDati",
-            "titolo" : "eBasilicata"
+            "titolo" : "Caricamento..."
           }]
       }
     ]

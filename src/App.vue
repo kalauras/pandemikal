@@ -292,15 +292,15 @@
           { charset: 'utf-8' },
           { name: 'viewport', content: 'width=device-width, initial-scale=1' },
           {
-            'vmid': 'og:title',
             'property': 'og:title',
             'content': 'Home',
-            'template': chunk => `${chunk} - ` + this.$store.getters.nomeSito//or as string template: '%s - My page'
+            'template': chunk => `${chunk} - ` + this.$store.getters.nomeSito, //or as string template: '%s - My page'
+            'vmid': 'og:title',
           },
           {
-            'vmid': 'og:description',
             'property': 'og:description',
-            'content': 'Olio di oliva di Qualità'
+            'content': this.$store.getters.descrizioneSito,
+            'vmid': 'og:description',
           },
           {
             'name': "msapplication-TileColor",
@@ -311,9 +311,9 @@
             'content': '#ffffff'
           },
           {
-            'vmid': 'og:image',
             'property': 'og:image',
-            'content': 'https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/articoli%2F-L4SiTbSNPNU4ctwoyuo..jpg?alt=media&token=1cdd9bc4-a4a4-41f1-9177-46eaa917552e'
+            'content': this.$store.getters.bannerSito,
+            'vmid': 'og:image',
           }
         ],
         link: [
