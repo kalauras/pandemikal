@@ -1,7 +1,7 @@
 {
-  "name": "PangaroConsulting",
+  "name": "Pandemikal",
   "version": "1.0.0",
-  "description": "Consulente Vincenzo Pangaro",
+  "description": "Piattaforma Web",
   "author": "kalauras <kalauras@gmail.com>",
   "private": true,
   "scripts": {
@@ -69,6 +69,7 @@
     "portfinder": "^1.0.13",
     "postcss-import": "^11.0.0",
     "postcss-loader": "^2.0.8",
+    "prerender-spa-plugin": "^3.1.0",
     "rimraf": "^2.6.0",
     "sass-loader": "^6.0.6",
     "semver": "^5.3.0",

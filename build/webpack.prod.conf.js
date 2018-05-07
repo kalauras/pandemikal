@@ -15,6 +15,9 @@ const dist = 'dist'
 const MinifyPlugin = require("babel-minify-webpack-plugin")
 const workboxPlugin = require('workbox-webpack-plugin')
 
+// prerender per seo kalauras commentare per funzionamento standard
+const PrerenderSPAPlugin = require('prerender-spa-plugin')
+
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
   : require('../config/prod.env')
@@ -44,13 +47,13 @@ const webpackConfig = merge(baseWebpackConfig, {
     new MinifyPlugin(),
 
     new workboxPlugin({
-    globDirectory: dist,
-    globPatterns: ['**/*.{html,js}'],
-    swDest: path.join(dist, 'sw.js'),
-    swSrc: './src/swk.js'
-    //clientsClaim: true,
-    //skipWaiting: true,
-  }),
+      globDirectory: dist,
+      globPatterns: ['**/*.{html,js}'],
+      swDest: path.join(dist, 'sw.js'),
+      swSrc: './src/swk.js'
+      //clientsClaim: true,
+      //skipWaiting: true,
+    }),
 
     // extract css into its own file
     new ExtractTextPlugin({
@@ -86,6 +89,15 @@ const webpackConfig = merge(baseWebpackConfig, {
       // necessary to consistently work with multiple chunks via CommonsChunkPlugin
       chunksSortMode: 'dependency'
     }),
+
+    //prerender per seo kalauras commentare per funzionamento standard
+    new PrerenderSPAPlugin({
+      // Required - The path to the webpack-outputted app to prerender.
+      staticDir: path.join(__dirname, '../dist'),
+      // Required - Routes to render.
+      routes: [ '/', '/profile', '/places' ],
+    }),
+
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),
     // enable scope hoisting
