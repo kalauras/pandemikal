@@ -37,6 +37,7 @@ export default {
     let primaryColorTheme = this.$vuetify.theme.primary
     let secondColorTheme = this.$vuetify.theme.secondary
     let accent = this.$vuetify.theme.accent
+    let testoBottone = this.datimodulo.testoBottone
 
     let scriptURL = 'https://sdks.shopifycdn.com/buy-button/latest/buy-button-storefront.min.js'
     if (window.ShopifyBuy) {
@@ -82,7 +83,7 @@ export default {
                 'quantity': false
               },
               'text': {
-                'button': 'LEGGI DI PIU'
+                'button': testoBottone
               },
               'styles': {
                 'product': {
