@@ -171,7 +171,7 @@ import { VueEditor } from 'vue2-editor'
         placeData['gruppo'] = this.$store.getters.gruppo
         placeData['categoria'] = this.id
 
-        placeData['title'] = placeData['comune']
+        placeData['title'] = placeData['NomeLuogo']
 
         if(placeData['imageUrl'] == null || placeData['imageUrl'] == undefined)
           placeData['imageUrl'] = this.campiModulo['bannerUrl']

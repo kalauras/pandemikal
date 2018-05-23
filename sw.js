@@ -78,22 +78,30 @@ workboxSW.precache([{
 //workbox.precache([
   {
     "url": "/index.html",
-    "revision": "00afa5feb2cc4c315f4663b112dc233c"
+    "revision": "247c8ec703ff10afdc9f5bd82786fc92"
   },
   {
-    "url": "static/js/app.44b0209161afa07f2966.js",
-    "revision": "42ecb03bf3be0360ebaa3162ff8d14c2"
+    "url": "places/index.html",
+    "revision": "ab63b657a10e6d276ec2bfa869a1588d"
+  },
+  {
+    "url": "signin/index.html",
+    "revision": "61ab59ae8a85aaaff88d69e554460a43"
+  },
+  {
+    "url": "static/js/app.3e4b6b82e029c550504a.js",
+    "revision": "e4d925daf5b7899fe783c9765d65f6ea"
   },
   {
     "url": "static/js/manifest.2ae2e69a05c33dfc65f8.js",
     "revision": "4b63edaf2b684db252e004a67c66dcef"
   },
   {
-    "url": "static/js/vendor.efa5334ba45609b468d6.js",
-    "revision": "f2b939f08bfa758bab34cb1846ff6a1b"
+    "url": "static/js/vendor.02703ed0375f212729cf.js",
+    "revision": "a01fbcfa3b7afc883403f40f39ff4d4c"
   },
   {
     "url": "sw.js",
-    "revision": "653008a91203b08e481135920fd2b395"
+    "revision": "bfcaa966c0e905c3c4cde0100ee88bb5"
   }
 ]);

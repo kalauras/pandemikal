@@ -16,7 +16,7 @@ const MinifyPlugin = require("babel-minify-webpack-plugin")
 const workboxPlugin = require('workbox-webpack-plugin')
 
 // prerender per seo kalauras commentare per funzionamento standard
-const PrerenderSPAPlugin = require('prerender-spa-plugin')
+//const PrerenderSPAPlugin = require('prerender-spa-plugin')
 
 const env = process.env.NODE_ENV === 'testing'
   ? require('../config/test.env')
@@ -90,13 +90,13 @@ const webpackConfig = merge(baseWebpackConfig, {
       chunksSortMode: 'dependency'
     }),
 
-    //prerender per seo kalauras commentare per funzionamento standard
+    /*//prerender per seo kalauras commentare per funzionamento standard
     new PrerenderSPAPlugin({
       // Required - The path to the webpack-outputted app to prerender.
       staticDir: path.join(__dirname, '../dist'),
       // Required - Routes to render.
       routes: [ '/', '/profile', '/places' ],
-    }),
+    }),*/
 
     // keep module.id stable when vender modules does not change
     new webpack.HashedModuleIdsPlugin(),

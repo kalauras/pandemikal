@@ -1,5 +1,5 @@
 <template>
-  <v-parallax :key="luogo.imgIntro" :src="luogo.imgIntro" height="600">
+  <v-parallax :key="imgSfondo" :src="imgSfondo" height="600">
     <v-layout
     column
     align-center
@@ -26,10 +26,10 @@
         >
         </vue-particles>
       </div>
-    
-      <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{luogo.titolo}}</h1>
+          <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{titoloIntro}}</h1>
+        <div class="subheading ma-3 text-xs-center" v-html="sottoTitoloIntro"></div>
+
      
-      <div class="subheading ma-3 text-xs-center">{{luogo.sottotitolo}}</div>
       
 
         
@@ -55,6 +55,7 @@
 
 <script>
   export default {
+    props: ['datimodulo'],
     data () {
       return {
         dialog: false,
@@ -78,6 +79,24 @@
       },
       userIsAuthenticated () {
         return this.$store.getters.user !== null && this.$store.getters.user !== undefined
+      },
+      titoloIntro () {
+        if(this.datimodulo.titolo !== null  && this.datimodulo.titolo !== undefined)
+          return this.datimodulo.titolo
+        else
+          return this.luogo.titolo
+      },
+      sottoTitoloIntro () {
+        if(this.datimodulo.sottotitolo !== null  && this.datimodulo.sottotitolo !== undefined)
+          return this.datimodulo.sottotitolo
+        else
+          return this.luogo.sottotitolo
+      },
+      imgSfondo () {
+        if(this.datimodulo.sfondo !== null  && this.datimodulo.sfondo !== undefined)
+          return this.datimodulo.sfondo
+        else
+          return this.luogo.imgIntro
       }
     },
     methods: {

@@ -400,7 +400,7 @@
         if(this.$store.getters.featuredDataLuoghi[0].provincia !== undefined)
            footerString += this.$store.getters.featuredDataLuoghi[0].provincia + ") " 
         if(this.$store.getters.featuredDataLuoghi[0].partitaIva !== undefined)
-          footerString += " P.Iva " + this.$store.getters.featuredDataLuoghi[0].partitaIva
+          footerString += " P.IVA " + this.$store.getters.featuredDataLuoghi[0].partitaIva
 
         return footerString 
 
