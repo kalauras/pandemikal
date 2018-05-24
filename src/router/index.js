@@ -63,7 +63,7 @@ export default new Router({
       name: 'CreatePlace',
       props: true,
       component: CreatePlace,
-      //beforeEnter: AuthGuard
+      beforeEnter: AuthGuard
     },
     {
       path: '/places/:id',
@@ -103,7 +103,13 @@ export default new Router({
       path: '/positionPlace',
       name: 'PositionPlace',
       component: PositionPlace,
-      //beforeEnter: AuthGuard      
+      beforeEnter: AuthGuard      
+    },
+    {
+      path: '/ebasilicata.com',
+      beforeEnter(to, from, next) {
+          window.location = "https://www.ebasilicata.com"
+      }
     }
   ],
   mode: 'history'

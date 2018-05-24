@@ -118,7 +118,7 @@
            icon large>
           <v-avatar size="32px" tile>
             <img
-              src="https://vuetifyjs.com/static/doc-images/logo.svg"
+              src="/static/logo.png"
               alt="Vuetify"
             >
           </v-avatar>
@@ -371,6 +371,10 @@
           { icon: 'note_add', text: this.$t("inserisci_articolo"), link: "/articolo/new" }
         )
       }
+
+      items.push(
+          { icon: 'build', text: "Powered by eBasilicata", link: "/ebasilicata.com" }
+        )
       return items
     },
       menuItems () {

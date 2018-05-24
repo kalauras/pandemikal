@@ -3,21 +3,21 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'eBasilicata',
+    nomeSito: 'DG Studio',
     bannerSito: 'https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/articoli%2F-L4VMUzjXGK4kdSg1HeP..jpg?alt=media&token=b0acf78c-8f9e-4ceb-8c4e-3db07b42cf3f',
-    descrizioneSito: 'Una rete che porta la Realtà nel Virtuale e viceversa',
+    descrizioneSito: 'Ing. Carmine Di Giacomo - il tuo partner professionale per il risparmio energetico',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'ebasilicata',
-    gruppo: 'area',
+    dominio: 'dgStudio',
+    gruppo: 'ingegneri',
     coordinate_default: {lat: 40.6637693, lng: 16.6121927},
     theme: {
-      primary: '#260881',
-      secondary: '#0275d8',
+      primary: '#38713a',
+      secondary: '#689F38',
       accent: '#ffffff',
       error: '#b71c1c'
     },
-    idAnalytics: 'UA-101993142-6',
+    idAnalytics: 'UA-101993142-7',
 
   },
   mutations: {

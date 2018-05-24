@@ -1,5 +1,5 @@
 <template>
-  <v-container fluid class="grey lighten-4" style="datimodulo.style">
+  <v-container fluid class="grey lighten-4" :style="datimodulo.style">
     
     <gmap-street-view-panorama class="google-map" :position="marker.position"
       :pov="pov" :zoom="zoom" @pano_changed="updatePano" @pov_changed="updatePov">

@@ -7,7 +7,8 @@
                 :label="datimodulo.label"
                 :id="datimodulo.id"
                 v-model="datimodulo.model"
-                :required="datimodulo.required">
+                :required="datimodulo.required"
+                :multi-line="datimodulo.multiline">
                 
           </v-text-field>
 

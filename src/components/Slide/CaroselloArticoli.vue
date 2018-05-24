@@ -1,5 +1,5 @@
   <template>
-    <v-container fluid>
+    <v-container fluid :style="datimodulo.style">
     <v-layout>
       <v-flex xs12 class="text-xs-center">
         <v-progress-circular
