@@ -148,7 +148,7 @@
         hover
         v-model="fab"
       >
-        <v-icon>place</v-icon>
+        <v-icon>{{icoAction}}</v-icon>
         <v-icon>close</v-icon>
       </v-btn>
       <v-btn
@@ -269,7 +269,7 @@
       </v-card>
     </v-dialog>
     <v-footer color="primary" app>
-      <div class="white--text" v-html="infoFooter"></div>
+      <div class="white--text" style="width:100%; text-align:center" v-html="infoFooter"></div>
     </v-footer>
   </v-app>
 </template>
@@ -317,7 +317,7 @@
           }
         ],
         link: [
-          { rel: 'stylesheet', type: "text/css", href: 'https://fonts.googleapis.com/css?family=Roboto:300,400,500,700|Material+Icons' },
+          { rel: 'stylesheet', type: "text/css", href: 'https://fonts.googleapis.com/css?family=Montserrat:300,400,500,700|Material+Icons' },
           { rel: 'apple-touch-icon', sizes: "180x180", href: '/static/favicons/apple-touch-icon.png' },
           { rel: 'icon', type: "image/png", sizes: "32x32", href: '/static/favicons/favicon-32x32.png' },
           { rel: 'icon', type: "image/png", sizes: "16x16", href: '/static/favicons/favicon-16x16.png' },
@@ -411,6 +411,12 @@
       },
       imgSfondo () {
         return this.$store.getters.featuredDataLuoghi[0].imgIntro
+      },
+      icoAction (){
+        if(this.$store.getters.featuredDataLuoghi[0].icoAction !== undefined)
+          return this.$store.getters.featuredDataLuoghi[0].icoAction
+        else
+          return "home"
       },
 
     },

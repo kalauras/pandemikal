@@ -17,7 +17,7 @@
                         <div class="headline text-xs-center">{{ datimodulo.titolo1 }}</div>
                       </v-card-title>
                       <v-card-text>
-                        {{ datimodulo.txt1 }}
+                        <div v-html="$t(datimodulo.txt1)"></div>
                       </v-card-text>
                     </v-card>
                   </v-flex>
@@ -30,7 +30,7 @@
                         <div class="headline">{{ datimodulo.titolo2 }}</div>
                       </v-card-title>
                       <v-card-text>
-                        {{ datimodulo.txt2 }}
+                        <div v-html="$t(datimodulo.txt2)"></div>
                       </v-card-text>
                     </v-card>
                   </v-flex>
@@ -43,7 +43,7 @@
                         <div class="headline text-xs-center">{{ datimodulo.titolo3 }}</div>
                       </v-card-title>
                       <v-card-text>
-                        {{ datimodulo.txt3 }}
+                        <div v-html="$t(datimodulo.txt3)"></div>
                       </v-card-text>
                     </v-card>
                   </v-flex>

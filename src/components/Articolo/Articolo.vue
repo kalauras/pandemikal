@@ -24,7 +24,7 @@
             height="400px"
           ></v-card-media>
           <v-card-text>
-            <div class="info--text">{{ articolo.date | date }} - {{ articolo.location }}</div>
+            <div v-if="showDataeLuogo" class="info--text">{{ articolo.date | date }} - {{ articolo.location }}</div>
             <div>
               <app-edit-articolo-date-dialog
                 :articolo="articolo" v-if="userIsAuthorized">
@@ -33,8 +33,14 @@
                 :articolo="articolo" v-if="userIsAuthorized">
               </app-edit-articolo-time-dialog>
             </div>
-            <!--div>{{ articolo.description }}</div-->
-                <div v-html="articolo.description"></div>
+            <div align="center">
+              <h1>{{ articolo.title }}</h1>
+              <v-layout row  >
+                <v-flex mx-5>
+                <div align="justify"  v-html="articolo.description"></div>
+              </v-flex>
+            </v-layout>
+              </div>
           </v-card-text>
           <v-card-actions>
             <v-spacer></v-spacer>
@@ -64,6 +70,9 @@
         }
         if(this.$store.getters.user.id === this.articolo.creatorId || this.$can('update', "Articolo"))
           return true 
+      },
+      showDataeLuogo(){
+        return false
       },
       loading () {
         return this.$store.getters.loading

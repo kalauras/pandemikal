@@ -7,6 +7,8 @@
     class="white--text"
     >
       <v-card class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.55) !important">
+        <v-card-media v-if="logo" :contain=true :src="datimodulo.logo" height="200px">
+        </v-card-media>
         <v-card-title primary-title>
           <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{titoloIntro}}</h1>
         </v-card-title>
@@ -40,7 +42,7 @@
         <v-list v-if="datimodulo.contatti" two-line style="background: rgba(255,  255,  255,  0.75) !important">
           <v-list-tile v-if="luogo.telefono" :href="'tel:'+luogo.telefono">
             <v-list-tile-action>
-              <v-icon color="indigo">phone</v-icon>
+              <v-icon color="primary">phone</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{luogo.telefono}}</v-list-tile-title>
@@ -53,7 +55,7 @@
           <v-divider inset></v-divider>
           <v-list-tile v-if="luogo.email" :href="'mailto:'+luogo.email">
             <v-list-tile-action>
-              <v-icon color="indigo">mail</v-icon>
+              <v-icon color="primary">mail</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{luogo.email}}</v-list-tile-title>
@@ -63,7 +65,7 @@
           <v-divider inset></v-divider>
           <v-list-tile v-if="luogo.comune" :href="'https://www.google.com/maps/@'+luogo.coordinate+',13z??hl=it-IT&gl=US'">
             <v-list-tile-action>
-              <v-icon color="indigo">location_on</v-icon>
+              <v-icon color="primary">location_on</v-icon>
             </v-list-tile-action>
             <v-list-tile-content>
               <v-list-tile-title>{{luogo.indirizzo}}</v-list-tile-title>
@@ -120,6 +122,12 @@
           return this.datimodulo.sfondo
         else
           return this.luogo.imgIntro
+      },
+      logo () {
+        if(this.datimodulo.logo !== null  && this.datimodulo.logo !== undefined)
+          return true
+        else
+          return false
       }
     },
     methods: {

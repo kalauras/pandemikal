@@ -9,7 +9,7 @@
         <div class="text-xs-center">
           <v-btn 
             large 
-            v-if="datimodulo.condizione"
+            v-if="datimodulo.condizione === 'true'" 
             router :to="datimodulo.link" 
             color="primary">{{ datimodulo.testo }}</v-btn>
         </div>

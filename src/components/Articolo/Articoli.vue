@@ -2,7 +2,7 @@
   <v-container>
     <v-layout row wrap v-for="articolo in articoli" :key="articolo.id" class="mb-2">
       <v-flex xs12 sm10 md8 offset-sm1 offset-md2>
-        <v-card class="info">
+        <v-card color="secondary">
           <v-container fluid>
             <v-layout row>
               <v-flex xs5 sm4 md3>
@@ -15,13 +15,13 @@
                 <v-card-title primary-title>
                   <div>
                     <h5 class="white--text mb-0">{{ articolo.title }}</h5>
-                    <div>{{ articolo.date | date }}</div>
+                    <div v-if="showDataeLuogo">{{ articolo.date | date }}</div>
                   </div>
                 </v-card-title>
                 <v-card-actions>
                   <v-btn flat :to="'/articoli/' + articolo.id">
                     <v-icon left light>arrow_forward</v-icon>
-                    Guarda l'Articolo
+                    {{$t("guarda_articolo")}}
                   </v-btn>
                 </v-card-actions>
               </v-flex>
@@ -38,6 +38,9 @@
     computed: {
       articoli () {
         return this.$store.getters.loadedArticoli
+      },
+      showDataeLuogo(){
+        return false
       }
     }
   }

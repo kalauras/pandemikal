@@ -21,7 +21,8 @@ export default {
         moduliPagina: [{
             "nome" : "introDati",
             "titolo" : "Caricamento..."
-          }]
+          }],
+        icoAction: 'place'
       }
     ]
   },
@@ -73,7 +74,8 @@ export default {
                 cap: obj[key].cap,
                 comune: obj[key].comune,
                 provincia: obj[key].provincia,
-                moduliPagina: this.getters.luogo[0].moduliPagina
+                moduliPagina: this.getters.luogo[0].moduliPagina,
+                icoAction: obj[key].icoAction
               })
             }
           }

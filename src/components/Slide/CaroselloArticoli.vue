@@ -19,7 +19,9 @@
             :key="articolo.id"
             @click="onLoadArticolo(articolo.id)">
             <div class="title">
-              {{ articolo.title }}
+              <h2>{{ articolo.title }}</h2>
+                            {{articolo.description.replace(/<[^>]+>/g, ' ').substring(0,150).concat('...')}}
+
             </div>
           </v-carousel-item>
         </v-carousel>
