@@ -35,6 +35,8 @@ import treColonneTesto from './components/Slide/TreColonneTesto'
 import caroselloArticoli from './components/Slide/CaroselloArticoli'
 import galleryImageVideo from './components/Slide/GalleryImageVideo'
 import CommentGrid from './components/Comment/Comments'
+import grigliaCards from './components/Slide/GrigliaCards'
+import jumboPhoto from './components/Slide/JumboPhoto'
 
 
 import introDatiPlace from './components/Slide/introDatiPlace'
@@ -98,6 +100,8 @@ Vue.component('caroselloArticoli', caroselloArticoli)
 Vue.component('galleryImageVideo', galleryImageVideo)
 Vue.component('gallery', VueGallery)
 Vue.component('comment-grid', CommentGrid)
+Vue.component('griglia-cards', grigliaCards)
+Vue.component('jumbo-photo', jumboPhoto)
 
 Vue.component('bottoneForm', bottoneForm)
 Vue.component('campoTesto', campoTesto)
