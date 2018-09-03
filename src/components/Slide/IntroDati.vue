@@ -6,11 +6,11 @@
     justify-center
     class="white--text"
     >
-      <v-card class="white--text blue-grey darken-2" style="background: rgba(0,  0,  0,  0.55) !important">
+      <v-card class="white--text blue-grey darken-2" style="max-width:600px; background: rgba(0,  0,  0,  0.55) !important">
         <v-card-media v-if="logo" :contain=true :src="datimodulo.logo" height="200px">
         </v-card-media>
         <v-card-title primary-title>
-          <h1 class="white--text display-3 text-xs-center" style="font-weight:300; line-height: 0.85 !important;">{{titoloIntro}}</h1>
+          <h1 class="white--text display-3 text-xs-center" style="font-weight:300">{{titoloIntro}}</h1>
         </v-card-title>
         <div class="subheading ma-3 text-xs-center" v-html="sottoTitoloIntro"></div>
         <v-card-actions>
