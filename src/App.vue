@@ -341,6 +341,13 @@
         { icon: 'home', text: this.$t("home"), link: "/" },
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
+
+        { icon: 'content_copy', text: 'Teatro e Cinema', link: "/" },
+        { icon: 'content_copy', text: 'Galleria', link: "/" },
+		{ icon: 'content_copy', text: 'Servizi', link: "/" },
+		{ icon: 'content_copy', text: 'Partner', link: "/" },
+		{ icon: 'content_copy', text: 'Contatti', link: "/" },
+
         {
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',

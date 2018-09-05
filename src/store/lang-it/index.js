@@ -16,7 +16,7 @@ export default {
         registrati: "Registrati",
         operazioni: "Operazioni",
         profilo: "Profilo",
-        leggi_luoghi: "Attività e Spettacoli",
+        leggi_luoghi: "Attività e Progetti",
         guarda_il_luogo: "Guarda",
         guarda_articolo: "Leggi la News",
         inserisci_place: "Inserisci un Luogo",
