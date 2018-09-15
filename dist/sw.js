@@ -78,11 +78,11 @@ workboxSW.precache([{
 //workbox.precache([
   {
     "url": "/index.html",
-    "revision": "c685d41bb6dab71b5c562065e3f5a5a9"
+    "revision": "879170de77d4f6a7fdf82c213e57e5da"
   },
   {
-    "url": "/static/js/app.41fbf2a5734c60501e7b.js",
-    "revision": "b0a29d475215c65d2f59a28a911e2818"
+    "url": "/static/js/app.da5a8bc3396a1dd6c48c.js",
+    "revision": "5debe49392de4799554b6888f2b7ba04"
   },
   {
     "url": "/static/js/manifest.2ae2e69a05c33dfc65f8.js",
@@ -94,6 +94,6 @@ workboxSW.precache([{
   },
   {
     "url": "sw.js",
-    "revision": "f5e03c1430fd38f31e7910c629918746"
+    "revision": "efc6918943a4c6226667ba33ca202c31"
   }
 ]);

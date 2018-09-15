@@ -110,6 +110,12 @@ export default new Router({
       beforeEnter(to, from, next) {
           window.location = "https://www.ebasilicata.com"
       }
+    },
+    {
+      path: '/tel',
+      beforeEnter(to, from, next) {
+          window.location = "tel:00393314216529"
+      }
     }
   ],
   mode: 'history'

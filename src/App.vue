@@ -85,16 +85,29 @@
         class="ml-4"
       ></v-text-field-->
       <div class="d-flex align-center" style="margin-left: auto">
+      	    <v-menu offset-y v-for="item in menuItems">
+
         <v-btn
           flat
-          v-for="item in menuItems"
+                  slot="activator"
+          
           :key="item.title"
           :to="item.link">
           <v-icon left dark>{{ item.icon }}</v-icon>
           {{ item.title }}
 
         </v-btn>
-        <v-btn
+        <v-list v-if="item.submenu">
+        <v-list-tile
+          v-for="(item, index) in item.submenu"
+          :key="index"
+          @click="$router.push(item.link)"
+        >
+          <v-list-tile-title>{{ item.title }}</v-list-tile-title>
+        </v-list-tile>
+      </v-list>
+    </v-menu>
+        <!--v-btn
           v-if="userIsAuthenticated"
           flat
           @click="onLogout">
@@ -122,7 +135,7 @@
               alt="Vuetify"
             >
           </v-avatar>
-        </v-btn>
+        </v-btn-->
       </div>
     </v-toolbar>
     <v-content>
@@ -147,6 +160,7 @@
         fab
         hover
         v-model="fab"
+        to="/tel"
       >
         <v-icon>{{icoAction}}</v-icon>
         <v-icon>close</v-icon>
@@ -342,11 +356,13 @@
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
 
-        { icon: 'content_copy', text: 'Teatro e Cinema', link: "/" },
-        { icon: 'content_copy', text: 'Galleria', link: "/" },
-		{ icon: 'content_copy', text: 'Servizi', link: "/" },
-		{ icon: 'content_copy', text: 'Partner', link: "/" },
-		{ icon: 'content_copy', text: 'Contatti', link: "/" },
+        { icon: 'account_balance', text: 'Il Centro', link: "/places/-LM9iAtnmfYaw1WJqpYu" },
+        { icon: 'beenhere', text: 'Progetti', link: "/places/-LMEM_jGthMJCXe7ez9M" },
+		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LMEMnBd9AEOHst4hTup" },
+		{ icon: 'account_balance', text: 'San Paolo Albanese', link: "/places/-LMENC-50pADi6DAmAgI" },
+		{ icon: 'category', text: 'Laboratori', link: "/places/-LMEPBdd-Y4HP505hPFZ" },
+		{ icon: 'style', text: 'Servizi', link: "/places/-LMEPQsBYSXKaqzrDVCU" },
+		{ icon: 'contacts', text: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" },
 
         {
           icon: 'keyboard_arrow_up',
@@ -365,7 +381,8 @@
         }
       else{
         items.push(
-          { icon: 'person', text: this.$t("profilo"), link: '/profile' }
+          { icon: 'person', text: this.$t("profilo"), link: '/profile' },
+          { icon: 'exit_to_app', text: this.$t("esci"), link: '/onLogout' }
         )
 
         if(this.$can('insert', "Place")){
@@ -386,14 +403,30 @@
     },
       menuItems () {
         let menuItems = [
-          {icon: 'person', title: this.$t("registrati"), link: '/signup'},
-          {icon: 'lock_open', title: this.$t("entra"), link: '/signin'}
+          /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
+          {icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
+        {  title: 'Il Centro', link: "/places/-LM9iAtnmfYaw1WJqpYu"        },
+        {  title: 'Progetti', link: "/places/-LMEM_jGthMJCXe7ez9M" ,
+        	submenu: [{title: "2012-2017", link:"/places/-LMHC9yQiNafMstNx9qG"}, 
+        				{title: "2018-2020", link:"/places/-LMHD8s8cuDUZzDQnnP7"}] 
+        },
+		{  title: 'Galleria', link: "/places/-LMEMnBd9AEOHst4hTup",
+        	submenu: [{title: "Foto"}, 
+        				{title: "Video"}]  
+        },
+		{  title: 'San Paolo Albanese', link: "/places/-LMENC-50pADi6DAmAgI" },
+		{  title: 'Laboratori', link: "/places/-LMEPBdd-Y4HP505hPFZ" ,
+        	submenu: [{title: "2012-2017", link:"/places/-LMNXvJgIGZXHgE5p41y"}, 
+        				{title: "2018-2020", link:"/places/-LMNY9Qgwn1GjoNPbyuj"}]
+        },
+		{  title: 'Servizi', link: "/places/-LMEPQsBYSXKaqzrDVCU" },
+		{  title: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" }
         ]
-        if (this.userIsAuthenticated) {
+        /*if (this.userIsAuthenticated) {
           menuItems = [
             
           ]
-        }
+        }*/
         return menuItems
       },
       userIsAuthenticated () {

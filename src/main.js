@@ -37,6 +37,8 @@ import galleryImageVideo from './components/Slide/GalleryImageVideo'
 import CommentGrid from './components/Comment/Comments'
 import grigliaCards from './components/Slide/GrigliaCards'
 import jumboPhoto from './components/Slide/JumboPhoto'
+import testoHtml from './components/Slide/TestoHtml.vue'
+import lista from './components/Slide/Lista.vue'
 
 
 import introDatiPlace from './components/Slide/introDatiPlace'
@@ -102,6 +104,8 @@ Vue.component('gallery', VueGallery)
 Vue.component('comment-grid', CommentGrid)
 Vue.component('griglia-cards', grigliaCards)
 Vue.component('jumbo-photo', jumboPhoto)
+Vue.component('testo-html', testoHtml)
+Vue.component('lista', lista)
 
 Vue.component('bottoneForm', bottoneForm)
 Vue.component('campoTesto', campoTesto)

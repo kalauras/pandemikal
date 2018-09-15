@@ -13,7 +13,7 @@
             </v-card-title>
             <v-card-actions>
               <v-btn flat color="primary" to="/dataUser">MODIFICA</v-btn> 
-              
+              <v-btn flat color="primary" @click="onLogout">{{$t("esci")}}</v-btn>
             </v-card-actions>
           </v-card>
       </v-flex>
@@ -59,6 +59,12 @@
         // if no subcomponents specify a metaInfo.title, this title will be used
         title: "Il mio Profilo",
          
+      },
+      methods:{
+	      	onLogout () {
+	        this.$store.dispatch('logout')
+	        this.$router.push('/')
+	      }
       },
     computed: {
       user () {
