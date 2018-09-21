@@ -3,21 +3,21 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Centro Creatività',
+    nomeSito: 'CMDA',
     bannerSito: 'https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/articoli%2F-L4VMUzjXGK4kdSg1HeP..jpg?alt=media&token=b0acf78c-8f9e-4ceb-8c4e-3db07b42cf3f',
-    descrizioneSito: 'Centro Creatività San Paolo Albanese',
+    descrizioneSito: 'Centro Mediterraneo delle Arti',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'centrocreativita_spa',
+    dominio: 'cmda',
     gruppo: 'uldericopesce',
     coordinate_default: {lat: 40.0793955, lng: 15.7588882},
     theme: {
-      primary: '#E53935',
-      secondary: '#7CB342',
+      primary: '#000000',
+      secondary: '#FDD835',
       accent: '#ffffff',
       error: '#b71c1c'
     },
-    idAnalytics: 'UA-101993142-9',
+    idAnalytics: 'UA-101993142-8',
 
   },
   mutations: {

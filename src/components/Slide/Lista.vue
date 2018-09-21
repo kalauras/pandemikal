@@ -10,7 +10,7 @@
 	            v-for="item in datimodulo.items"
 	            :key="item.title"
 	            avatar
-	            @click=""
+	            @click="$router.push(item.link ? item.link : '#')"
 	          >
 	            <v-list-tile-avatar>
 	              <img :src="item.avatar">

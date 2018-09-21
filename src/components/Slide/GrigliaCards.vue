@@ -9,7 +9,7 @@
         >
           <v-layout row wrap>
             <v-flex
-              v-for="card in datimodulo.cards"
+              v-for="card in bottoni"
               :key="card.title"
               v-bind="{[`xs${card.flex}`]:true}">
               <v-card :to="card.link">
@@ -82,7 +82,22 @@
           link: "/places/-LDHbaC_EcS0ZAyABCoU",
           flex: 12 }
       ]
-    })
+    }),
+    computed: {
+    	bottoni () {
+    		let moduli = []
+        	let swappedPairs = {}
+        	let dataPairs = this.datimodulo.cards
+    		for (let key in dataPairs) {
+              moduli.push(dataPairs[key])
+              swappedPairs[dataPairs[key]] = key
+            }
+            moduli.sort(function (a, b) {
+              return a.posiz - b.posiz;
+            });
+        return moduli
+    	}
+    }
   }
 
 </script>
