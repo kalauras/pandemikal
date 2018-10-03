@@ -168,7 +168,7 @@ import { VueEditor } from 'vue2-editor'
         if(this.$store.getters.user !== null && this.$store.getters.user !== undefined)
           placeData['creatorId'] = this.$store.getters.user.id
         placeData['dominio'] = this.$store.getters.dominio
-        placeData['gruppo'] = this.$store.getters.gruppo
+        placeData['gruppo'] = ""//this.$store.getters.gruppo
         placeData['categoria'] = this.id
 
         placeData['title'] = placeData['NomeLuogo']

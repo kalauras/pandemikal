@@ -356,14 +356,12 @@
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
 
-        { icon: 'nature_people', text: 'Chi Siamo', link: "/places/-LMmJ3Bg75DoprRfq_3m" },
-        { icon: 'category', text: 'Teatro', link: "/places/-LMkbkBBlt5nNPRmYyVI" },
-		{ icon: 'style', text: 'Cinema', link: "/places/-LMkcD0Yv56KtkWMP9aV" },
-		{ icon: 'account_balance', text: 'Progetti', link: "/places/-LMkcT5ZuiorMm3cdzHr" },
-		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LMmJ_SZgG3OGZ1_T0zi" },
+        { icon: 'nature_people', text: 'La Storia', link: "/places/-LNqLeX9ikY7nPyUBPGW" },
+		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LNqMA5Q7UQrh1Xalq5l" },
 		{ icon: 'beenhere', text: 'Servizi', link: "/places/-LMmZExWDf2vlFJ-Q32O" },
 		{ icon: 'view_agenda', text: 'Agenda', link: "/places/-LMmJwftYR9r3VyLoSfK" },
-		{ icon: 'contacts', text: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" },
+		{ icon: 'update', text: 'Tour Virtuale', link: "/places/-LMmJwftYR9r3VyLoSfK" },
+		{ icon: 'contacts', text: 'Contatti', link: "/places/-LNqOxelxow57S_N57k7" },
 
         {
           icon: 'keyboard_arrow_up',
@@ -406,19 +404,15 @@
         let menuItems = [
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
           {icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
-        {  title: 'Chi Siamo', link: "/places/-LMmJ3Bg75DoprRfq_3m"        },
-        {  title: 'Teatro', link: "/places/-LMkbkBBlt5nNPRmYyVI" },
-		{  title: 'Cinema', link: "/places/-LMkcD0Yv56KtkWMP9aV",
-			submenu: [{title: "Produzioni 2010/2017", link:"/places/-LMrpvX64rro-1Ns_yzy"}, 
-        				{title: "Produzioni 2018/2020", link:"/places/-LMrq5W2OcliftwBG4xZ"}]  },
-		{  title: 'Progetti', link: "/places/-LMkcT5ZuiorMm3cdzHr" },
-		{  title: 'Galleria', link: "/places/-LMmJ_SZgG3OGZ1_T0zi" ,
+        {  title: 'La Storia', link: "/places/-LNqLeX9ikY7nPyUBPGW"        },
+        
+		{  title: 'Galleria', link: "/places/-LNqMA5Q7UQrh1Xalq5l" ,
 			submenu: [{title: "Foto"}, 
         				{title: "Video"}]  
         },
 		{  title: 'Servizi', link: "/places/-LMmZExWDf2vlFJ-Q32O" },
 		{  title: 'Agenda', link: "/places/-LMmJwftYR9r3VyLoSfK" },
-		{  title: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" }
+		{  title: 'Contatti', link: "/places/-LNqOxelxow57S_N57k7" }
         ]
         /*if (this.userIsAuthenticated) {
           menuItems = [
