@@ -353,15 +353,17 @@
 
         let items = [
         { icon: 'home', text: this.$t("home"), link: "/" },
+        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LMmJ3Bg75DoprRfq_3m"        },
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
 
-        { icon: 'nature_people', text: 'La Storia', link: "/places/-LNqLeX9ikY7nPyUBPGW" },
-		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LNqMA5Q7UQrh1Xalq5l" },
-		{ icon: 'beenhere', text: 'Servizi', link: "/places/-LMmZExWDf2vlFJ-Q32O" },
-		{ icon: 'view_agenda', text: 'Agenda', link: "/places/-LMmJwftYR9r3VyLoSfK" },
-		{ icon: 'update', text: 'Tour Virtuale', link: "/places/-LMmJwftYR9r3VyLoSfK" },
-		{ icon: 'contacts', text: 'Contatti', link: "/places/-LNqOxelxow57S_N57k7" },
+        { icon: 'account_balance', text: 'Il Centro', link: "/places/-LM9iAtnmfYaw1WJqpYu" },
+        { icon: 'beenhere', text: 'Progetti', link: "/places/-LMEM_jGthMJCXe7ez9M" },
+		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LMEMnBd9AEOHst4hTup" },
+		{ icon: 'account_balance', text: 'San Paolo Albanese', link: "/places/-LMENC-50pADi6DAmAgI" },
+		{ icon: 'category', text: 'Laboratori', link: "/places/-LMEPBdd-Y4HP505hPFZ" },
+		{ icon: 'style', text: 'Servizi', link: "/places/-LMEPQsBYSXKaqzrDVCU" },
+		{ icon: 'contacts', text: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" },
 
         {
           icon: 'keyboard_arrow_up',
@@ -403,16 +405,24 @@
       menuItems () {
         let menuItems = [
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
-          {icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
-        {  title: 'La Storia', link: "/places/-LNqLeX9ikY7nPyUBPGW"        },
-        
-		{  title: 'Galleria', link: "/places/-LNqMA5Q7UQrh1Xalq5l" ,
-			submenu: [{title: "Foto"}, 
+        	{icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
+        {  title: 'Chi Siamo', link: "/places/-LMmJ3Bg75DoprRfq_3m"        },
+        {  title: 'Il Centro', link: "/places/-LM9iAtnmfYaw1WJqpYu"        },
+        {  title: 'Progetti', link: "/places/-LMEM_jGthMJCXe7ez9M" ,
+        	submenu: [{title: "2012-2017", link:"/places/-LMHC9yQiNafMstNx9qG"}, 
+        				{title: "2018-2020", link:"/places/-LMHD8s8cuDUZzDQnnP7"}] 
+        },
+        {  title: 'Laboratori', link: "/places/-LMEPBdd-Y4HP505hPFZ" ,
+        	submenu: [{title: "2012-2017", link:"/places/-LMNXvJgIGZXHgE5p41y"}, 
+        				{title: "2018-2020", link:"/places/-LMNY9Qgwn1GjoNPbyuj"}]
+        },
+		{  title: 'Galleria', link: "/places/-LMEMnBd9AEOHst4hTup",
+        	submenu: [{title: "Foto"}, 
         				{title: "Video"}]  
         },
-		{  title: 'Servizi', link: "/places/-LMmZExWDf2vlFJ-Q32O" },
-		{  title: 'Agenda', link: "/places/-LMmJwftYR9r3VyLoSfK" },
-		{  title: 'Contatti', link: "/places/-LNqOxelxow57S_N57k7" }
+        {  title: 'Servizi', link: "/places/-LMEPQsBYSXKaqzrDVCU" },
+		{  title: 'San Paolo Albanese', link: "/places/-LMENC-50pADi6DAmAgI" },
+		{  title: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" }
         ]
         /*if (this.userIsAuthenticated) {
           menuItems = [

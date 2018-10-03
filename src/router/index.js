@@ -114,7 +114,7 @@ export default new Router({
     {
       path: '/tel',
       beforeEnter(to, from, next) {
-          window.location = "tel:00390973835026"
+          window.location = "tel:00393314216529"
       }
     }
   ],
