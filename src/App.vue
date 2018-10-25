@@ -353,17 +353,14 @@
 
         let items = [
         { icon: 'home', text: this.$t("home"), link: "/" },
-        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LMmJ3Bg75DoprRfq_3m"        },
+        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LPeej0MAqk1tZ-GL9PM"        },
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
 
-        { icon: 'account_balance', text: 'Il Centro', link: "/places/-LM9iAtnmfYaw1WJqpYu" },
-        { icon: 'beenhere', text: 'Progetti', link: "/places/-LMEM_jGthMJCXe7ez9M" },
-		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LMEMnBd9AEOHst4hTup" },
-		{ icon: 'account_balance', text: 'San Paolo Albanese', link: "/places/-LMENC-50pADi6DAmAgI" },
-		{ icon: 'category', text: 'Laboratori', link: "/places/-LMEPBdd-Y4HP505hPFZ" },
-		{ icon: 'style', text: 'Servizi', link: "/places/-LMEPQsBYSXKaqzrDVCU" },
-		{ icon: 'contacts', text: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" },
+        { icon: 'account_balance', text: 'Prodotti', link: "/places/-LPefOWg_mHFYKLFj0KF" },
+        { icon: 'beenhere', text: 'Servizi', link: "/places/-LPefbqrTulG4vA3ilPV" },
+		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LPefvz-6lm3z_5XwORG" },
+		{ icon: 'contacts', text: 'Contatti', link: "/places/-LPeg7nh2qdMNrJxPxZK" },
 
         {
           icon: 'keyboard_arrow_up',
@@ -406,17 +403,15 @@
         let menuItems = [
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
         	{icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
-        {  title: 'Chi Siamo', link: "/places/-LMmJ3Bg75DoprRfq_3m"        },
-        {  title: 'Prodotti', link: "/places/-LMEM_jGthMJCXe7ez9M" ,
-        	submenu: [{title: "2012-2017", link:"/places/-LMHC9yQiNafMstNx9qG"}, 
-        				{title: "2018-2020", link:"/places/-LMHD8s8cuDUZzDQnnP7"}] 
+        {  title: 'Chi Siamo', link: "/places/-LPeej0MAqk1tZ-GL9PM"        },
+        {  title: 'Prodotti', link: "/places/-LPefOWg_mHFYKLFj0KF" 
         },
-        {  title: 'Servizi', link: "/places/-LMEPQsBYSXKaqzrDVCU" },
-        {  title: 'Galleria', link: "/places/-LMEMnBd9AEOHst4hTup",
+        {  title: 'Servizi', link: "/places/-LPefbqrTulG4vA3ilPV" },
+        {  title: 'Galleria', link: "/places/-LPefvz-6lm3z_5XwORG",
         	submenu: [{title: "Foto"}, 
         				{title: "Video"}]  
         },
-		{  title: 'Contatti', link: "/places/-LMIaB7jsKxHhUXB72vd" }
+		{  title: 'Contatti', link: "/places/-LPeg7nh2qdMNrJxPxZK" }
         ]
         /*if (this.userIsAuthenticated) {
           menuItems = [

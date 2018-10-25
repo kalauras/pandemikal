@@ -10,7 +10,7 @@ export default {
     placeID: 'places',
     dominio: 'ferramentadedonato',
     gruppo: 'ferramenta',
-    coordinate_default: {lat: 40.1377228, lng: 16.3022048},
+    coordinate_default: {lat: 40.1377879, lng: 16.30239670000003},
     theme: {
       primary: '#90A4AE',
       secondary: '#7CB342',
