@@ -3,13 +3,13 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Ferramenta De Donato',
+    nomeSito: 'Il Tuo Tecnico',
     bannerSito: 'https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/it%2Fbasilicata%2Fattivita%2Fferramentadedonato%2Fbackground_ferramenta.jpg?alt=media&token=8ccede43-4020-45ca-bc21-b7409121bd8d',
-    descrizioneSito: 'Ferramenta De Donato',
+    descrizioneSito: 'Il Tuo Tecnico',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'ferramentadedonato',
-    gruppo: 'ferramenta',
+    dominio: 'iltuotecnico',
+    gruppo: 'iltuotecnico',
     coordinate_default: {lat: 40.1377879, lng: 16.30239670000003},
     theme: {
       primary: '#90A4AE',
@@ -17,7 +17,7 @@ export default {
       accent: '#ffffff',
       error: '#b71c1c'
     },
-    idAnalytics: 'UA-101993142-11',
+    idAnalytics: 'UA-101993142-13',
 
   },
   mutations: {

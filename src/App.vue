@@ -353,14 +353,14 @@
 
         let items = [
         { icon: 'home', text: this.$t("home"), link: "/" },
-        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LPeej0MAqk1tZ-GL9PM"        },
+        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LRSIsADz5uQARhJyEGp"        },
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
 
-        { icon: 'account_balance', text: 'Prodotti', link: "/places/-LPefOWg_mHFYKLFj0KF" },
-        { icon: 'beenhere', text: 'Servizi', link: "/places/-LPefbqrTulG4vA3ilPV" },
-		{ icon: 'photo_library', text: 'Galleria', link: "/places/-LPefvz-6lm3z_5XwORG" },
-		{ icon: 'contacts', text: 'Contatti', link: "/places/-LPeg7nh2qdMNrJxPxZK" },
+        { icon: 'account_balance', text: 'Pacchetti', link: "/places/-LRSIyL5YPGo6WYjFmHY" },
+        { icon: 'beenhere', text: 'Domande Frequenti', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
+		{ icon: 'photo_library', text: 'Lavora con Noi', link: "/places/-LRSJDuvtAhi5pNGDcAc" },
+		{ icon: 'contacts', text: 'Contatti', link: "/places/-LRSKGk5atqLEFOnFRq4" },
 
         {
           icon: 'keyboard_arrow_up',
@@ -403,15 +403,15 @@
         let menuItems = [
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
         	{icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
-        {  title: 'Chi Siamo', link: "/places/-LPeej0MAqk1tZ-GL9PM"        },
-        {  title: 'Prodotti', link: "/places/-LPefOWg_mHFYKLFj0KF" 
+        {  title: 'Chi Siamo', link: "/places/-LRSIsADz5uQARhJyEGp"        },
+        {  title: 'Pacchetti', link: "/places/-LRSIyL5YPGo6WYjFmHY" ,
+          submenu: [{title: "Privati"}, 
+                {title: "Business"}]  
+        
         },
-        {  title: 'Servizi', link: "/places/-LPefbqrTulG4vA3ilPV" },
-        {  title: 'Galleria', link: "/places/-LPefvz-6lm3z_5XwORG",
-        	submenu: [{title: "Foto"}, 
-        				{title: "Video"}]  
-        },
-		{  title: 'Contatti', link: "/places/-LPeg7nh2qdMNrJxPxZK" }
+        {  title: 'Domande Frequenti', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
+        {  title: 'Lavora Con Noi', link: "/places/-LRSJDuvtAhi5pNGDcAc"},
+		    {  title: 'Contatti', link: "/places/-LRSKGk5atqLEFOnFRq4" }
         ]
         /*if (this.userIsAuthenticated) {
           menuItems = [
