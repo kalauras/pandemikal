@@ -357,9 +357,9 @@
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
 
-        { icon: 'account_balance', text: 'Pacchetti', link: "/places/-LRSIyL5YPGo6WYjFmHY" },
-        { icon: 'beenhere', text: 'Domande Frequenti', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
-		{ icon: 'photo_library', text: 'Lavora con Noi', link: "/places/-LRSJDuvtAhi5pNGDcAc" },
+        { icon: 'account_balance', text: 'Pasta Secca', link: "/places/-LRSIyL5YPGo6WYjFmHY" },
+        { icon: 'beenhere', text: 'Pasta Bio', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
+		{ icon: 'photo_library', text: 'Cesti di Natale', link: "/places/-LRSJDuvtAhi5pNGDcAc" },
 		{ icon: 'contacts', text: 'Contatti', link: "/places/-LRSKGk5atqLEFOnFRq4" },
 
         {
@@ -404,13 +404,13 @@
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
         	{icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
         {  title: 'Chi Siamo', link: "/places/-LRSIsADz5uQARhJyEGp"        },
-        {  title: 'Pacchetti', link: "/places/-LRSIyL5YPGo6WYjFmHY" ,
-          submenu: [{title: "Privati"}, 
-                {title: "Business"}]  
+        {  title: 'Pasta', link: "/places/-LRSIyL5YPGo6WYjFmHY" ,
+          submenu: [{title: "Secca"}, 
+                {title: "Fresca"}]  
         
         },
-        {  title: 'Domande Frequenti', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
-        {  title: 'Lavora Con Noi', link: "/places/-LRSJDuvtAhi5pNGDcAc"},
+        {  title: 'Pasta Bio', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
+        {  title: 'Cesti di Natale', link: "/places/-LRSJDuvtAhi5pNGDcAc"},
 		    {  title: 'Contatti', link: "/places/-LRSKGk5atqLEFOnFRq4" }
         ]
         /*if (this.userIsAuthenticated) {

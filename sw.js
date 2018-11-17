@@ -78,7 +78,7 @@ workboxSW.precache([{
 //workbox.precache([
   {
     "url": "/index.html",
-    "revision": "7a354212c72221943ce4f1034da1fdc6"
+    "revision": "b8b69465ecb637fe314d9a9243d3c7de"
   },
   {
     "url": "static/js/manifest.2ae2e69a05c33dfc65f8.js",
@@ -86,6 +86,6 @@ workboxSW.precache([{
   },
   {
     "url": "sw.js",
-    "revision": "a9c5d30fcfbcda71a3cd34108863a7bd"
+    "revision": "f350364d2f2c688683843b8163bf71c2"
   }
 ]);

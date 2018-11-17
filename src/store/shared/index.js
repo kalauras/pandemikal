@@ -3,21 +3,21 @@ export default {
     loading: false,
     error: null,
     abilities: null,
-    nomeSito: 'Il Tuo Tecnico',
+    nomeSito: 'Gusto Fantastico',
     bannerSito: 'https://firebasestorage.googleapis.com/v0/b/ebasilicata/o/it%2Fbasilicata%2Fattivita%2Fferramentadedonato%2Fbackground_ferramenta.jpg?alt=media&token=8ccede43-4020-45ca-bc21-b7409121bd8d',
-    descrizioneSito: 'Il Tuo Tecnico',
+    descrizioneSito: 'Gusto Fantastico',
     pageID: 'articoli',
     placeID: 'places',
-    dominio: 'iltuotecnico',
-    gruppo: 'iltuotecnico',
+    dominio: 'gustofantastico',
+    gruppo: 'gustofantastico',
     coordinate_default: {lat: 40.1377879, lng: 16.30239670000003},
     theme: {
-      primary: '#90A4AE',
-      secondary: '#7CB342',
+      primary: '#c23030',
+      secondary: '#002140',
       accent: '#ffffff',
       error: '#b71c1c'
     },
-    idAnalytics: 'UA-101993142-13',
+    idAnalytics: 'UA-101993142-14',
 
   },
   mutations: {
