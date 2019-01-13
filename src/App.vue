@@ -351,16 +351,29 @@
           
         ]
 
+        let pasta = [
+            { icon: 'account_balance', text: 'Pasta Secca', link: "/places/-LW2fZghwTEZXhP0Hz7s" },
+            { icon: 'beenhere', text: 'Pasta Fresca', link: "/places/-LW2fgwJZIUwyZc0DIhc" },
+            { icon: 'account_balance', text: 'Pasta Senza Glutine', link: "/places/-LW2g--oguOOJZJ195HW" },
+            { icon: 'beenhere', text: 'Pasta Bio', link: "/places/-LW2g78NqT7XpefCWGD9" },
+            ]
+
         let items = [
         { icon: 'home', text: this.$t("home"), link: "/" },
-        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LRSIsADz5uQARhJyEGp"        },
+        { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LW2fC_Ubdo2Pfgaqn6B"        },
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
+        {
+          icon: 'keyboard_arrow_up',
+          'icon-alt': 'keyboard_arrow_down',
+          text: 'Pasta',
+          model: true,
+          children: pasta
+        },
 
-        { icon: 'account_balance', text: 'Pasta Secca', link: "/places/-LRSIyL5YPGo6WYjFmHY" },
-        { icon: 'beenhere', text: 'Pasta Bio', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
-		{ icon: 'photo_library', text: 'Cesti di Natale', link: "/places/-LRSJDuvtAhi5pNGDcAc" },
-		{ icon: 'contacts', text: 'Contatti', link: "/places/-LRSKGk5atqLEFOnFRq4" },
+        
+		{ icon: 'photo_library', text: 'Cesti di Natale', link: "/places/-LW2hxotYEAKB6EhIxml" },
+		{ icon: 'contacts', text: 'Contatti', link: "/places/-LW2i6CR1zZOdvTKKVH1" },
 
         {
           icon: 'keyboard_arrow_up',
@@ -403,15 +416,16 @@
         let menuItems = [
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
         	{icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
-        {  title: 'Chi Siamo', link: "/places/-LRSIsADz5uQARhJyEGp"        },
-        {  title: 'Pasta', link: "/places/-LRSIyL5YPGo6WYjFmHY" ,
-          submenu: [{title: "Secca"}, 
-                {title: "Fresca"}]  
+        {  title: 'Chi Siamo', link: "/places/-LW2fC_Ubdo2Pfgaqn6B"        },
+        {  title: 'Pasta', link: "#" ,
+          submenu: [{title: "Secca" , link: "/places/-LW2fZghwTEZXhP0Hz7s"}, 
+                {title: "Fresca" , link: "/places/-LW2fgwJZIUwyZc0DIhc"}, 
+                {title: "Senza Glutine" , link: "/places/-LW2g--oguOOJZJ195HW"}, 
+                {title: "Biologica" , link: "/places/-LW2g78NqT7XpefCWGD9"}]  
         
         },
-        {  title: 'Pasta Bio', link: "/places/-LRSJ4Rb2qvhTxo6c4A_" },
-        {  title: 'Cesti di Natale', link: "/places/-LRSJDuvtAhi5pNGDcAc"},
-		    {  title: 'Contatti', link: "/places/-LRSKGk5atqLEFOnFRq4" }
+        {  title: 'Cesti di Natale', link: "/places/-LW2hxotYEAKB6EhIxml"},
+		    {  title: 'Contatti', link: "/places/-LW2i6CR1zZOdvTKKVH1" }
         ]
         /*if (this.userIsAuthenticated) {
           menuItems = [

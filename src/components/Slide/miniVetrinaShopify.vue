@@ -105,8 +105,8 @@ export default {
                   'font-weight': 'normal'
                 },
                 "price": {
-                  "font-size": "1px",
-                  "color": "#da1414"
+                  "font-size": "10pt",
+                  "color": "#000000"
                 },
                 "title": {
                   "background-color": accent
