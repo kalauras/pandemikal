@@ -28,6 +28,7 @@ import MappaPosizione from './components/Slide/MappaPosizione'
 import MappaFollowers from './components/Slide/MappaFollowers'
 import StreetViewPosizione from './components/Slide/StreetViewPosizione'
 import miniVetrinaShopify from './components/Slide/miniVetrinaShopify'
+import VetrinaShopify from './components/Slide/VetrinaShopify'
 import introDati from './components/Slide/introDati'
 import introParticles from './components/Slide/introParticles'
 import titoloSezione from './components/Slide/TitoloSezione'
@@ -93,6 +94,7 @@ Vue.component('google-map', MappaPosizione)
 Vue.component('map-followers', MappaFollowers)
 Vue.component('google-streetView', StreetViewPosizione)
 Vue.component('minivetrina-shopify', miniVetrinaShopify)
+Vue.component('vetrina-shopify', VetrinaShopify)
 Vue.component('introDati', introDati)
 Vue.component('introParticles', introParticles)
 
