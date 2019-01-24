@@ -351,28 +351,30 @@
           
         ]
 
-        let pasta = [
+        /*let pasta = [
             { icon: 'account_balance', text: 'Pasta Secca', link: "/places/-LW2fZghwTEZXhP0Hz7s" },
             { icon: 'beenhere', text: 'Pasta Fresca', link: "/places/-LW2fgwJZIUwyZc0DIhc" },
             { icon: 'account_balance', text: 'Pasta Senza Glutine', link: "/places/-LW2g--oguOOJZJ195HW" },
             { icon: 'beenhere', text: 'Pasta Bio', link: "/places/-LW2g78NqT7XpefCWGD9" },
             ]
-
+*/
         let items = [
         { icon: 'home', text: this.$t("home"), link: "/" },
         { icon: 'contacts', text: 'Chi Siamo', link: "/places/-LW2fC_Ubdo2Pfgaqn6B"        },
         { icon: 'place', text: this.$t("leggi_luoghi"), link: "/places" },
         { icon: 'content_copy', text: this.$t("leggi_articoli"), link: "/articoli" },
-        {
+        /*{
           icon: 'keyboard_arrow_up',
           'icon-alt': 'keyboard_arrow_down',
           text: 'Pasta',
           model: true,
           children: pasta
-        },
+        },*/
 
         
-		{ icon: 'photo_library', text: 'Cesti di Natale', link: "/places/-LW2hxotYEAKB6EhIxml" },
+    { icon: 'photo_library', text: 'Servizi', link: "/places/-LW2hxotYEAKB6EhIxml" },
+    { icon: 'photo_library', text: 'Premiazioni', link: "/places/-LW2hxotYEAKB6EhIxml" },
+    { icon: 'photo_library', text: 'Eventi', link: "/places/-LW2hxotYEAKB6EhIxml" },
 		{ icon: 'contacts', text: 'Contatti', link: "/places/-LW2i6CR1zZOdvTKKVH1" },
 
         {
@@ -417,14 +419,16 @@
           /*{icon: 'person', title: this.$t("registrati"), link: '/signup'},
         	{icon: 'lock_open', title: this.$t("entra"), link: '/signin'}*/
         {  title: 'Chi Siamo', link: "/places/-LW2fC_Ubdo2Pfgaqn6B"        },
-        {  title: 'Pasta', link: "#" ,
+        /*{  title: 'Pasta', link: "#" ,
           submenu: [{title: "Secca" , link: "/places/-LW2fZghwTEZXhP0Hz7s"}, 
                 {title: "Fresca" , link: "/places/-LW2fgwJZIUwyZc0DIhc"}, 
                 {title: "Senza Glutine" , link: "/places/-LW2g--oguOOJZJ195HW"}, 
                 {title: "Biologica" , link: "/places/-LW2g78NqT7XpefCWGD9"}]  
         
-        },
-        {  title: 'Cesti di Natale', link: "/places/-LW2hxotYEAKB6EhIxml"},
+        },*/
+        {  title: 'Servizi', link: "/places/-LW2hxotYEAKB6EhIxml"},
+        {  title: 'Premiazioni', link: "/places/-LW2hxotYEAKB6EhIxml"},
+        {  title: 'Eventi', link: "/places/-LW2hxotYEAKB6EhIxml"},
 		    {  title: 'Contatti', link: "/places/-LW2i6CR1zZOdvTKKVH1" }
         ]
         /*if (this.userIsAuthenticated) {

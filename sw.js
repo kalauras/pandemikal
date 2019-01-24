@@ -81,16 +81,8 @@ workboxSW.precache([{
     "revision": "1f804fd5642a141bef6f5da1147a3a1d"
   },
   {
-    "url": "static/js/app.91a7b03794894b7beea3.js",
-    "revision": "0a08e8e4fe574bc55ee6ed69c6129adf"
-  },
-  {
     "url": "static/js/manifest.2ae2e69a05c33dfc65f8.js",
     "revision": "4b63edaf2b684db252e004a67c66dcef"
-  },
-  {
-    "url": "static/js/vendor.248bfeb07a6bd4838d10.js",
-    "revision": "9b433c9b33199106e033c42166fe4cec"
   },
   {
     "url": "sw.js",
